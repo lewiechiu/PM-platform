@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-c {
+    background-color: rgb(23, 109, 116);
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    width: auto;
+    padding: 1.5em 1.5em;
+    text-align: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    border-radius: 1em;
+}
+
+.container-c a:link, a:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255)
+}
+
+.container-c a:hover, a:active {
+    color: rgb(238, 108, 126);
+    text-decoration: none;
+}
+
+.sidebar {
+    background-color: rgb(23, 109, 116);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    z-index: 0;
+    overflow-x: hidden;
+    padding-top: 1em;
+    padding-right: 0;
+    min-width: 100px;
+    margin: auto;
+}
+
+.sidebar a {
+    padding: 6px 16px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    display: block;
+}
+
+.sidebar a:hover, a:active {
+    color: rgb(238, 108, 126);
+}
+
+.slide {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.6em 1em;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    border: none;
+}
+
+.expandable {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+.slide-content {
+    display: none;
+    position: fixed;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.slide-content a{
+    color: rgb(0, 0, 0)
+}
+
+.expandable:hover .slide-content {display: block;}
+
+.backbtn {
+    position: absolute;
+    bottom: 1.5em;
+}
