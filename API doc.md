@@ -201,10 +201,82 @@ The crew can be updated with some other "Job Title" and "salary".
 To b configured
 ```
 
-#### 2. Select certain Talents of the People
+#### 2. Select certain *Talents* of the People
+
+```code{Javascript}
+GET 114.32.23.161/api/crew/?talent="talent"
+```
+
+**Server response:**
+
+```code{Javascript}
+{
+    [
+        {
+            "id" : employee id,
+            "name" : name,
+            "title" : title,
+            some other fileds describing the worker.
+        },
+        {
+            "id" : employee id,
+            "name" : name,
+            ...
+        },
+        ...
+    ]
+}
+```
 
 #### 3. Show the background, basic info for each person.
 
+The following retrieves crew with ID being *123456*.
+
+```code{Javascript}
+GET 114.32.23.161/api/crew/?ID=123456
+```
+
+**Server response:**
+
+If the id you're looking for doesn't exist, it will throw an error at you.
+
+```code{Javascript}
+{
+    "id" : [matches the id you search | none],
+    "name" : name,
+    some other fields describing the worker...
+}
+```
+
 #### 4. Show what they are accountable for(Manage) or assigned to do(has a manager)
 
+**This is merged into the previous API**.
+
 #### 5. Select Crew by Dev Team
+
+The following retrieves crew with ID being *123456*.
+
+```code{Javascript}
+GET 114.32.23.161/api/crew/?team_id=123456
+```
+
+**Server response:**
+
+If the id you're looking for doesn't exist, it will throw an error at you.
+
+```code{Javascript}
+{
+   "team_id" : [matches the id you search | none],
+   "members" : [
+       {
+           "id" : id,
+           "name" : name
+       },
+       {
+           "id" : id,
+           "name" : name
+       },
+       ...
+   ]
+}
+```
