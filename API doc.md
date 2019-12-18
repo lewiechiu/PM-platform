@@ -4,9 +4,6 @@
 
 ## View from Order
 
-### Create:
-1. Order and assign sales
-
 ## View from Project Management
 
 ### Create
@@ -28,20 +25,21 @@ Use API with "POST 114.32.23.161/api/proj/", body being json object.
 
 Use API with "GET 114.32.23.161/api/proj/..."
 
-1. Show the domain field of the project participants
+#### 1. Show the domain field of the project participants
+
 **What is domain field**?
 
 ```code{Javascript}
 GET 114.32.23.161/api/proj/?
 ```
 
-Server response:
+**Server response:**
 
 ```code{Javascript}
-GET 114.32.23.161/api/proj/?
+To b configured
 ```
 
-2. Search active project (used by managers)
+#### 2. Search active project (used by managers)
 
 ```code{Javascript}
 GET 114.32.23.161/api/proj/active/
@@ -49,7 +47,7 @@ GET 114.32.23.161/api/proj/active/
 
 Internally, it will go through the database to see whether the task for a project has been done.
 
-Server Response:
+**Server Response:**
 
 ```code{Javascript}
 {
@@ -60,7 +58,7 @@ Server Response:
 }
 ```
 
-3. Show team members’ domain fields
+#### 3. Show team members’ domain fields
 
 User needs to provide *team_id* for query. The following will get the id of team being "123"
 
@@ -68,7 +66,7 @@ User needs to provide *team_id* for query. The following will get the id of team
 GET 114.32.23.161/api/proj/?team_id=123
 ```
 
-Server Response:
+**Server Response:**
 
 ```code{Javascript}
 {
@@ -86,13 +84,13 @@ Server Response:
 }
 ```
 
-4. Team Availability
+#### 4. Team Availability
 
 ```code{Javascript}
 GET 114.32.23.161/api/proj/?team_id=123
 ```
 
-Server Response:
+**Server Response:**
 
 ```code{Javascript}
 {
@@ -116,7 +114,7 @@ Server Response:
 
 Use API with "PUT 114.32.23.161/api/proj", body being json object.
 
-1. Request for more resources
+#### 1. Request for more resources
 
 ```code{Javascript}
 {
@@ -131,7 +129,7 @@ Use API with "PUT 114.32.23.161/api/proj", body being json object.
 }
 ```
 
-2. Update the state of the task
+#### 2. Update the state of the task
 
 ```code{Javascript}
 {
@@ -140,7 +138,7 @@ Use API with "PUT 114.32.23.161/api/proj", body being json object.
 }
 ```
 
-3. Insert new SWE to the project
+#### 3. Insert new SWE to the project
 
 ```code{Javascript}
 {
@@ -153,3 +151,60 @@ Use API with "PUT 114.32.23.161/api/proj", body being json object.
     ]
 }
 ```
+
+
+## View from Crew
+
+### Create
+
+#### Create SWE
+
+```code{Javascript}
+POST 114.32.23.161/api/crew/swe
+*** BODY ****
+{
+    "name" : char(name),
+    "salary" : int(),
+    "Job Title" : char(title),
+    ...
+}
+```
+
+#### Create Manager
+
+```code{Javascript}
+POST 114.32.23.161/api/crew/manager
+*** BODY ****
+{
+    "name" : char(name),
+    "salary" : int(),
+    "Job Title" : char(title),
+    ...
+}
+```
+
+### Read
+
+#### 1. Show crews can be promoted
+
+The term "promoted" seems ambiguous and needs somewhat more robust definitions. Hence, I define the action for this feature to be as follows.
+
+The crew can be updated with some other "Job Title" and "salary".
+
+```code{Javascript}
+ 114.32.23.161/api/crew/
+```
+
+**Server response:**
+
+```code{Javascript}
+To b configured
+```
+
+#### 2. Select certain Talents of the People
+
+#### 3. Show the background, basic info for each person.
+
+#### 4. Show what they are accountable for(Manage) or assigned to do(has a manager)
+
+#### 5. Select Crew by Dev Team
