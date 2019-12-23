@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request
+import routing
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -15,16 +16,17 @@ def receive():
     print(content)
     return jsonify({"type": "good"})
 
-@app.route('/api/project/', methods = ['POST'])
-def project_api():
-    return jsonify({"status": 200})
-
 @app.route('/api/sale/', methods = ['POST'])
 def sale_api():
     return jsonify({"status": 200})
 
 @app.route('/api/swe/', methods = ['POST'])
 def swe_api():
+    return jsonify({"status": 200})
+
+
+@app.route('/api/crew/', methods = ['POST'])
+def crew_api():
     return jsonify({"status": 200})
     
 
