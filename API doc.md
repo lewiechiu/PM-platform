@@ -1,8 +1,141 @@
-# API document
 
-[Imgur](https://i.imgur.com/9jC5bTN.png)
+# API document
+![Imgur](https://i.imgur.com/SNTWXc1.png)
 
 ## View from Order
+
+### Create
+
+Use API with "POST 114.32.23.161/api/order/", body being json object.
+
+#### 1. Create new Order
+```code{Javascript}
+{
+    "established_time" : a string of time (Ex:"20191219"),
+    "end_time" : a string of time (Initial value is 0),
+    "deadline_time" : a string of time (Ex:"20200219"),
+    "salesmanID" : id of salesman,
+    "price" : int()
+}
+```
+* Check if there is enough resource, such as Resource and SWE (no more than *k* cases per SWE) 
+**-> need to add "estimated consumed resource" attri into the order table (Nick)**
+
+### Read
+
+Use API with "GET 114.32.23.161/api/order/..."
+
+#### 1. View order priority
+
+Input the top *k* orders from the data base. The priority of the orders are determined by the amount of price. For example, try to retrieve top 100 orders as shown below.
+
+```code{Javascript}
+GET 114.32.23.161/api/order/?top=100
+```
+
+**Server response:**
+
+```code{Javascript}
+{
+    [
+        {
+            "order_id" : id of the order
+            "established_time" : a string of time (Ex:"20191219"),
+            "deadline_time" : a string of time (Ex:"20200219"),
+            "salesmanID" : id of salesman,
+            "price" : int()
+       },
+       {
+            "order_id" : id of the order
+            "established_time" : a string of time (Ex:"20191219"),
+            ...
+       },
+    ]
+    ...
+}
+```
+
+#### 2. Know all projects which belongs to the order
+Input the id of a order of which all child projects will be returned. Say, check the order of which id is 100.
+
+```code{Javascript}
+GET 114.32.23.161/api/order/?order_ID=100
+```
+
+**Server response:**
+
+
+If the id you're looking for doesn't exist, it will throw an error at you.
+
+```code{Javascript}
+{
+    [
+        {
+            "order_id" : [matches the id you search | none],
+            "established_time" : a string of time (Ex:"20191219"),
+            "deadline_time" : a string of time (Ex:"20200219"),
+            "salesmanID" : id of salesman,
+            "price" : int()
+        },
+        {
+            "order_id" : [matches the id you search | none],
+            "established_time" : a string of time (Ex:"20191219"),
+            ... 
+        }
+    ]
+}
+```
+
+#### 3. Know the salesman who is responsible for the order
+Input the id of a order and the data of the salesman will be returned. Say, check the order of which id is 100.
+
+```code{Javascript}
+GET 114.32.23.161/api/order/?order_ID=100
+```
+
+**Server response:**
+If the id you're looking for doesn't exist, it will throw an error at you.
+
+```code{Javascript}
+{
+    [
+        {
+            "salesmanID" : [matches the id you search | none],
+            "name" : string(name),
+            "SSN" : a string (Ex:"521-25-8218"),
+            "title" : string,
+            "salary" : int(),
+            "age" : int(),
+            "year_of_experinece" : int() (Ex:"20200219"),
+            "address" : a string of time (Ex:"20200219"),
+            "gender" : str ing. "Male" | "Female"
+        },
+        {
+            ... 
+        }
+    ]
+}
+```
+
+#### 4. Know the current available capacity and personal
+
+
+### Update
+
+Use API with "PUT 114.32.23.161/api/order", body being json object.
+
+#### 1. Modify an order’s project, ending date
+
+```code{Javascript}
+{
+    "order_id": "Id 321",
+    "end_time" : a string of time (Ex:"20201220". Initial value is 0),
+    "salesmanID" : id of salesman,
+    "price" : int(),
+    ...
+}
+```
+
 
 ## View from Project Management
 
