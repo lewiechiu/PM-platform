@@ -158,20 +158,6 @@ Use API with "POST 114.32.23.161/api/proj/", body being json object.
 
 Use API with "GET 114.32.23.161/api/proj/..."
 
-#### 1. Show the domain field of the project participants
-
-**What is domain field**?
-
-```code{Javascript}
-GET 114.32.23.161/api/proj/?
-```
-
-**Server response:**
-
-```code{Javascript}
-To b configured
-```
-
 #### 2. Search active project (used by managers)
 
 ```code{Javascript}
@@ -245,13 +231,12 @@ GET 114.32.23.161/api/proj/?team_id=123
 
 ### Update
 
-Use API with "PUT 114.32.23.161/api/proj", body being json object.
+Use API with "PUT 114.32.23.161/api/project/resources/<int:project_id>", body being json object.
 
 #### 1. Request for more resources
 
 ```code{Javascript}
 {
-    "Project_id": "Id 1",
     "Resources" : [
         {
             "id" : "name of the resource",
