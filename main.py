@@ -7,12 +7,13 @@ from routing.crew import crew
 from mysql_conf import *
 
 app = Flask(__name__)
-
+tmp = MySQL_query()
+# print(tmp.query("SELECT * FROM db2019FP.Bugs;"))
 
 
 app.register_blueprint(project)
 app.register_blueprint(order)
-app.register_blueprint([salesman])
+app.register_blueprint(salesman)
 
 
 @app.errorhandler(404)

@@ -1,12 +1,13 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
+from mysql_conf import *
 crew = Blueprint('crew', __name__, template_folder='../templates')
 
+connect = MySQL_query()
 
 
 
 # Create
-# show if the crew can be promoted
-
+# Create Crew
 @crew.route('/api/crew/<int:SWE_ID>', methods = ['POST'])
 def create_crew(SWE_ID):
     # TODO
@@ -14,10 +15,13 @@ def create_crew(SWE_ID):
     print(request.json())
     # request.json() should have the following property.
     # ["name", "ssn", "title", "salary", "yoe", "address", "gender"]
-    
+
+# show if the crew can be promoted
 @crew.route('/api/crew/<int:SWE_ID>', methods = ['GET'])
 def get_is_swe_promotable(SWE_ID):
     # TODO
+    # Check if SWE exist in DB.
+    
     return
     
 @crew.route('/api/crew/<string:talent>', methods = ['GET'])
