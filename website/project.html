@@ -1,0 +1,243 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale=1.0>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Salesman View</title>
+        <link rel="stylesheet" href="source/main.css">
+        <script type="text/javascript" src="source/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="source/jquery.fulltable.js"></script>
+        
+        <style type="text/css">
+            table {
+                position:relative;
+                width:525px;
+                margin:4px 0;
+                border-collapse: collapse;
+    
+                font-family: tahoma, arial, helvetica !important;
+                font-size: 9pt !important;
+            }
+            table, table th, table td {
+                border: 1px solid black;
+            }
+            table th, table td  {
+                padding:0 2em;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+                overflow:hidden;
+                line-height:22px;
+                height:22px;
+            }
+            a.button {
+                position: relative;
+                display: inline-block;
+                
+                font-family: tahoma, arial, helvetica;
+                font-size: 9pt;
+                font-weight: bold;
+                
+                color: #ffffff;
+                background-color: #AAAAAA;
+                
+                padding: 5px;
+                
+                text-decoration: none;
+                
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            $(
+                function() {
+                    $("#test-table").FullTable({
+                        "alwaysCreating":true,
+                        "selectable":true,
+                        "fields": {
+                            "gender":{
+                                "options":[
+                                    {
+                                        "title":"Male",
+                                        "value":"xy"
+                                    },
+                                    {
+                                        "title":"Female",
+                                        "value":"xx"
+                                    }
+                                ],
+                                "mandatory":true,
+                                "placeholder":"Select one",
+                                "errors":{
+                                    "mandatory":"Gender name is mandatory"
+                                }
+                            },
+                            "firstname":{
+                                "mandatory":true,
+                                "errors":{
+                                    "mandatory":"First name is mandatory"
+                                }
+                            },
+                            "lastname":{
+                                "mandatory":true,
+                                "errors":{
+                                    "mandatory":"Last name is mandatory"
+                                }
+                            },
+                            "age":{
+                                "type":"integer",
+                                "mandatory":false,
+                                "validator":function(age) {
+                                    if (age >= 0) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                },
+                                "errors":{
+                                    "type":"Age must be an integer number",
+                                    "mandatory":"Age is mandatory",
+                                    "validator":"Age cannot be negative"
+                                }				
+                            },
+                            "height":{
+                                "type":"decimal",
+                                "mandatory":false,
+                                "validator":function(height) {
+                                    if ((height > 0.3) && (height <= 2.8)) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                },
+                                "errors":{
+                                    "type":"Height must be a number",
+                                    "mandatory":"Height is mandatory",
+                                    "validator":"Height cannot be neither biggest than 2.8 nor lowest than 0.3"
+                                }
+                            },
+                            "description":{
+                                "mandatory":false
+                            }
+                        }
+                    });
+                    $("#test-table-add-row").click(function() {
+                        $("#test-table").FullTable("addRow");
+                    });
+                    $("#test-table-get-value").click(function() {
+                        console.log($("#test-table").FullTable("getData"));
+                    });
+                    $("#test-table").FullTable("on", "error", function(errors) {
+                        for (var error in errors) {
+                            error = errors[error];
+                            console.log(error);
+                        }
+                    });
+                    $("#test-table").FullTable("draw");
+                }
+            );
+        </script>
+    </head>
+    
+    <body>
+        <div class="sidebar">
+            <div class="expandable">
+                <button class="slide">A</button>
+                    <div class="slide-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+            </div>
+            <div class="expandable">
+                <button class="slide">B</button>
+                    <div class="slide-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+            </div>
+            <div class="backbtn">
+                <a href="main.html">Back</a>
+            </div>
+        </div>
+        
+        <div class="main">
+            <form class="form-horizontal">
+                <div class="control-group inline">
+                    <label class="control-label" for="first">Name</label>
+                    <div class="controls">
+                        <input type="text" id="first" placeholder="Name">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="yoe">Years of Experience</label>
+                    <div class="controls">
+                        <input type="text" id="yoe" placeholder="Years of Experience">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="address">Address</label>
+                    <div class="controls">
+                        <input type="text" id="address" placeholder="Address">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="gender">Gender</label>
+                    <div class="controls">
+                        <select name = "gen" id="gender">
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                            <option value="o">Other</option>
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="title">Title</label>
+                    <div class="controls">
+                        <input type="text" id="title" placeholder="Title">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="age">Age</label>
+                    <div class="controls">
+                        <input type="integer" id="age" placeholder="Age">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="salary">Salary</label>
+                    <div class="controls">
+                        <input type="integer" id="salary" placeholder="Salary">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <div class="controls">              
+                        <a type="submit" class="button">Search</a>
+                    </div>
+                </div>
+            </form>
+
+            <a href="#" class="button" id="test-table-add-row">+ Add row</a>
+            <table class="fulltable fulltable-editable" id="test-table">
+                <thead>
+                    <tr>
+                        <th fulltable-field-name="firstname">First name</th>
+                        <th fulltable-field-name="lastname">Last name</th>
+                        <th fulltable-field-name="gender">Gender</th>
+                        <th fulltable-field-name="age">Age</th>
+                        <th fulltable-field-name="height">Height</th>
+                        <th fulltable-field-name="description">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><span>John</span></td><td><span>Smith</span></td><td><span>xy</span></td><td><span>23</span></td><td><span>1.72</span></td><td><span>Famous explorer</span></td></tr>
+                    <tr><td><span>Peter</span></td><td><span>Pan</span></td><td><span>xy</span></td><td><span>10</span></td><td><span>1.60</span></td><td><span>Flyer boy who does not grow</span></td></tr>
+                    <tr><td><span>Mary</span></td><td><span>Stevenson</span></td><td><span>xx</span></td><td><span>35</span></td><td><span>1.69</span></td><td><span>Unknown woman</span></td></tr>
+                </tbody>
+            </table>
+            <a href="#" class="button" id="test-table-get-value">> Get value</a>
+        </div>
+    </body>
+</html>
