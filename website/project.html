@@ -58,65 +58,48 @@
                         "alwaysCreating":true,
                         "selectable":true,
                         "fields": {
-                            "gender":{
+                            "dev":{
+                                "mandatory":true,
+                                "errors":{
+                                    "mandatory":"Dev team is mandatory"
+                                }
+                            },
+                            "manager":{
+                                "mandatory":true,
+                                "errors":{
+                                    "mandatory":"manager is mandatory"
+                                }
+                            },
+                            "status":{
+                                "mandatory":false,
                                 "options":[
                                     {
-                                        "title":"Male",
-                                        "value":"xy"
+                                        "title":"Complete",
+                                        "value":"c"
                                     },
                                     {
-                                        "title":"Female",
-                                        "value":"xx"
+                                        "title":"In Progress",
+                                        "value":"p"
                                     }
-                                ],
-                                "mandatory":true,
-                                "placeholder":"Select one",
+							    ],
                                 "errors":{
-                                    "mandatory":"Gender name is mandatory"
-                                }
-                            },
-                            "firstname":{
-                                "mandatory":true,
-                                "errors":{
-                                    "mandatory":"First name is mandatory"
-                                }
-                            },
-                            "lastname":{
-                                "mandatory":true,
-                                "errors":{
-                                    "mandatory":"Last name is mandatory"
-                                }
-                            },
-                            "age":{
-                                "type":"integer",
-                                "mandatory":false,
-                                "validator":function(age) {
-                                    if (age >= 0) {
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                },
-                                "errors":{
-                                    "type":"Age must be an integer number",
-                                    "mandatory":"Age is mandatory",
-                                    "validator":"Age cannot be negative"
+                                    "mandatory":"Status is mandatory",
                                 }				
                             },
-                            "height":{
-                                "type":"decimal",
-                                "mandatory":false,
-                                "validator":function(height) {
-                                    if ((height > 0.3) && (height <= 2.8)) {
-                                        return true;
-                                    } else {
-                                        return false;
+                            "category":{
+                                "mandatory":true,
+                                "options":[
+                                    {
+                                        "title":"Feature",
+                                        "value":"f"
+                                    },
+                                    {
+                                        "title":"Design",
+                                        "value":"d"
                                     }
-                                },
+							    ],
                                 "errors":{
-                                    "type":"Height must be a number",
-                                    "mandatory":"Height is mandatory",
-                                    "validator":"Height cannot be neither biggest than 2.8 nor lowest than 0.3"
+                                    "mandatory":"Categoy is mandatory",
                                 }
                             },
                             "description":{
@@ -168,51 +151,36 @@
         <div class="main">
             <form class="form-horizontal">
                 <div class="control-group inline">
-                    <label class="control-label" for="first">Name</label>
+                    <label class="control-label" for="dev">Dev Team</label>
                     <div class="controls">
-                        <input type="text" id="first" placeholder="Name">
+                        <input type="text" id="dev" placeholder="Name">
                     </div>
                 </div>
                 <div class="control-group inline">
-                    <label class="control-label" for="yoe">Years of Experience</label>
+                    <label class="control-label" for="manager">Manager</label>
                     <div class="controls">
-                        <input type="text" id="yoe" placeholder="Years of Experience">
+                        <input type="text" id="manager" placeholder="Years of Experience">
                     </div>
                 </div>
                 <div class="control-group inline">
-                    <label class="control-label" for="address">Address</label>
+                    <label class="control-label" for="status">Status</label>
                     <div class="controls">
-                        <input type="text" id="address" placeholder="Address">
-                    </div>
-                </div>
-                <div class="control-group inline">
-                    <label class="control-label" for="gender">Gender</label>
-                    <div class="controls">
-                        <select name = "gen" id="gender">
-                            <option value="m">Male</option>
-                            <option value="f">Female</option>
-                            <option value="o">Other</option>
+                        <select name = "sta" id="status">
+                            <option value="c">Complete</option>
+                            <option value="p">In Progress</option>
                         </select>
                     </div>
                 </div>
                 <div class="control-group inline">
-                    <label class="control-label" for="title">Title</label>
+                    <label class="control-label" for="category">Category</label>
                     <div class="controls">
-                        <input type="text" id="title" placeholder="Title">
+                        <select name = "gen" id="category">
+                            <option value="f">Feature</option>
+                            <option value="d">Design</option>
+                        </select>
                     </div>
                 </div>
-                <div class="control-group inline">
-                    <label class="control-label" for="age">Age</label>
-                    <div class="controls">
-                        <input type="integer" id="age" placeholder="Age">
-                    </div>
-                </div>
-                <div class="control-group inline">
-                    <label class="control-label" for="salary">Salary</label>
-                    <div class="controls">
-                        <input type="integer" id="salary" placeholder="Salary">
-                    </div>
-                </div>
+            
                 <div class="control-group inline">
                     <div class="controls">              
                         <a type="submit" class="button">Search</a>
@@ -224,18 +192,15 @@
             <table class="fulltable fulltable-editable" id="test-table">
                 <thead>
                     <tr>
-                        <th fulltable-field-name="firstname">First name</th>
-                        <th fulltable-field-name="lastname">Last name</th>
-                        <th fulltable-field-name="gender">Gender</th>
-                        <th fulltable-field-name="age">Age</th>
-                        <th fulltable-field-name="height">Height</th>
+                        <th fulltable-field-name="dev">Dev Team</th>
+                        <th fulltable-field-name="manager">Manager</th>
+                        <th fulltable-field-name="status">Status</th>
+                        <th fulltable-field-name="category">Categoy</th>
                         <th fulltable-field-name="description">Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><span>John</span></td><td><span>Smith</span></td><td><span>xy</span></td><td><span>23</span></td><td><span>1.72</span></td><td><span>Famous explorer</span></td></tr>
-                    <tr><td><span>Peter</span></td><td><span>Pan</span></td><td><span>xy</span></td><td><span>10</span></td><td><span>1.60</span></td><td><span>Flyer boy who does not grow</span></td></tr>
-                    <tr><td><span>Mary</span></td><td><span>Stevenson</span></td><td><span>xx</span></td><td><span>35</span></td><td><span>1.69</span></td><td><span>Unknown woman</span></td></tr>
+                    <tr><td><span>Team 1</span></td><td><span>Smith</span></td><td><span>c</span></td><td><span>f</span></td><td><span>enter description</span></td>
                 </tbody>
             </table>
             <a href="#" class="button" id="test-table-get-value">> Get value</a>
