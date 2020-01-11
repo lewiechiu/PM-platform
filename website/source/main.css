@@ -95,6 +95,10 @@ body {
     color: rgb(0, 0, 0)
 }
 
+.button{
+    z-index: -1;
+}
+
 .expandable:hover .slide-content {display: block;}
 
 .backbtn {
@@ -112,6 +116,9 @@ body {
          url('jquery.fulltable.svg#jquery.fulltable') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+table.fulltable{
+    z-index: -1;
 }
 table.fulltable thead th {
 	vertical-align: top;
