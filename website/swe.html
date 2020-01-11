@@ -113,6 +113,12 @@
                                     "mandatory":"Age is mandatory"
                                 }
                             },
+                            "talent":{
+                                "mandatory":false,
+                                "errors":{
+                                    "mandatory":"Talent is mandatory"
+                                }
+                            },
                             "age":{
                                 "type":"integer",
                                 "mandatory":false,
@@ -228,6 +234,13 @@
                 </div>
 
                 <div class="control-group inline">
+                    <label class="control-label" for="talent">Talent</label>
+                    <div class="controls">
+                        <input type="text" id="talent" placeholder="Talent">
+                    </div>
+                </div>
+
+                <div class="control-group inline">
                     <label class="control-label" for="age">Age</label>
                     <div class="controls">
                         <input type="integer" id="age" placeholder="Age">
@@ -255,12 +268,13 @@
                         <th fulltable-field-name="address">Address</th>
                         <th fulltable-field-name="gender">Gender</th>
                         <th fulltable-field-name="title">Title</th>
+                        <th fulltable-field-name="talent">Talent</th>
                         <th fulltable-field-name="age">Age</th>
                         <th fulltable-field-name="salary">Salary</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><span>John S.</span></td><td><span>3</span></td><td><span>Somewhere on Earth</span></td><td><span>m</span></td><td><span>dunno</span></td><td><span>37</span></td><td><span>500</span></td></tr>
+                    <tr><td><span>John S.</span></td><td><span>3</span></td><td><span>Somewhere on Earth</span></td><td><span>m</span></td><td><span>dunno</span></td><td><span>MAYbe</span></td><td><span>37</span></td><td><span>500</span></td></tr>
                 </tbody>
             </table>
             <a href="#" class="button" id="test-table-get-value">> Get value</a>
