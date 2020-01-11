@@ -23,17 +23,15 @@ def new_project_api():
     for swe in request.json()['SWE ID']:
         # Some query and checking
         # TODO
-        # Nick:
-        # check the which DevTeam the SWE is in (dev team_SWE)
-        # check how many projects the dev team is working on (dev team project)
-        # query # of the projects and their ID
-        "SELECT * FROM .... where"
-        projects = []
-        if len(projects) >= 4:
+        projectLis = SWEProjectNum(swe)
+        if len(projectLis) >= 4:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
     # Insert
     # TODO
+    # CONFIRMATION
+    # new task? allocate resource? assign dev team, form new team? 
+    InsertProject()
     # Insert such record into database.
 
     return jsonify({"status": 200})
@@ -42,8 +40,8 @@ def new_project_api():
 def new_task(project_ID):
     # TODO
     # Query if the project_ID exists
-    # exist = some_query()
-    exist = True
+    exist = ProjectExist(project_ID)
+    # exist = True
     if not exist:
         return abort(400, "project ID not exist")
 
@@ -58,9 +56,7 @@ def new_task(project_ID):
     
     # TODO
     # Insert the record into database.
-    # Nick:
-    # Insert ["project ID" , "State", "Category" , "Description"] into (task)
-    # Insert ["Resource"] into (task_resource)
+    InsertTask(project_ID , State, Category , Description, Resource)
     record = request.get_json()
 
     return jsonify({"status": 200})
@@ -71,12 +67,11 @@ def new_task(project_ID):
 @project.route('/api/project/active/<project_id>', methods = ['GET'])
 def get_active(project_id):
     # CONFIRMATION
+    # what is project_id ==None
     # progress. i.e. Project 123: 3/5/2 (finished/in-progress/notstart) tasks
-    # Nick:
-        # loop through all the projects (project TABLE)
-        # loop through all the task that are under that project (task TABLE)
-        # calculate # of tasks in each state 
-    
+    progress = {} 
+    progress = ProgressProject(project_id)
+        
     if project_id == None: #what is this
         # TODO
         # Query with project ID
@@ -89,13 +84,11 @@ def get_active(project_id):
         
 
 @project.route('/api/project/talent/<Team>', methods = ['GET'])
-def get_domain_talent(Team):
+def get_domain_talent(team_id):
     # TODO
     # Get the SWE ID of Team_id and Union all of the (SWE_ID, Talent) pairs.
     response = []
-    SWE_talent = {}
-    # loop through dev team_SWE table
-    # 
+    response = GetTeamTalent(team_id)
     return response
 
 
@@ -103,6 +96,9 @@ def get_domain_talent(Team):
 def get_team_availablitiy(team_id):
     return jsonify({"status": 200})
     # TODO
+    project_lis = []
+    project_lis = TeamAvailability(team_id)
+
     # Query for each of the SWE_ID in team "team_id", find the numbers of task each SWE_ID is accountable for.
 
 # ***** UPDATE
@@ -114,14 +110,19 @@ def update_project_resource(project_id):
         return abort(400, "Input field error")
     for res in request.json()["Resources"]:
         # TODO
-        # Check if res["id"] exists, and has store greater than res["amount"]
-        # IF it does not
+        # CONFIRMATION: 機器的運算資源 以 # of tasks 當作單位, 因為data裡沒有表明amount
+        # Nick
+        # Check if res["id"] exists (resource)
+        # check # of tasks that takes the resource (task resource)
+        # IF # > 10 or doesn't exist
         # return abort(400, "Can't allocate resource {} with amount {}".format(res["id"], res["amount"]))
         continue
 
     for res in request.json()["Resources"]:
         # TODO
-        # Modify resources and deduct the stored amount by res["amount"]
+        # Nick 
+        # add new resource <-> task relationship in (task resource)
+        #
         continue
 
 @project.route('/api/project/task/<task_id>', methods= ['PUT'])
@@ -130,10 +131,12 @@ def update_task_state(task_id):
         return abort(400, "Input field error")
     
     # TODO
-    # Check if the task of task id is present
+    # Nick
+    # Check if the task of task id is present (task)
     # If not, then abort and return 400
 
-    # If it exists, update and return status 200
+    # If it exists, update (task)
+    # return status 200
 
 @project.route('/api/project/<int:project_id>/swe/<int:swe_id>', methods = ['PUT'])
 def update_project_swe(project_id,swe_id):
@@ -162,9 +165,40 @@ def update_project_swe(project_id,swe_id):
         return abort(400, "SWE id: {} cannot take this project".format(swe_id))
 
     # TODO
-    # Insert the SWE ID into PROJECT_ID
+    # Insert the SWE ID into the dev_team which owns PROJECT_ID
 
     return jsonify({"status": 200})
     
+def SWEProjectNum(SWEID):
+    # check which DevTeam the SWE is in (dev team_SWE)
+    # check how many projects the dev team is working on (dev team project)
+    # query # of the projects and their ID
+    return []
 
-  
+def InsertProject():
+    return True
+
+def ProjectExist(project_id):
+    return True
+
+def InsertTask(project_ID , State, Category , Description, Resource):
+    # Insert ["project ID" , "State", "Category" , "Description"] into (task)
+    # Insert ["Resource"] into (task_resource)
+    return True
+
+def ProgressProject(project_id):
+    # loop through all the projects (project TABLE)
+    # loop through all the task that are under that project (task TABLE)
+    # calculate # of tasks in each state 
+    return {}
+
+def GetTeamTalent(team_id):
+    # loop through dev team (team_SWE)
+    # get SWE's talent set (talent_v3)
+    # union all talent sets
+    return []
+
+def TeamAvailability(team_id):
+    # check how many projects the dev team is working on (dev team project)
+    # query # of the projects and their ID
+    return []
