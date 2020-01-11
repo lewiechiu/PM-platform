@@ -31,7 +31,7 @@ def new_project_api():
     # Insert
     # TODO
     # CONFIRMATION
-    # new task? allocate resource? assign dev team, form new team? 
+    # new task? allocate resource? assign new project manager, new/old dev team? 
     InsertProject()
     # Insert such record into database.
 

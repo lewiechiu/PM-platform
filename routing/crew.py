@@ -14,7 +14,8 @@ def create_crew(SWE_ID):
     # Insert SWE with the the following params.
     print(request.json())
     # request.json() should have the following property.
-    # ["name", "ssn", "title", "salary", "yoe", "address", "gender"]
+    # ["name", "ssn", "title", "salary", "year", "address", "gender"]
+    createCrew(name, ssn, title, salary, year, address, gender)
 
 # show if the crew can be promoted
 @crew.route('/api/crew/<int:SWE_ID>', methods = ['GET'])
@@ -85,3 +86,7 @@ def update_crew_period(ID):
 @crew.route('/api/crew/', methods = ['POST'])
 def crew_api():
     return jsonify({"status": 200})
+
+
+def createCrew(name, ssn, title, salary, year, address, gender):
+    return True
