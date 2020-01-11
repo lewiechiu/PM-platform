@@ -23,7 +23,10 @@ def new_project_api():
     for swe in request.json()['SWE ID']:
         # Some query and checking
         # TODO
-        # Query the projects swe ID is working on.
+        # Nick:
+        # check the which DevTeam the SWE is in (dev team_SWE)
+        # check how many projects the dev team is working on (dev team project)
+        # query # of the projects and their ID
         "SELECT * FROM .... where"
         projects = []
         if len(projects) >= 4:
@@ -55,6 +58,9 @@ def new_task(project_ID):
     
     # TODO
     # Insert the record into database.
+    # Nick:
+    # Insert ["project ID" , "State", "Category" , "Description"] into (task)
+    # Insert ["Resource"] into (task_resource)
     record = request.get_json()
 
     return jsonify({"status": 200})
@@ -64,9 +70,14 @@ def new_task(project_ID):
 @project.route('/api/project/active', defaults = {'project_id': None}, methods = ['GET'])
 @project.route('/api/project/active/<project_id>', methods = ['GET'])
 def get_active(project_id):
+    # CONFIRMATION
+    # progress. i.e. Project 123: 3/5/2 (finished/in-progress/notstart) tasks
+    # Nick:
+        # loop through all the projects (project TABLE)
+        # loop through all the task that are under that project (task TABLE)
+        # calculate # of tasks in each state 
     
-
-    if project_id == None:
+    if project_id == None: #what is this
         # TODO
         # Query with project ID
         # active_projects = query()
@@ -75,15 +86,16 @@ def get_active(project_id):
     else:
         return 
         # TODO
-        # Query the number of tasks under
+        
 
 @project.route('/api/project/talent/<Team>', methods = ['GET'])
-def get_domain_talen(Team):
+def get_domain_talent(Team):
     # TODO
     # Get the SWE ID of Team_id and Union all of the (SWE_ID, Talent) pairs.
     response = []
     SWE_talent = {}
-
+    # loop through dev team_SWE table
+    # 
     return response
 
 
