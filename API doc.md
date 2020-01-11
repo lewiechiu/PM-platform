@@ -1,6 +1,6 @@
 
 # API document
-![Imgur](https://i.imgur.com/SNTWXc1.png)
+![](https://i.imgur.com/oAopBqP.png)
 
 ## View from Order
 
