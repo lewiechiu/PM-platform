@@ -24,17 +24,13 @@ def new_project_api():
     for swe in request.json()['SWE ID']:
         # Some query and checking
         # TODO
-        projectLis = SWEProjectNum(swe)
+        projectLis = SWEProject(swe, 'in-progress')
         if len(projectLis) >= 4:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
-    # Insert
-    # TODO
-    # CONFIRMATION
-    # new task? allocate resource? assign new project manager, new/old dev team? 
-    InsertProject()
     # Insert such record into database.
-
+    # TODO
+    InsertProject(project_ID, Oder_ID, manager_id, state, swe_list)
     return jsonify({"status": 200})
 
 @project.route('/api/project/task/<project_ID>', methods=['POST'])
@@ -42,7 +38,6 @@ def new_task(project_ID):
     # TODO
     # Query if the project_ID exists
     exist = ProjectExist(project_ID)
-    # exist = True
     if not exist:
         return abort(400, "project ID not exist")
 
@@ -57,7 +52,8 @@ def new_task(project_ID):
     
     # TODO
     # Insert the record into database.
-    InsertTask(project_ID , State, Category , Description, Resource)
+    # TBD: specify resource_amount when insert task?
+    InsertTask(taskID, state, category, project_id, resource_amount)
     record = request.get_json()
 
     return jsonify({"status": 200})
@@ -67,34 +63,27 @@ def new_task(project_ID):
 @project.route('/api/project/active', defaults = {'project_id': None}, methods = ['GET'])
 @project.route('/api/project/active/<project_id>', methods = ['GET'])
 def get_active(project_id):
-    # CONFIRMATION
-    # what is project_id ==None
-    # progress. i.e. Project 123: 3/5/2 (finished/in-progress/notstart) tasks
-    progress = {} 
-    progress = ProgressProject(project_id)
-        
-    if project_id == None: #what is this
+    # TBD
+    # what is the diff bw the output of None and a specified proejct_id
+    if project_id == None: 
         # TODO
-        # Query with project ID
-        # active_projects = query()
-        active_projects = []
+        active_projects = ProgressProject()
         return active_projects
     else:
-        return 
         # TODO
+        active_tasks = ProgressProject(project_id)
+        return active_tasks
         
 
-@project.route('/api/project/talent/<Team>', methods = ['GET'])
-def get_domain_talent(team_id):
+@project.route('/api/project/talent/<project_id>', methods = ['GET'])
+def get_project_talent(project_id):
     # TODO
-    # Get the SWE ID of Team_id and Union all of the (SWE_ID, Talent) pairs.
-    response = []
-    response = GetTeamTalent(team_id)
+    response = GetProjectTalent(project_id)
     return response
 
 
-@project.route('/api/project/availability/<team_id>', methods = ['GET'])
-def get_team_availablitiy(team_id):
+@project.route('/api/project/availability/<swe_id>', methods = ['GET'])
+def get_swe_availablitiy(swe_id):
     return jsonify({"status": 200})
     # TODO
     project_lis = []
@@ -169,10 +158,14 @@ def update_project_swe(project_id,swe_id):
 
     return jsonify({"status": 200})
     
-def SWEProjectNum(swe_id):
-    # check which DevTeam the SWE is in (dev team_SWE)
-    # check how many projects the dev team is working on (dev team project)
-    # query # of the projects and their ID
+def SWEProject(swe_id, state):
+    # if swe_id == None -> find all swe_id
+    # else only search for the specified swe_id
+
+    # check Project_SWE table: find the same swe_id. summarize all the project_id that the swe has worked on
+    # check Project table: check the project state, if the state is same as required, add to the list
+    # return a list of projectIDs which are in the required state
+    # return 
     return []
 
 def SWEExist(swe_id):
@@ -182,28 +175,39 @@ def InsertSWEintoProject(swe_id, project_id):
     # Insert the SWE ID into the dev_team which owns PROJECT_ID
     return True
 
-def InsertProject():
+def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
+    # insert Project: project_ID, Oder_ID, manager_id, state
+    # insert Project_SWE: project_ID, swe_list 
     return True
 
 def ProjectExist(project_id):
+    # query if the project_ID exists
     return True
 
-def InsertTask(project_ID , State, Category , Description, Resource):
+def InsertTask(taskID, state, category, project_id, resource_amount):
     # Insert ["project ID" , "State", "Category" , "Description"] into (task)
-    # Insert ["Resource"] into (task_resource)
+    # Insert ["resource_amount"] into (task_resource)
     return True
 
-def ProgressProject(project_id):
-    # loop through all the projects (project TABLE)
-    # loop through all the task that are under that project (task TABLE)
-    # calculate # of tasks in each state 
+def ProgressProject(project_id=None):
+    # if project_id==None
+    # query all the in-progress proejcts' ID and return a list
+    # else if project_id is specified 
+    # query all the in-progress task' ID and return a list
     return {}
 
-def GetTeamTalent(team_id):
-    # loop through dev team (team_SWE)
-    # get SWE's talent set (talent_v3)
-    # union all talent sets
-    return []
+def GetProjectTalent(project_id):
+    # query project_SWE table for the swe id
+    # query talent with the swe id
+    # return a dictionary
+    # {
+    #   {
+    #     "name" : "name of the swe",
+    #     "Job title" : "title",
+    #     "Talent" : ["Talent1" ,"Talent 2", "Talent 3"]
+    #   },...
+    # }
+    return {}
 
 def TeamAvailability(team_id):
     # check how many projects the dev team is working on (dev team project)
