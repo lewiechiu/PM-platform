@@ -4,7 +4,7 @@ crew = Blueprint('crew', __name__, template_folder='../templates')
 
 connect = MySQL_query()
 
-
+#
 
 # Create
 # Create Crew
