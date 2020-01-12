@@ -11,7 +11,7 @@ MAXSWEWORKLOAD = 5
 @project.route('/api/project/new_projects', methods = ['POST'])
 def new_project_api():
     # Field checking
-    fields = ["SWE ID", "Dev Team ID", "Manager ID"]
+    fields = ["SWE ID", "Manager ID"]
     for i in request.json():
         if i in fields:
             fields.remove(i)
@@ -87,35 +87,27 @@ def get_swe_availablitiy(swe_id):
     return jsonify({"status": 200})
     # TODO
     project_lis = []
-    project_lis = TeamAvailability(team_id)
+    project_lis = SWEProject(swe_id)
 
-    # Query for each of the SWE_ID in team "team_id", find the numbers of task each SWE_ID is accountable for.
 
 # ***** UPDATE
-@project.route('/api/project/resources/<project_id>', methods = ['PUT'])
-def update_project_resource(project_id):
-    # CONFIRMATION
-    # input should be task not project
+@project.route('/api/project/resources/<task_id>', methods = ['PUT'])
+def update_task_resource(task_id, resource_id, resource_amount):
     if not request.json():
         return abort(400, "input not json")
     if "Resources" not in request.json():
         return abort(400, "Input field error")
+    #TBD
+    #why is here a for loop?
     for res in request.json()["Resources"]:
         # TODO
-        # CONFIRMATION: 機器的運算資源 以 # of tasks 當作單位, 因為data裡沒有表明amount
-        # Nick
-        ResourceExist(resource_id)
-        Task_lis = []
-        Task_lis = ResourceAvailability
-        # IF len(Task_lis) > 10 or doesn't exist
-        # return abort(400, "Can't allocate resource {} with amount {}".format(res["id"], res["amount"]))
-        continue
-
-    for res in request.json()["Resources"]:
-        # TODO
-        # Nick 
-        AllocateNewResource(resource_id, task_id)
-        continue
+        #check if the resource exists
+        exist = ResourceExist(resource_id)
+        if not exist:
+            return abort(400, "resource id: {} does NOT EXIST".format(resource_id))
+        enough = AllocateNewResource(resource_id, resource_amount)
+        if( not enough):
+            return abort(400, "resource id: {} does have ENOUGH resource".format(resource_id))
 
 @project.route('/api/project/task/<task_id>', methods= ['PUT'])
 def update_task_state(task_id):
@@ -127,11 +119,11 @@ def update_task_state(task_id):
     if not Exist:
         return abort(400, "task id: {} does NOT EXIST".format(task_id))
     else:
-        UpdateTask(task_id, status)
+        UpdateTask(task_id, state)
         return jsonify({"status": 200})
 
 @project.route('/api/project/<int:project_id>/swe/<int:swe_id>', methods = ['PUT'])
-def update_project_swe(project_id,swe_id):
+def update_project_swe(project_id, swe_id):
     # TODO
     Exist =  ProjectExist(project_id)
     if not Exist:
@@ -144,7 +136,7 @@ def update_project_swe(project_id,swe_id):
     
     # TODO
     # Return True if SWE ID has capacity taking this role. count (task or project ) > 3
-    projectLis = SWEProjectNum(swe_id)
+    projectLis = SWEProject(swe_id, "in-progress")
     if(len(projectLis) > MAXSWEWORKLOAD):
         Exist = False
     else:
@@ -153,7 +145,6 @@ def update_project_swe(project_id,swe_id):
         return abort(400, "SWE id: {} cannot take this project".format(swe_id))
 
     # TODO
-    # Insert the SWE ID into the dev_team which owns PROJECT_ID
     InsertSWEintoProject(swe_id, project_id)
 
     return jsonify({"status": 200})
@@ -172,7 +163,7 @@ def SWEExist(swe_id):
     return True
 
 def InsertSWEintoProject(swe_id, project_id):
-    # Insert the SWE ID into the dev_team which owns PROJECT_ID
+    # Insert the SWE ID into project_SWE table
     return True
 
 def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
@@ -209,28 +200,25 @@ def GetProjectTalent(project_id):
     # }
     return {}
 
-def TeamAvailability(team_id):
-    # check how many projects the dev team is working on (dev team project)
-    # query # of the projects and their ID
-    return []
-
 def ResourceExist(resource_id):
     return True
 
-def ResourceAvailability(resource_id):
-    return []
-
 
 def AllocateNewResource(resource_id, task_id):
-    # add new resource <-> task relationship in (task resource)
+    # query the capacity from resource table
+    # summarize resource comsumption from task resource table
+    # if (total comsumption < capacity)
+        # add new resource <-> task relationship in (task resource)
+    # else 
+    # return False
     return True
 
 def TaskExist(task_id):
      # Check if the task of task id is present (task)
      return True
 
-def UpdateTask(task_id, status):
-    # update task's status
+def UpdateTask(task_id, state):
+    # update task's state
     return 
 
 
