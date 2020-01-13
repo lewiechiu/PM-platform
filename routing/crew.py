@@ -8,24 +8,22 @@ connect = MySQL_query()
 
 # Create
 # Create Crew
-@crew.route('/api/crew/<int:SWE_ID>', methods = ['POST'])
-def create_crew(SWE_ID):
+@crew.route('/api/crew/<int:crew_id>', methods = ['POST'])
+def create_crew(crew_id):
     # TODO
-    # Insert SWE with the the following params.
+    # Insert swe with the the following params.
     print(request.json())
     # request.json() should have the following property.
     # ["name", "ssn", "title", "salary", "year", "address", "gender"]
-    createCrew(name, ssn, title, salary, year, address, gender)
+    createCrew(crew_id, name, ssn, title, salary, year, address, gender)
 
 # show if the crew can be promoted
-@crew.route('/api/crew/<int:SWE_ID>', methods = ['GET'])
-def get_is_swe_promotable(SWE_ID):
+@crew.route('/api/crew/<int:swe_id>', methods = ['GET'])
+def show_project_experience(swe_id):
     # TODO
-    # Check if SWE exist in DB.
-    # TO DISCUSS
-    # There should be some rank ordering.
-    # Also, We should modify the title, salary, ...etc. once being promoted.
+    # Check if swe exist in DB.
     
+    getsweproject(swe_id)
     return
 
 # Select certain Talents of the People
@@ -34,7 +32,7 @@ def get_crew_talent(talent):
     #
     pass
     # TODO
-    # Select from SWE and Crew where Talent in the variable talent.
+    # Select from swe and Crew where Talent in the variable talent.
     # You can use some formatting like
     print("This is replaced by {}".format())
     # return the result selected
@@ -48,37 +46,37 @@ def get_crew_background():
     # Select the whole table.
 
 # Show what they are accountable for(Manage) or assigned to do(has a manager).
-@crew.route('/api/crew/<int:ID>', methods = ['GET'])
-def get_crew_manages(ID):
+@crew.route('/api/crew/<int:id>', methods = ['GET'])
+def get_crew_manages(id):
     pass
     # TODO
     # Do it in 2 pass.
-    # First, we look for what ID is managing.
-    # Second, We look for what ID is assigned to do.
+    # First, we look for what id is managing.
+    # Second, We look for what id is assigned to do.
     # Merge those two into a list
     # Return them
 
 # Select Crew by Dev Team
-@crew.route('/api/crew/inTeam/<int:ID>', methods = ['GET'])
-def get_crew_manages(ID):
+@crew.route('/api/crew/inTeam/<int:id>', methods = ['GET'])
+def get_crew_manages(id):
     pass
     # TODO
-    # Select the SWE ID having Dev Team being ID.
+    # Select the swe id having Dev Team being id.
 # Read
 
 
 # Update
 # Update the time period for the crew in the company
-@crew.route('/api/crew/time_period/<int:ID>', methods = ['PUT'])
-def update_crew_period(ID):
+@crew.route('/api/crew/time_period/<int:id>', methods = ['PUT'])
+def update_crew_period(id):
     # TODO
     # In request body, there will be a field "period".
-    # Update the SWE/crew having ID with "years_of_experience" being "period"
+    # Update the swe/crew having id with "years_of_experience" being "period"
     pass
 
 # Delete
-@crew.route('/api/crew/<int:ID>', methods = ['DELETE'])
-def update_crew_period(ID):
+@crew.route('/api/crew/<int:id>', methods = ['DELETE'])
+def update_crew_period(id):
     # TODO
     # Delete the record for crew
     pass
@@ -90,3 +88,8 @@ def crew_api():
 
 def createCrew(name, ssn, title, salary, year, address, gender):
     return True
+
+
+
+def getsweproject(swe_id):
+    return 0

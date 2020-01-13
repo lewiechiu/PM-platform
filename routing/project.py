@@ -185,7 +185,7 @@ def ProgressProject(project_id=None):
     # query all the in-progress proejcts' ID and return a list
     # else if project_id is specified 
     # query all the in-progress task' ID and return a list
-    return {}
+    return []
 
 def GetProjectTalent(project_id):
     # query project_SWE table for the swe id
