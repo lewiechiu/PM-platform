@@ -3,7 +3,7 @@ import mysql.connector
 
 class MySQL_query:
     def __init__(self):
-        self.con = mysql.connector.connect(host = "114.32.23.161", user = "DBMS2019", passwd = "fu. wu/6vu;6")
+        self.con = mysql.connector.connect(host = "114.32.23.161", user = "DBMS2019", passwd = "fu. wu/6vu;6",database = "db2019FP")
         self.cur = self.con.cursor()
     def queryALL(self, cmd):
         self.cur.execute(cmd)

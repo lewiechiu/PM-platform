@@ -170,19 +170,37 @@ def update_project_swe(project_id,swe_id):
     return jsonify({"status": 200})
     
 def SWEProjectNum(swe_id):
+    '''
+    沒有Dev team了，改成Project_SWE
     # check which DevTeam the SWE is in (dev team_SWE)
     # check how many projects the dev team is working on (dev team project)
+    '''
     # query # of the projects and their ID
+    #SQL:
+    #SELECT PS.P_ID FROM Project_SWE PS WHERE PS.SWE_ID = swe_id
+    #還沒試過
     return []
 
 def SWEExist(swe_id):
+    #SQL:
+    #SELECT ID FROM SWE WHEWE ID=swe_id
+
+    #if len() == 0:
     return True
 
 def InsertSWEintoProject(swe_id, project_id):
+    '''
     # Insert the SWE ID into the dev_team which owns PROJECT_ID
+    現在沒有dev_team了，直接插入Project_SWE中
+    '''
+    # INSERT INTO Project_SWE(P_ID,SWE_ID)VALUES(project_id,swe_id)
     return True
 
 def InsertProject():
+    #SQL:
+    #
+    for swe in request.json()['SWE ID']:
+        #
     return True
 
 def ProjectExist(project_id):
