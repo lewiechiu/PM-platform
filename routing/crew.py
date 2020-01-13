@@ -21,10 +21,8 @@ def create_crew(SWE_ID):
     # VALUES(request.json()["name"],request.json()["ssn"],request.json()["title"],request.json()["salary"],request.json()["age"],request.json()["yoe"],request.json()["address"],request.json()["gender"])
     print(request.json())
     # request.json() should have the following property.
-    # ["name", "ssn", "title", "salary", "yoe", "address", "gender"]
-    # TONOTICE :
-    # not sure if "age" is in request.json()
-    # ["name", "ssn", "title", "salary", "age", "yoe", "address", "gender"]
+    # ["name", "ssn", "title", "salary", "year", "address", "gender"]
+    createCrew(name, ssn, title, salary, year, address, gender)
 
 '''
 # show if the crew can be promoted
@@ -116,3 +114,7 @@ def update_crew_period(ID):
 @crew.route('/api/crew/', methods = ['POST'])
 def crew_api():
     return jsonify({"status": 200})
+
+
+def createCrew(name, ssn, title, salary, year, address, gender):
+    return True

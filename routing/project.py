@@ -1,7 +1,8 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
-
+from mysql_conf import *
+import json
 project = Blueprint('project', __name__, template_folder='../templates')
-
+connect = MySQL_query()
 #maimum # of projects SWE can do
 MAXSWEWORKLOAD = 5
 
@@ -11,7 +12,7 @@ MAXSWEWORKLOAD = 5
 @project.route('/api/project/new_projects', methods = ['POST'])
 def new_project_api():
     # Field checking
-    fields = ["SWE ID", "Dev Team ID", "Manager ID"]
+    fields = ["SWE ID", "Manager ID"]
     for i in request.json():
         if i in fields:
             fields.remove(i)
@@ -24,17 +25,13 @@ def new_project_api():
     for swe in request.json()['SWE ID']:
         # Some query and checking
         # TODO
-        projectLis = SWEProjectNum(swe)
+        projectLis = SWEProject(swe, 'in-progress')
         if len(projectLis) >= 4:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
-    # Insert
-    # TODO
-    # CONFIRMATION
-    # new task? allocate resource? assign dev team, form new team? 
-    InsertProject()
     # Insert such record into database.
-
+    # TODO
+    InsertProject(project_ID, Oder_ID, manager_id, state, swe_list)
     return jsonify({"status": 200})
 
 @project.route('/api/project/task/<project_ID>', methods=['POST'])
@@ -42,7 +39,6 @@ def new_task(project_ID):
     # TODO
     # Query if the project_ID exists
     exist = ProjectExist(project_ID)
-    # exist = True
     if not exist:
         return abort(400, "project ID not exist")
 
@@ -57,7 +53,8 @@ def new_task(project_ID):
     
     # TODO
     # Insert the record into database.
-    InsertTask(project_ID , State, Category , Description, Resource)
+    # TBD: specify resource_amount when insert task?
+    InsertTask(taskID, state, category, project_id, resource_amount)
     record = request.get_json()
 
     return jsonify({"status": 200})
@@ -67,66 +64,51 @@ def new_task(project_ID):
 @project.route('/api/project/active', defaults = {'project_id': None}, methods = ['GET'])
 @project.route('/api/project/active/<project_id>', methods = ['GET'])
 def get_active(project_id):
-    # CONFIRMATION
-    # what is project_id ==None
-    # progress. i.e. Project 123: 3/5/2 (finished/in-progress/notstart) tasks
-    progress = {} 
-    progress = ProgressProject(project_id)
-        
-    if project_id == None: #what is this
+    # TBD
+    # what is the diff bw the output of None and a specified proejct_id
+    if project_id == None: 
         # TODO
-        # Query with project ID
-        # active_projects = query()
-        active_projects = []
+        active_projects = ProgressProject()
         return active_projects
     else:
-        return 
         # TODO
+        active_tasks = ProgressProject(project_id)
+        return active_tasks
         
 
-@project.route('/api/project/talent/<Team>', methods = ['GET'])
-def get_domain_talent(team_id):
+@project.route('/api/project/talent/<project_id>', methods = ['GET'])
+def get_project_talent(project_id):
     # TODO
-    # Get the SWE ID of Team_id and Union all of the (SWE_ID, Talent) pairs.
-    response = []
-    response = GetTeamTalent(team_id)
+    response = GetProjectTalent(project_id)
     return response
 
 
-@project.route('/api/project/availability/<team_id>', methods = ['GET'])
-def get_team_availablitiy(team_id):
+@project.route('/api/project/availability/<swe_id>', methods = ['GET'])
+def get_swe_availablitiy(swe_id):
     return jsonify({"status": 200})
     # TODO
     project_lis = []
-    project_lis = TeamAvailability(team_id)
+    project_lis = SWEProject(swe_id)
 
-    # Query for each of the SWE_ID in team "team_id", find the numbers of task each SWE_ID is accountable for.
 
 # ***** UPDATE
-@project.route('/api/project/resources/<project_id>', methods = ['PUT'])
-def update_project_resource(project_id):
-    # CONFIRMATION
-    # input should be task not project
+@project.route('/api/project/resources/<task_id>', methods = ['PUT'])
+def update_task_resource(task_id, resource_id, resource_amount):
     if not request.json():
         return abort(400, "input not json")
     if "Resources" not in request.json():
         return abort(400, "Input field error")
+    #TBD
+    #why is here a for loop?
     for res in request.json()["Resources"]:
         # TODO
-        # CONFIRMATION: 機器的運算資源 以 # of tasks 當作單位, 因為data裡沒有表明amount
-        # Nick
-        ResourceExist(resource_id)
-        Task_lis = []
-        Task_lis = ResourceAvailability
-        # IF len(Task_lis) > 10 or doesn't exist
-        # return abort(400, "Can't allocate resource {} with amount {}".format(res["id"], res["amount"]))
-        continue
-
-    for res in request.json()["Resources"]:
-        # TODO
-        # Nick 
-        AllocateNewResource(resource_id, task_id)
-        continue
+        #check if the resource exists
+        exist = ResourceExist(resource_id)
+        if not exist:
+            return abort(400, "resource id: {} does NOT EXIST".format(resource_id))
+        enough = AllocateNewResource(resource_id, resource_amount)
+        if( not enough):
+            return abort(400, "resource id: {} does have ENOUGH resource".format(resource_id))
 
 @project.route('/api/project/task/<task_id>', methods= ['PUT'])
 def update_task_state(task_id):
@@ -138,11 +120,11 @@ def update_task_state(task_id):
     if not Exist:
         return abort(400, "task id: {} does NOT EXIST".format(task_id))
     else:
-        UpdateTask(task_id, status)
+        UpdateTask(task_id, state)
         return jsonify({"status": 200})
 
 @project.route('/api/project/<int:project_id>/swe/<int:swe_id>', methods = ['PUT'])
-def update_project_swe(project_id,swe_id):
+def update_project_swe(project_id, swe_id):
     # TODO
     Exist =  ProjectExist(project_id)
     if not Exist:
@@ -155,7 +137,7 @@ def update_project_swe(project_id,swe_id):
     
     # TODO
     # Return True if SWE ID has capacity taking this role. count (task or project ) > 3
-    projectLis = SWEProjectNum(swe_id)
+    projectLis = SWEProject(swe_id, "in-progress")
     if(len(projectLis) > MAXSWEWORKLOAD):
         Exist = False
     else:
@@ -164,88 +146,168 @@ def update_project_swe(project_id,swe_id):
         return abort(400, "SWE id: {} cannot take this project".format(swe_id))
 
     # TODO
-    # Insert the SWE ID into the dev_team which owns PROJECT_ID
     InsertSWEintoProject(swe_id, project_id)
 
     return jsonify({"status": 200})
     
-def SWEProjectNum(swe_id):
-    '''
-    沒有Dev team了，改成Project_SWE
-    # check which DevTeam the SWE is in (dev team_SWE)
-    # check how many projects the dev team is working on (dev team project)
-    '''
-    # query # of the projects and their ID
-    #SQL:
-    #SELECT PS.P_ID FROM Project_SWE PS WHERE PS.SWE_ID = swe_id
-    #還沒試過
-    return []
+def SWEProject(swe_id=None, state):
+    # if swe_id == None -> find all swe_id
+    # else only search for the specified swe_id
+    # check Project_SWE table: find the same swe_id. summarize all the project_id that the swe has worked on
+    # check Project table: check the project state, if the state is same as required, add to the list
+    # return a list of projectIDs which are in the required state
+    # return 
+    # 安安GO~
+    if swe_id == None:
+        #SQL:
+        cmd = "SELECT project_ID FROM Project WHERE state = " + state
+        response = connect.queryAlL(cmd)
+    else:
+        #SQL:
+        cmd = "SELECT P.project_ID FROM Project P,Project_SWE P_S WHERE P.project_ID=P_S.P_ID and P.state="
+        cmd2 = " and P_S.SWE_ID = "
+        final_cmd = cmd + state + cmd2 + swe_id
+        response = connect.queryAlL(final_cmd)
+    response = clean_tuple(response,0)
+    return response
+#    return []
 
 def SWEExist(swe_id):
     #SQL:
     #SELECT ID FROM SWE WHEWE ID=swe_id
+    cmd = "SELECT ID FROM SWE WHEWE ID=" + swe_id
+    response = connect.queryAlL(cmd)
+    response = clean_tuple(response,0)
+    if len(response) > 0:
+        return True
+    else:
+        return False
 
-    #if len() == 0:
-    return True
+    
 
 def InsertSWEintoProject(swe_id, project_id):
-    '''
-    # Insert the SWE ID into the dev_team which owns PROJECT_ID
-    現在沒有dev_team了，直接插入Project_SWE中
-    '''
-    # INSERT INTO Project_SWE(P_ID,SWE_ID)VALUES(project_id,swe_id)
+    # Insert the SWE ID into project_SWE table
+    # SQL:
+    # INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES(project_id,swe_id) 
+    cmd = "INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES("
+    cmd = cmd + project_id + "," + swe_id +")"
+    connect.query_insertORdelete(cmd)
     return True
 
-def InsertProject():
-    #SQL:
-    #
-    for swe in request.json()['SWE ID']:
-        #
+def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
+    # insert Project: project_ID, Oder_ID, manager_id, state
+    # insert Project_SWE: project_ID, swe_list
+    # SQL:
+    # INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES(
+    cmd = "INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES("
+    cmd = cmd + project_ID + "," + Oder_ID + "," + manager_id　+ "," + "'"　+ state + "')"
+    connect.query_insertORdelete(cmd)
+    for i in swe_list:
+        InsertSWEintoProject(i, project_ID)
     return True
 
 def ProjectExist(project_id):
-    return True
+    # query if the project_ID exists
+    # SQL:
+    #SELECT project_ID FROM Project WHERE project_ID = 
+    cmd = "SELECT project_ID FROM Project WHERE project_ID = "
+    cmd = cmd + project_id
+    response = connect.queryAlL(cmd)
+    response = clean_tuple(response,0)
+    if len(response) > 0:
+        return True
+    else:
+        return False
+#    return True
 
-def InsertTask(project_ID , State, Category , Description, Resource):
+def InsertTask(taskID, state, category, project_id, resource_amount):
     # Insert ["project ID" , "State", "Category" , "Description"] into (task)
-    # Insert ["Resource"] into (task_resource)
+    # Insert ["resource_amount"] into (task_resource)
+    # SQL1:
+    # INSERT INTO Task(taskID, state, category) VALUES(
+    cmd = "INSERT INTO Task(taskID, state, category) VALUES("
+    cmd = cmd + taskID + "," + "'" + state + "'" +"," + "'" + category+ "'" +","+project_id+")"
+    connect.query_insertORdelete(cmd)
+    # SQL2:
+    # INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES(
+    cmd = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
+    cmd = cmd + R_ID +","+taskID+","+resource_amount
+    connect.query_insertORdelete(cmd)
     return True
 
-def ProgressProject(project_id):
-    # loop through all the projects (project TABLE)
-    # loop through all the task that are under that project (task TABLE)
-    # calculate # of tasks in each state 
+def ProgressProject(project_id=None):
+    # if project_id==None
+    # query all the in-progress proejcts' ID and return a list
+    # else if project_id is specified 
+    # query all the in-progress task' ID and return a list
+    dict_to_become_jason = {}
+    in_progress = "'"+" in-progress'"
+    if project_id == None:
+    # SQL:
+    # SELECT COUNT(P_ID) FROM Task WHERE state = 'in-progess'
+        cmd = "SELECT COUNT(P_ID) FROM Task WHERE state = "
+        cmd =cmd + in_progress
+        response = connect.queryALL(cmd)
+        response = clean_tuple(response,0)
+        dict_to_become_jason['No_id'] = int(response[0])
+        cmd = "SELECT P_ID FROM Task WHERE state = "
+        cmd =cmd + in_progress
+        response = connect.queryALL(cmd)
+        response = clean_tuple(response,0)
+        dict_to_become_jason['Projects'] = response
+    else:
+        cmd = "SELECT taskID FROM Task WHERE state="
+        cmd = cmd + in_progress + " and P_ID =" + project_id
+        response = connect.queryALL(cmd)
+        response = clean_tuple(response,0)
+        dict_to_become_jason['project_id'] = project_id
+        dict_to_become_jason['task'] = response
+    jason_form = json.dumps(dict_to_become_jason)
+#    return {}
+    return jason_form
+
+def GetProjectTalent(project_id):
+    # query project_SWE table for the swe id
+    # query talent with the swe id
+    # return a dictionary
+    # {
+    #   {
+    #     "name" : "name of the swe",
+    #     "Job title" : "title",
+    #     "Talent" : ["Talent1" ,"Talent 2", "Talent 3"]
+    #   },...
+    # }
     return {}
-
-def GetTeamTalent(team_id):
-    # loop through dev team (team_SWE)
-    # get SWE's talent set (talent_v3)
-    # union all talent sets
-    return []
-
-def TeamAvailability(team_id):
-    # check how many projects the dev team is working on (dev team project)
-    # query # of the projects and their ID
-    return []
 
 def ResourceExist(resource_id):
     return True
 
-def ResourceAvailability(resource_id):
-    return []
-
 
 def AllocateNewResource(resource_id, task_id):
-    # add new resource <-> task relationship in (task resource)
+    # query the capacity from resource table
+    # summarize resource comsumption from task resource table
+    # if (total comsumption < capacity)
+        # add new resource <-> task relationship in (task resource)
+    # else 
+    # return False
     return True
 
 def TaskExist(task_id):
      # Check if the task of task id is present (task)
+     # SQL:
+     # SELECT taskID FROM Task WHERE taskID =
+     cmd = "SELECT taskID FROM Task WHERE taskID = " + task_id
+     response = 
      return True
 
-def UpdateTask(task_id, status):
-    # update task's status
-    return 
+def UpdateTask(task_id, state):
+    # update task's state
+    # SQL:
+    # UPDATE Task SET state = 
+    state_string = "'" + state + "'"
+    cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
+    connect.query_insertORdelete(cmd)
+    return True
 
 
 

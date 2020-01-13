@@ -1,9 +1,20 @@
-from flask import Flask, render_template, jsonify, request, Blueprint, abort
 from mysql_conf import *
-crew = Blueprint('crew', __name__, template_folder='../templates')
-
+import json
 connect = MySQL_query()
-id = 50
-a = "SELECT MAX(ID) FROM SWE"
-repo = connect.queryALL(a)
-print(repo[0][0])
+'''
+state = " finished"
+state_string = "'" + state + "'"
+task_id = "2"
+cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
+connect.query_insertORdelete(cmd)
+'''
+cmd = "SELECT * FROM Task WHERE taskID = 2"
+reponse = connect.queryALL(cmd)
+print(reponse)
+#cmd = "INSERT INTO Task(taskID, state, category) VALUES(1001,' notstart','chatbot')"
+#connect.query_insertORdelete(cmd)
+'''
+cmd = "SELECT * FROM Task"
+response = connect.queryALL(cmd)
+print(response)
+'''
