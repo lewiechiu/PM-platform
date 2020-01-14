@@ -150,7 +150,7 @@ def update_project_swe(project_id, swe_id):
 
     return jsonify({"status": 200})
     
-def SWEProject(swe_id=None, state):
+def SWEProject(state, swe_id=None):
     # if swe_id == None -> find all swe_id
     # else only search for the specified swe_id
     # check Project_SWE table: find the same swe_id. summarize all the project_id that the swe has worked on
@@ -200,7 +200,7 @@ def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
     # SQL:
     # INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES(
     cmd = "INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES("
-    cmd = cmd + str(project_ID) + "," + str(Oder_ID) + "," + str(manager_id)　+ "," + "'"　+ str(state) + "')"
+    cmd = cmd + str(project_ID) + "," + str(Oder_ID) + "," + str(manager_id) + "," + "'" + str(state) + "')"
     connect.query_insertORdelete(cmd)
     for i in swe_list:
         InsertSWEintoProject(i, project_ID)
