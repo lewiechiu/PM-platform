@@ -17,10 +17,21 @@ def create_swe(swe_id):
     # find the max id
     # SQL : 
     cmd = "SELECT MAX(ID) FROM SWE"
-    response = connect.queryALL(a)
+    response = connect.queryALL(cmd)
+    response = clean_tuple(response,0)
+    jname = str(request.json()["name"])
+    jssn = str(request.json()["ssn"])
+    jtitle = str(request.json()["title"])
+    jsalary = str(request.json()["salary"])
+    jage = str(request.json()["age"])
+    jyoe = str(request.json()["yoe"])
+    jaddress = str(request.json()["address"])
+    jgender = str(request.json()["gender"])
     # SQL :
     # INSERT INTO SWE(ID,name,ssn,title, salary,age,years_of_experience,address,gender)
     # VALUES(request.json()["name"],request.json()["ssn"],request.json()["title"],request.json()["salary"],request.json()["age"],request.json()["yoe"],request.json()["address"],request.json()["gender"])
+    
+    cmd2 = "INSERT INTO SWE(ID,name,ssn,title, salary,age,years_of_experience,address,gender)"
     print(request.json())
     # request.json() should have the following property.
     # ["name", "ssn", "title", "salary", "year", "address", "gender"]
