@@ -1,6 +1,6 @@
 
 # API document
-![](https://i.imgur.com/Bq4l74w.png)
+![](https://i.imgur.com/cQQ2fgX.png)
 
 ## View from Order
 
@@ -288,7 +288,7 @@ POST 114.32.23.161/api/crew/swe
 }
 ```
 
-#### Create Manager
+#### Create Manager (TBD)
 
 ```code{Javascript}
 POST 114.32.23.161/api/crew/manager
@@ -303,7 +303,7 @@ POST 114.32.23.161/api/crew/manager
 
 ### Read
 
-#### 1. Show crews can be promoted
+#### 1. Show crews can be promoted (TBD: modify to show SWE's project experience)
 
 The term "promoted" seems ambiguous and needs somewhat more robust definitions. Hence, I define the action for this feature to be as follows.
 
@@ -370,7 +370,7 @@ If the id you're looking for doesn't exist, it will throw an error at you.
 
 **This is merged into the previous API**.
 
-#### 5. Select Crew by Dev Team
+#### 5. Select Crew by Dev Team (TBD)
 
 The following retrieves crew with ID being *123456*.
 
