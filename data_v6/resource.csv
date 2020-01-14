@@ -1,4 +1,4 @@
-resourceID,description,capacity
+RESOURCEID,Description,Capacity
 1,Nvidia GeForce RTX 2080 Ti,130862
 2,Nvidia GeForce GTX 1660,314806
 3, AMD Radeon VII,100841

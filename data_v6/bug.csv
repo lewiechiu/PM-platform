@@ -1,0 +1,1001 @@
+TASKID,Description
+19,the different font size for monospace characters (the read window and beyond the edit window)
+21,Mixed chinese and western characters give bad line spacing
+26,Tiled background on clipped layer appears incorrectely since Mozilla 1.4
+33,"""onresize"" inline HTML event doesn't function on FRAME"
+34,Disk cache size set in preferences is ignored
+36,Keypress not recognised as user event for popup blocker
+38,30% of time in raytracing testcase taken by canvas code
+45,refresh reloads *everything* even items which have an expiry date in the future
+49,"When opening a page with username/password in URL, get password prompt for every image on the page"
+52,Canvas disappears after hiding if size style not set.
+70,cookies arn't remebering auto login
+73,Textarea submitting incorrect string under wrap=hard
+87,"Proxy authentication is required on Squid + NTLM on Linux/Mac, but not on Windows"
+90,Request an Option to Make the Default Response to the 'Unresponsive Script' Dialog 'Continue' Instead of 'Stop Script'
+95,Cookie path problem when using domain suffix to connect
+100,Viewing Blank Page Resets Encoding to UTF-8 Despite Default Settings in Prefs
+107,Cookie expiration not obeyed for sites accessed by IPv6 address
+108,provide more insight if smart-card login fails
+109,in-progress uncacheable object is cached anyway and blocks other threads
+111,Unresponsive script isn't triggered for document.write loop
+113,"Firefox can't resolve that page, even when networking.enableIDN is set to false"
+119,"<canvas> canvas animation is jerky on Firefox 3 beta 1, Linux x86_64"
+142,XMLHttprequest loses authentication credentials on calls to different urls
+145,"Firefox with a ""201 created"" response should perform a redirect to the Location field"
+147,Inconsistent path matching for cookie path prefixes
+150,Firefox sends Copy command (Cmd-C) to a plugin on Key Up
+165,Flash plugin error: Flash website does not open if it has national domain
+167,[Mac] Ctrl+y will not paste/yank text killed by ctrl+k (cocoa emacs keybinding)
+169,DNS suffixes not parsed when Firefox used on company LAN
+177,Acid 2 broken with Pineocast SwirlX3D X3D/VRML plugin
+180,proxy connection to NXDOMAIN using https gives Data Transfer Interrupted
+186,Fails to get baseURI in plugin's ->newp
+187,Certificate backups use RC2/40 encryption
+201,"When reloading after a 303 redirect, Firefox makes another POST request"
+208,network.http.phishy-userpass-length feature claims password-protected site does not require password
+228,"Deleting a server certificate exception should confirm the server name, not the certificate name"
+231,Incorrect cookie path for sites when using redirect (html) to come to it
+234,redirect to location w/ utf-8 characters breaks URL/correct loading of the page
+235,Prompt for SSL client certificates appears at erratic times
+242,"port 443 without url scheme should default to https, not http"
+252,DNS resolution fails when using a socksified Firefox
+254,Ctrl-Shift-Right arrow selection at the end of a line scrolls all the way to the left
+264,DNS prefetch peppers DNS server with queries for the same FQDN
+265,provide better error message when client cert authentication fails
+268,firefox sends wrong http basic auth credentials
+271,execCommand(bold | italic | underline | fontname | forecolor | hilitecolor) applies the specified formatting on the BR tags too when styleWithCss is true.
+272,invalid execCommand ( forecolor | fontname | fontsize ) results: doesn't join adjacent similar FONT tags (styleWithCss is false)
+275,PDF Form POST from within Object tag sends two REFERER headers
+276,Firefox hangs during first presentation of hardware client cert
+287,Cookie policy not remembered under some condition
+291,Should receive MouseLeave event when mouse moves from plug onto HTML
+295,prefetched content with cache-control/gzip causes browser encoding error
+305,Bad DNS resolving using NTLM auth
+307,AD/NTLM Authentication not working
+310,Using network.proxy.socks_remote_dns=true breaks browser.fixup.alternate
+325,HTTP doesn't remember IPv6 scope for further redirections
+328,Content-encoding error when temp drive is full
+330,window.open wrong size every time if I set width = 380 height = 200
+332,use the failed cert chain as sent by the server in the cert viewer details pane rather than getChain()
+333,convert url encoded punycode / IDN links before DNS requests for URLs to open
+334,IndexedDB needs an admin interface
+335,selections in unfocused text fields are not visible
+337,Authentication window pop up using XMLHttpRequest
+338,duplicated request on special char appearance with charset detector set to universal
+350,GWT X-GWT-Permutation HTTP header not always included in POST to server
+355,In Dual screen setup window contents might get cut and size might change
+359,Cookie handling in IFrames
+362,event.keyCode returns wrong code on United Kingdom keyboard
+365,IPv6 sites fails to load if IPv6 is not available.
+367,No image/* mime data when dragging an image on Linux (X11)
+369,Backing doesn't handle Vary header correctly
+372,Websocket: message not processed on close
+378,linux input method over spot style not report the caret position correctly
+381,Keyboard Lock
+388,DNS cache needs to be cleared after captive portal is detected
+398,Firefox may show blank for video and requires extra refresh with clearing cache
+399,HTTP basic auth: wrong credentials sent when navigating between sibling URLs using different realms
+413,"Ctrl+F5 ""Force Reload"" doesn't reload plugin"
+416,Firefox-8 build fails with error : firefox-8/mozilla-release/js/src/jshashtable.h:846: error: size of array 'arg' is negative
+424,Firefox will not print in landscape orientation (regression?)
+433,Firefox can't find register protocol handler apps on mac os x
+438,"Refreshing page which sends POST or GET data leaves ""Waiting for..."" and a throbber working sometimes (unclosed connection?)."
+439,jQuery and Headers with Content-Range Handling
+442,Caching persistence of expiry time
+444,Certificate selection modal dialog appears on wrong window
+446,Yet another proxy authentication popup issue (NTLM)
+460,Firefox is breaking NTLM auth in Mcafee Web Gateway
+465,Window state not restored on browser exit and restart
+468,"Firefox NTLM bug with sending data by POST, content-length >=65535"
+477,Posting a file through XMLHttpRequest when using negotiate auth stops at the 401 without authenticating and re-posting
+478,"Bank of America site -- after deleting cookies, can't sign in"
+479,HTML content copying twice.
+489,Firefox runs slow when executes multiple ajax requests in https mode
+490,"When network.http.max-connections has its default value, hitting many complex pages in quick succession puts Firefox in a state where it can't load further pages for a while"
+498,"Table cell borders missing: should reprocess borders collapsed by ""border-collapse: collapse"" if some rows are hidden with ""display:none"""
+501,"""browse .."" button localization. The ""Browse..."" text is not localized per browser locale when using <input type = ""file"">"
+505,"When downloading the proxy.pac file, firefox does not send the Cookie: HTTP header to the server"
+514,Firefox first page load adds proxy Redirect to Navigation Timing
+515,Right ALT key mapped through .Xmodmap does not work in Firefox
+516,Unable to reconnect after ssh tunnel crashed. SOCKS
+523,socks_remote_dns=true leaks DNS (in some conditions)
+537,Firefox can't establish a connection to socket.io
+545,"""302 Moved Temporarily"" loop with server (cookie management)"
+552,Image loading errors
+554,"transform-origin-x, transform-origin-y"
+557,FF automatically redirects from pages where used to (but no longer is) a redirect - cached redirect
+558,CSS3 repeating-linear-gradient difference in visual appearance colors
+566,DNS cache is not cleared while switching to SOCKS proxy
+568,border-radius sub-pixel rendering issue
+569,Cookie that set to expire in 1 year is deleted after 1 day
+577,onkeydown not matched by onkeyup when AltGr is pressed on Windows
+589,plugin-container file handle leaks on some sites using Flash
+597,"The dialog ""...new location..."" is too annoying and is misleading about the page it comes from"
+605,Icons should be full sized or clear around the small icon
+607,<audio> plays short sound scratchy in new versions
+611,Percent in URI not encoded
+619,Provide preference to set deltaMode value of DOM WheelEvent
+621,"possible memory leak in transparent plugins and just background-color, using ipc"
+624,Browser considerable slowdown after reaching cache limit.
+628,"SOCKS requests not retried with available ipv4 addresses if SOCKS gateway returns ""address family not supported"""
+631,nsIdleService reports active topic even when there is no activity
+634,HTTPS proxy setting change doesn't take effect until restart
+638,Auto refresh from payment gateway not working
+645,Disk Cache set for over 4096 MB and that goes over 4096 MB is misreported
+648,RFC 2616 8.2.2 being ignored during 413 Request Entity Too Large
+654,Proxy Auto Config issue calling ip (myipaddress) of VPN Network Adapter
+661,"Always have to switch proxy settings from ""Manual Proxy config"" to ""Auto detect proxy"" to browse corporate urls and vice versa to browse internet."
+668,Ghost images when dragging should always be at full opacity
+669,22.0a1 (2013-03-12) Page loads fail for existing open tabs after restart. (proxy?)
+674,Infinite loop/flood of NTLMSSP_NEGOTIATE requests and 401s after NTLM auth dialog cancel
+676,/16 mask in no proxy setting not working
+680,Double authentification with different users failed (401)
+681,Request password of proxy when entering Private Mode
+688,Have event target chain accessible from the event object?
+690,Native controls can become unusable when using a dark theme.
+691,"Mac OS X, vpn proxy setting does not affect firefox use system settings"
+693,WebSocket client does not close TCP connection after incorrect handshake response from server
+696,Firefox cannot connect after reverting to no proxy
+700,Whe a secondary page is loaded in an iframe with additional flash objects then all flash objects stop working.
+706,Blocked SmartCard Pop-up
+710,Circumventing caching of platform instantiations of webfonts doesn't work for fonts used in frames
+713,Kerberos SPNEGO doesn't work on Windows with 2 levels of CNAME
+717,Document Expired page allows view source
+719,Proxy authentication credentials forgotten in timeout
+721,Fallback from automatic NTLM auth fails
+723,DNS leak with local proxy on FTP requests
+724,Keep cookies until i close firefox doesn't work
+742,Firefox is not able to connect to a SOCKS-Proxy with IPv6 in square brackets
+747,IPv6 retry socket connection on protocol error
+754,Strange comportement with Kerberos
+755,Faulty Behaviour when sending POST Requests with Kerberos Authentication
+761,Certificate manager unable to delete user certificate on smart card
+775,Unplug ethernet then plug it back in makes me have to restart firefox to get connectivity
+776,Firebug reports blocking before the document is downloaded
+777,"""Metadata"" state for preload attribute of <video> element being ignored when buffering"
+779,onDataAvailable for UDP in Components.interfaces.nsISocketTransportService concatenates Datagrams
+783,CSS property text-decoration set on parent breaks hover effect on descendant
+784,SPNEGO / MS KRB5 no longer working on OS X [still works on Windows]
+787,The function writeBytes (nsIBinaryOutputStream) does not write the bytes if is called very quickly.
+791,User is not able to click on any link shown in the right click options.
+807,Lower than expected IPv6 score on speedtest.comcast.net
+819,WebGL llvmpipe segfault on www.shadertoy.com
+823,Firefox onDrag Event is missing correct position values
+840,requests abort on 304 when using SSL
+842,HTTP 302 Redirects not working with SPDY and push enabled if Basic Auth was triggered
+844,Pac file function myIpAddress() returns :: if IPv6 is enabled in Windows XP
+848,Should remote -> localhost CORS access be allowed?
+864,Image Cache Problems
+875,MacOS X: Can not connect to IPv4-only sites from IPv6-only node via SOCKS proxy
+885,Screen is frozen although engine is still loading pages.
+887,gl.texImage2D and gl.texSubImage2D not taking fast upload path when dstStride != srcStride.
+890,StartSSL certificate has weird name le-8bbf0da1-ccce-44d9-.......
+891,Upload faild with FireFox ESR 24.5
+907,"Firefox stops HTTP Digest Authentication, after authentication realm has changed and another login is attempted, using URL to provide credentials (http://user:pass@host)"
+911,Trailing dot in SNI HostName must be stripped according to RFC 3546
+920,Firefox crash when inserting huge strings into a text field [@ js::jit::CompactBufferReader::readByte]
+927,[@font-face] Font files *sometimes* improperly loaded
+930,<audio>can't play a mp3
+931,"Select element with title attribute, drop down list always shows that title value"
+932,Setting a cookie in body of document isn't available for reading in loaded js
+939,"Using socks proxy though SSH tunnel causes tunnel to disconnect with ""Received data for nonexistent channel"""
+943,Firefox not properly responding to the closure of the server connection per RFC (408 response)
+944,No prompt username and password dialog box proxy startup
+947,Can't watch youtube video without a connected sound output device
+948,Deadlock in cachestorageservice.cpp:1552
+964,Cannot enable D3D11 in Firefox 31.0 on Windows 7
+968,"HTML video element consumes memory too aggressively, and may cause OOM or freeze system"
+970,Firefox randomly using IPv6 via 6to4 relay on IPv4 connected client & servers
+982,Can't set network.negotiate-auth.trusted-uris
+985,URI encoding not correct for a string with a quoted % symbol
+990,Seeking does not work in videos recorded with MediaStreamRecorder
+997,WebSocket onclose not called when using wss://
+1000,"promethease.com drops the connection if ""AB'CDEFG5"" is used as the filename"
+194,2018-03-23
+195,2018-09-11
+196,2018-01-10
+197,2018-11-28
+198,2019-05-04
+199,2017-11-03
+200,2017-08-09
+201,2018-10-30
+202,2018-06-28
+203,2018-07-02
+204,2019-10-10
+205,2019-06-17
+206,2018-05-18
+207,2017-12-01
+208,2019-10-09
+209,2017-12-18
+210,2019-09-21
+211,2019-12-08
+212,2018-11-21
+213,2018-08-21
+214,2018-08-10
+215,2019-09-18
+216,2018-04-08
+217,2018-07-02
+218,2019-08-02
+219,2019-11-06
+220,2018-11-10
+221,2019-04-12
+222,2017-07-31
+223,2018-11-26
+224,2019-07-03
+225,2019-03-20
+226,2018-03-09
+227,2019-08-13
+228,2019-12-30
+229,2017-07-13
+230,2019-10-15
+231,2019-11-27
+232,2018-10-25
+233,2019-10-04
+234,2019-10-07
+235,2019-11-21
+236,2017-10-03
+237,2018-09-28
+238,2018-10-02
+239,2019-04-23
+240,2018-12-19
+241,2019-04-28
+242,2018-10-30
+243,2018-11-13
+244,2018-12-14
+245,2018-08-17
+246,2017-11-12
+247,2019-10-26
+248,2019-02-24
+249,2018-05-08
+250,2017-12-23
+251,2019-01-23
+252,2019-12-07
+253,2017-08-24
+254,2017-10-17
+255,2019-01-20
+256,2018-10-14
+257,2018-06-21
+258,2019-05-04
+259,2018-04-27
+260,2018-11-07
+261,2018-12-25
+262,2018-12-07
+263,2019-10-10
+264,2018-05-03
+265,2019-06-04
+266,2019-03-12
+267,2018-11-20
+268,2019-12-08
+269,2019-08-20
+270,2019-12-14
+271,2019-06-15
+272,2019-09-13
+273,2019-04-03
+274,2019-12-02
+275,2018-09-11
+276,2018-08-25
+277,2018-04-08
+278,2019-12-04
+279,2018-10-06
+280,2018-10-15
+281,2019-09-22
+282,2019-09-12
+283,2019-04-16
+284,2019-01-26
+285,2019-04-11
+286,2019-07-29
+287,2019-06-08
+288,2019-09-26
+289,2018-04-17
+290,2018-07-25
+291,2019-12-13
+292,2018-05-22
+293,2019-10-12
+294,2019-09-04
+295,2019-11-17
+296,2018-11-03
+297,2019-10-15
+298,2018-09-15
+299,2019-06-13
+300,2019-08-30
+301,2019-04-10
+302,2019-05-25
+303,2017-11-24
+304,2018-04-14
+305,2019-11-15
+306,2019-08-05
+307,2019-02-28
+308,2019-11-09
+309,2018-08-22
+310,2019-03-26
+311,2017-05-25
+312,2019-05-31
+313,2017-10-09
+314,2019-06-10
+315,2019-03-25
+316,2017-11-01
+317,2019-11-12
+318,2018-11-09
+319,2017-06-06
+320,2017-08-07
+321,2018-12-11
+322,2019-05-26
+323,2019-09-13
+324,2018-06-26
+325,2019-06-27
+326,2019-07-10
+327,2018-07-13
+328,2019-05-25
+329,2019-08-28
+330,2017-08-05
+331,2019-12-22
+332,2018-04-08
+333,2019-09-19
+334,2019-12-09
+335,2019-02-17
+336,2019-05-25
+337,2019-06-23
+338,2017-12-18
+339,2019-11-10
+340,2019-08-24
+341,2019-08-27
+342,2019-05-26
+343,2019-10-09
+344,2017-07-17
+345,2018-08-24
+346,2019-10-17
+347,2018-04-22
+348,2019-06-25
+349,2017-10-04
+350,2019-11-05
+351,2018-07-22
+352,2019-04-24
+353,2019-02-24
+354,2019-01-13
+355,2018-01-02
+356,2018-10-16
+357,2019-06-24
+358,2019-10-29
+359,2018-03-16
+360,2018-02-06
+361,2019-09-17
+362,2019-06-20
+363,2018-01-07
+364,2019-04-17
+365,2019-03-17
+366,2019-12-31
+367,2019-03-07
+368,2018-02-23
+369,2019-07-02
+370,2019-09-01
+371,2019-02-14
+372,2019-06-29
+373,2019-10-06
+374,2019-03-14
+375,2019-12-04
+376,2019-03-11
+377,2018-03-20
+378,2017-11-22
+379,2019-10-22
+380,2019-03-06
+381,2018-06-26
+382,2017-10-09
+383,2019-05-28
+384,2018-07-06
+385,2019-12-08
+386,2019-03-20
+387,2017-10-22
+388,2019-09-10
+389,2019-04-01
+390,2018-10-08
+391,2018-02-16
+392,2018-09-14
+393,2018-05-10
+394,2018-07-30
+395,2019-04-29
+396,2019-04-16
+397,2019-07-10
+398,2017-07-22
+399,2019-05-25
+400,2019-07-03
+401,2018-08-11
+402,2019-08-08
+403,2019-01-17
+404,2019-09-05
+405,2019-05-16
+406,2018-09-29
+407,2019-05-15
+408,2019-10-15
+409,2018-07-16
+410,2018-11-29
+411,2018-06-30
+412,2018-01-12
+413,2018-10-13
+414,2018-03-11
+415,2017-11-20
+416,2019-06-24
+417,2018-10-31
+418,2018-08-06
+419,2019-07-29
+420,2018-03-02
+421,2018-08-28
+422,2017-11-16
+423,2019-09-24
+424,2018-02-08
+425,2019-08-16
+426,2017-10-15
+427,2018-07-30
+428,2018-04-30
+429,2018-12-18
+430,2019-06-04
+431,2019-02-19
+432,2019-11-28
+433,2019-10-09
+434,2018-09-18
+435,2019-10-30
+436,2019-02-18
+437,2018-08-26
+438,2017-10-14
+439,2017-05-11
+440,2019-12-24
+441,2019-08-12
+442,2019-12-26
+443,2019-12-26
+444,2019-05-09
+445,2019-04-22
+446,2019-07-11
+447,2018-10-01
+448,2019-08-28
+449,2018-05-30
+450,2019-08-17
+451,2019-08-22
+452,2018-07-14
+453,2017-07-04
+454,2017-06-30
+455,2017-11-20
+456,2018-12-18
+457,2019-01-16
+458,2019-02-21
+459,2019-04-26
+460,2019-05-31
+461,2019-02-15
+462,2018-10-12
+463,2019-08-12
+464,2017-12-27
+465,2018-07-29
+466,2019-11-24
+467,2019-10-23
+468,2019-09-28
+469,2019-08-03
+470,2018-06-06
+471,2018-02-21
+472,2018-07-23
+473,2019-06-02
+474,2018-06-04
+475,2019-09-23
+476,2019-08-16
+477,2018-04-14
+478,2019-01-14
+479,2019-07-18
+480,2018-05-05
+481,2017-06-06
+482,2019-09-13
+483,2019-08-13
+484,2019-10-05
+485,2018-09-01
+486,2019-08-14
+487,2018-05-20
+488,2019-08-15
+489,2018-03-03
+490,2019-07-11
+491,2018-01-02
+492,2019-12-19
+493,2019-01-12
+494,2019-08-23
+495,2017-07-23
+496,2019-11-04
+497,2018-09-03
+498,2019-10-07
+499,2019-05-27
+500,2019-12-24
+501,2018-04-05
+502,2018-12-14
+503,2019-04-08
+504,2018-09-02
+505,2017-05-30
+506,2019-12-01
+507,2019-03-24
+508,2018-05-04
+509,2017-07-08
+510,2019-02-13
+511,2018-06-19
+512,2019-03-16
+513,2019-01-17
+514,2019-12-02
+515,2018-11-25
+516,2019-10-08
+517,2019-08-16
+518,2017-01-31
+519,2019-12-07
+520,2019-07-30
+521,2018-07-04
+522,2019-03-24
+523,2019-03-27
+524,2018-02-04
+525,2019-11-22
+526,2017-11-23
+527,2019-10-22
+528,2017-08-24
+529,2018-05-09
+530,2019-09-05
+531,2018-08-24
+532,2018-05-12
+533,2018-02-25
+534,2018-11-21
+535,2019-02-16
+536,2019-07-05
+537,2018-06-05
+538,2018-09-25
+539,2019-09-01
+540,2019-05-15
+541,2019-11-11
+542,2019-02-02
+543,2019-05-06
+544,2019-10-26
+545,2019-10-04
+546,2018-02-17
+547,2019-12-17
+548,2018-09-26
+549,2018-10-04
+550,2019-03-30
+551,2019-07-13
+552,2018-06-06
+553,2019-04-08
+554,2019-05-16
+555,2017-09-09
+556,2019-08-16
+557,2018-12-20
+558,2019-05-17
+559,2019-04-14
+560,2018-09-28
+561,2019-06-07
+562,2018-01-05
+563,2019-02-28
+564,2018-10-20
+565,2019-04-23
+566,2018-07-06
+567,2018-04-16
+568,2019-09-21
+569,2019-01-01
+570,2019-08-23
+571,2019-12-20
+572,2019-10-11
+573,2018-10-18
+574,2019-08-17
+575,2019-07-30
+576,2018-07-26
+577,2019-04-22
+578,2019-04-05
+579,2019-08-19
+580,2019-12-04
+581,2019-09-04
+582,2019-06-09
+583,2018-10-03
+584,2019-11-21
+585,2019-11-08
+586,2019-01-26
+587,2018-02-12
+588,2018-11-18
+589,2019-09-16
+590,2019-04-22
+591,2019-07-14
+592,2019-02-11
+593,2018-11-05
+594,2018-10-29
+595,2019-06-04
+596,2018-09-30
+597,2019-11-18
+598,2019-11-16
+599,2019-12-30
+600,2019-05-27
+601,2019-12-31
+602,2019-05-10
+603,2018-09-03
+604,2019-08-03
+605,2018-02-13
+606,2018-11-08
+607,2019-12-17
+608,2017-05-30
+609,2018-11-28
+610,2018-06-15
+611,2019-11-27
+612,2019-05-12
+613,2018-02-06
+614,2018-09-09
+615,2017-11-26
+616,2019-12-24
+617,2018-07-06
+618,2017-12-02
+619,2018-12-26
+620,2018-11-05
+621,2018-09-01
+622,2018-11-02
+623,2017-05-30
+624,2018-03-04
+625,2019-05-16
+626,2018-04-30
+627,2019-09-11
+628,2019-12-27
+629,2018-12-05
+630,2017-09-15
+631,2019-05-07
+632,2019-11-17
+633,2018-06-02
+634,2018-03-24
+635,2018-02-05
+636,2019-07-07
+637,2019-11-02
+638,2018-11-11
+639,2018-04-02
+640,2017-05-21
+641,2019-07-12
+642,2018-03-18
+643,2019-01-12
+644,2017-07-04
+645,2019-11-10
+646,2019-12-30
+647,2019-11-17
+648,2018-08-08
+649,2019-10-02
+650,2018-03-12
+651,2018-05-24
+652,2019-04-14
+653,2018-08-02
+654,2019-10-07
+655,2019-08-24
+656,2018-10-17
+657,2019-03-19
+658,2017-08-25
+659,2018-08-05
+660,2017-12-12
+661,2019-10-29
+662,2019-07-24
+663,2019-07-24
+664,2018-12-15
+665,2018-07-10
+666,2019-06-03
+667,2019-07-17
+668,2019-09-11
+669,2018-11-03
+670,2019-07-03
+671,2018-09-19
+672,2019-09-24
+673,2018-05-29
+674,2018-03-06
+675,2019-04-13
+676,2019-02-16
+677,2019-01-03
+678,2018-05-02
+679,2018-01-16
+680,2017-09-11
+681,2017-11-03
+682,2017-08-12
+683,2019-08-16
+684,2019-05-29
+685,2019-12-09
+686,2019-04-01
+687,2019-05-19
+688,2019-08-30
+689,2018-07-10
+690,2019-12-19
+691,2019-09-17
+692,2019-12-31
+693,2018-01-22
+694,2018-12-17
+695,2019-04-20
+696,2019-07-28
+697,2019-03-20
+698,2019-09-19
+699,2018-12-08
+700,2019-04-09
+701,2018-10-09
+702,2018-09-29
+703,2019-03-05
+704,2019-05-03
+705,2017-07-10
+706,2018-12-14
+707,2018-12-03
+708,2017-07-16
+709,2019-11-10
+710,2019-05-11
+711,2019-03-22
+712,2017-05-16
+713,2019-05-14
+714,2018-03-21
+715,2019-07-15
+716,2017-03-18
+717,2018-11-12
+718,2018-10-10
+719,2019-09-04
+720,2019-09-20
+721,2019-09-10
+722,2018-02-07
+723,2018-01-30
+724,2018-11-25
+725,2017-10-15
+726,2019-02-01
+727,2018-06-30
+728,2019-08-04
+729,2019-05-15
+730,2018-12-25
+731,2019-09-06
+732,2017-11-29
+733,2019-10-06
+734,2019-01-25
+735,2018-09-24
+736,2018-10-20
+737,2019-03-27
+738,2019-01-08
+739,2017-10-18
+740,2017-06-28
+741,2019-12-02
+742,2019-10-12
+743,2019-03-07
+744,2019-09-23
+745,2019-01-02
+746,2018-08-08
+747,2017-09-15
+748,2019-02-01
+749,2019-04-06
+750,2019-06-04
+751,2018-06-30
+752,2019-07-06
+753,2019-07-28
+754,2018-09-03
+755,2019-06-19
+756,2018-11-12
+757,2018-08-29
+758,2019-04-02
+759,2019-05-03
+760,2019-12-29
+761,2019-07-25
+762,2019-07-18
+763,2018-06-11
+764,2018-01-22
+765,2018-09-10
+766,2019-03-09
+767,2019-01-17
+768,2019-11-02
+769,2018-08-27
+770,2019-04-23
+771,2017-12-03
+772,2019-01-05
+773,2019-05-04
+774,2019-08-18
+775,2017-12-01
+776,2018-09-20
+777,2018-06-21
+778,2018-09-01
+779,2018-04-22
+780,2019-11-30
+781,2019-06-22
+782,2019-05-17
+783,2017-11-12
+784,2019-08-20
+785,2019-03-11
+786,2019-09-11
+787,2019-08-10
+788,2019-01-18
+789,2019-05-09
+790,2019-08-07
+791,2018-03-14
+792,2019-05-12
+793,2019-11-11
+794,2019-10-25
+795,2018-11-28
+796,2018-04-08
+797,2019-09-02
+798,2018-12-26
+799,2019-08-26
+800,2019-11-17
+801,2018-08-01
+802,2019-09-14
+803,2018-12-23
+804,2019-01-17
+805,2018-08-17
+806,2017-10-30
+807,2019-07-06
+808,2018-09-13
+809,2019-01-21
+810,2018-12-03
+811,2019-08-25
+812,2018-07-28
+813,2018-09-07
+814,2019-10-21
+815,2018-06-07
+816,2019-08-17
+817,2019-02-04
+818,2019-11-04
+819,2019-11-20
+820,2019-10-14
+821,2019-01-08
+822,2019-12-07
+823,2019-01-25
+824,2019-07-29
+825,2019-11-29
+826,2019-06-14
+827,2017-11-20
+828,2019-04-18
+829,2019-02-19
+830,2019-08-04
+831,2019-03-01
+832,2019-06-02
+833,2018-02-03
+834,2017-10-28
+835,2018-05-03
+836,2019-08-21
+837,2019-09-18
+838,2018-07-12
+839,2017-04-09
+840,2018-02-23
+841,2018-04-22
+842,2019-04-19
+843,2019-04-17
+844,2018-08-09
+845,2019-04-19
+846,2019-06-02
+847,2019-03-31
+848,2019-04-24
+849,2019-12-06
+850,2018-01-25
+851,2018-01-24
+852,2019-06-24
+853,2018-04-15
+854,2018-02-22
+855,2018-09-21
+856,2019-09-02
+857,2018-11-16
+858,2019-09-02
+859,2018-11-06
+860,2018-08-13
+861,2018-01-26
+862,2019-04-04
+863,2017-10-15
+864,2018-07-16
+865,2018-01-17
+866,2019-12-06
+867,2018-11-01
+868,2017-12-29
+869,2019-11-22
+870,2018-08-24
+871,2019-03-17
+872,2019-09-13
+873,2019-10-08
+874,2018-01-31
+875,2018-02-09
+876,2019-10-05
+877,2018-01-22
+878,2019-11-28
+879,2019-03-17
+880,2018-09-02
+881,2018-12-24
+882,2018-11-24
+883,2017-09-02
+884,2019-09-09
+885,2017-09-17
+886,2017-09-20
+887,2019-12-13
+888,2019-07-27
+889,2019-09-13
+890,2019-12-11
+891,2019-02-06
+892,2018-05-12
+893,2018-09-15
+894,2018-10-20
+895,2018-07-06
+896,2019-11-04
+897,2019-11-10
+898,2019-06-13
+899,2019-04-02
+900,2019-12-19
+901,2019-05-06
+902,2018-10-04
+903,2018-02-04
+904,2019-10-26
+905,2019-02-20
+906,2018-07-29
+907,2019-12-08
+908,2018-08-27
+909,2019-05-25
+910,2018-07-04
+911,2019-06-17
+912,2018-09-13
+913,2017-12-10
+914,2017-07-26
+915,2019-03-25
+916,2019-07-19
+917,2018-10-20
+918,2019-01-02
+919,2019-03-24
+920,2019-11-01
+921,2019-05-18
+922,2019-05-05
+923,2019-12-24
+924,2019-03-30
+925,2019-11-24
+926,2019-05-20
+927,2018-04-16
+928,2017-05-23
+929,2019-02-08
+930,2018-04-17
+931,2019-10-09
+932,2017-05-21
+933,2017-11-30
+934,2019-10-20
+935,2018-11-20
+936,2019-10-09
+937,2019-05-20
+938,2018-05-18
+939,2017-04-25
+940,2018-03-24
+941,2018-08-28
+942,2019-03-12
+943,2019-10-29
+944,2019-09-06
+945,2019-12-22
+946,2018-06-03
+947,2018-05-24
+948,2019-02-01
+949,2019-04-27
+950,2019-11-18
+951,2019-07-20
+952,2019-02-06
+953,2017-05-11
+954,2017-05-12
+955,2018-05-04
+956,2018-06-12
+957,2018-09-10
+958,2019-11-16
+959,2017-09-11
+960,2017-08-10
+961,2017-12-28
+962,2019-10-09
+963,2018-11-17
+964,2018-08-05
+965,2018-07-19
+966,2019-08-06
+967,2019-05-08
+968,2018-12-06
+969,2017-07-31
+970,2018-09-06
+971,2019-04-13
+972,2017-08-22
+973,2019-12-03
+974,2019-01-25
+975,2018-12-20
+976,2018-06-27
+977,2019-09-24
+978,2019-11-29
+979,2019-08-23
+980,2019-01-24
+981,2017-07-18
+982,2017-11-10
+983,2019-08-15
+984,2017-05-29
+985,2019-11-28
+986,2019-07-01
+987,2018-08-24
+988,2017-05-16
+989,2018-02-08
+990,2017-08-30
+991,2019-04-22
+992,2018-10-04
+993,2019-10-08
+994,2018-09-26
+995,2019-12-19
+996,2018-05-19
+997,2017-05-23
+998,2018-11-04
+999,2019-02-04
+1000,2017-03-28
