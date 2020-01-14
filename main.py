@@ -44,4 +44,4 @@ def crew_api():
   
 
 if __name__ == '__main__':
-    app.run(debug=True, host="114.32.23.161")
+    app.run(debug=True)
