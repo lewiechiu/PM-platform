@@ -25,7 +25,7 @@ def new_project_api():
     for swe in request.json()['SWE ID']:
         # Some query and checking
         # TODO
-        projectLis = SWEProject(swe, 'in-progress')
+        projectLis = SWEProject(swe, ' in-progress')
         if len(projectLis) >= 4:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
