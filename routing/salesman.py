@@ -118,5 +118,3 @@ def sales_ranking(id):
     # sort the result by some 
     # sort by the performance ranking 
     return 
-
-@salesman.route('/api/sales/')

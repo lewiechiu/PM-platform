@@ -3,7 +3,7 @@ import routing
 from routing.project import project
 from routing.order import order
 from routing.salesman import salesman
-from routing.crew import crew
+# from routing.crew import crew
 from mysql_conf import *
 
 app = Flask(__name__)
@@ -44,4 +44,4 @@ def crew_api():
   
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="114.32.23.161")
