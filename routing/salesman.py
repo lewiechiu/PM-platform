@@ -9,33 +9,22 @@ from basic_function import *
 # Promote a salesman to Manager or Senior salesman
 
 # Create salesman
-@salesman.route('/api/salesman/<int:SALESMANID>', methods = ['POST'])
-def create_salesman(SALESMANID):
-    # TODO
-    exist = SalesmanExist(SALESMANID)
-    if not exist:
-        return abort(400, "PROJECTID not exist")
-
+@salesman.route('/api/salesman/>', methods = ['POST'])
+def create_salesman():
     params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
     body = request.get_json()
     for i in body:
-        if i in fields:
-            fields.remove(i)
-    if len(fields) != 0:
-        abort(400, "missing input field")
-
-    print(request.json())
-    SALESMANID = request.json()['SALESMANID']
-    Name = request.json()['Name']
-    Ssn = request.json()['Ssn']
-    Title = request.json()['Title']
-    Salary = request.json()['Salary']
-    YearOfExperience = request.json()['YearOfExperience']
-    Address = request.json()['Address']
-    Gender = request.json()['Gender']
-    State = request.json()['State']
-    
-    (SALESMANID, Name, Ssn, Title, Salary, YearOfExperience, Address, Gender, State)
+        if i in params:
+            continue
+        else:
+            return "missing params"
+    TABLE = db2019FP.Salesman
+    now_id = con.query1("SELECT MAX(SALESMANID) FROM {};".formate(TABLE))
+    print("current id: {}".format(now_id))
+    SQL_command = "INSERT INTO {} VALUES( {}, '{}', '{}' ,'{}' , {} , {});".format(TABLE, next_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]])
+    print("## SQL command to execute: ", SQL_command)
+    con.query_insertORdelete(SQL_command)
+    return jsonify({"status": 200})
 
 # show if the salesman can be promoted
 @salesman.route('/api/salesman/<int:SALESMANID>', methods = ['GET'])

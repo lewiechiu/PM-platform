@@ -26,7 +26,7 @@ def new_project_api():
         # Some query and checking
         # TODO
         projectLisDict = SWEProject(' in-progress',swe)
-        if projectLisDict[0]["Available capacity"] <= 0
+        if projectLisDict[0]["Available capacity"] <= 0:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
     project_ID = request.get_json()['Project ID']
