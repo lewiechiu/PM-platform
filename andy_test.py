@@ -2,19 +2,29 @@ from mysql_conf import *
 import json
 connect = MySQL_query()
 
-state = " notstart"
-state_string = "'" + state + "'"
-task_id = "2"
-cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
-connect.query_insertORdelete(cmd)
+# state = " notstart"
+# state_string = "'" + state + "'"
+# task_id = "2"
+# cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
+# connect.query_insertORdelete(cmd)
 
-cmd = "SELECT * FROM Task WHERE taskID = 2"
-reponse = connect.queryALL(cmd)
-print(reponse)
-#cmd = "INSERT INTO Task(taskID, state, category) VALUES(1001,' notstart','chatbot')"
-#connect.query_insertORdelete(cmd)
-'''
-cmd = "SELECT * FROM Task"
-response = connect.queryALL(cmd)
-print(response)
-'''
+# cmd = "SELECT * FROM Task WHERE taskID = 2"
+# reponse = connect.queryALL(cmd)
+# print(reponse)
+cmd = "DELETE FROM Task WHERE taskID = 1001"
+connect.query_insertORdelete(cmd)
+# '''
+# cmd = "SELECT * FROM Task"
+# response = connect.queryALL(cmd)
+# print(response)
+# '''
+# cmd2 = "SELECT name,title FROM SWE WHERE ID=10" 
+# reponse2 = connect.queryALL(cmd2)
+# swe_name = clean_tuple(reponse2,0)
+# swe_title = clean_tuple(reponse2,1)
+# print(swe_name[0])
+
+
+
+
+

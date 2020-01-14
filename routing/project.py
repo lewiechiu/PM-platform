@@ -231,7 +231,7 @@ def InsertTask(taskID, state, category, project_id, resource_amount):
     # SQL2:
     # INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES(
     cmd = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
-    cmd = cmd + str(R_ID) +","+str(taskID)+","+str(resource_amount)
+    cmd = cmd + str(R_ID) +","+str(taskID)+","+str(resource_amount)+ ")"
     connect.query_insertORdelete(cmd)
     return True
 
@@ -277,10 +277,39 @@ def GetProjectTalent(project_id):
     #     "Talent" : ["Talent1" ,"Talent 2", "Talent 3"]
     #   },...
     # }
-    return {}
+    # SQL:
+    # SELECT SWE_ID FROM Project_SWE WHERE P_ID =
+    list_to_be_json = []
+    cmd = "SELECT SWE_ID FROM Project_SWE WHERE P_ID =" + str(project_id)
+    reponse = connect.queryALL(cmd)
+    list_of_swe_id = clean_tuple(response,0)
+    for i in list_of_swe_id:
+        dict_itr = {}
+        cmd2 = "SELECT name,title FROM SWE WHERE ID=" + str(i)
+        reponse2 = connect.queryALL(cmd2)
+        swe_name = clean_tuple(reponse2,0)
+        swe_title = clean_tuple(reponse2,1)
+        cmd3 = "SELECT talent FROM Talent WHERE ID = " + str(i)
+        reponse3 = connect.queryALL(cmd3)
+        swe_talents = clean_tuple(reponse3,0)
+        dict_itr['name'] = swe_name[0]
+        dict_itr['Job title'] = swe_title[0]
+        dict_itr['Talent'] = swe_talents
+        list_to_be_json.append(dict_itr)
+    return_json = json.dumps(list_to_be_json)
+    return return_json
 
 def ResourceExist(resource_id):
-    return True
+    # SQL:
+    # SELECT resourceID FROM resource WHERE resourceID = 
+    cmd = "SELECT resourceID FROM resource WHERE resourceID = "
+    cmd = cmd + str(resource_id)
+    response = connect.queryALL(cmd)
+    response = clean_tuple(response,0)
+    if len(response) > 0:
+        return True
+    else:
+        return False
 
 
 def AllocateNewResource(resource_id, task_id):
@@ -290,7 +319,25 @@ def AllocateNewResource(resource_id, task_id):
         # add new resource <-> task relationship in (task resource)
     # else 
     # return False
-    return True
+    # SQL:
+    # SELECT capacity FROM resource WHERE resourceID = 
+    cmd = "SELECT capacity FROM resource WHERE resourceID = "
+    cmd = cmd + str(resource_id)
+    response = connect.queryALL(cmd)
+    response = clean_tuple(response,0)
+    max_amount = int(response[0])
+    cmd2 = "SELECT SUM(amount) FROM Task_Resource WHERE R_ID = "
+    cmd2 = cmd2 + str(resource_id)
+    response2 = connect.queryALL(cmd2)
+    response2 = clean_tuple(response2,0)
+    current_amount = int(response2[0])
+    if current_amount + resource_amount <= max_amount:
+        cmd3 = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
+        cmd3 = cmd + str(resource_id) +","+str(task_id)+","+str(resource_amount)+")"
+        connect.query_insertORdelete(cmd3)
+        return True
+    else:
+        return False
 
 def TaskExist(task_id):
      # Check if the task of task id is present (task)
