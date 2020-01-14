@@ -14,7 +14,8 @@ def TalentExist(Talent):
 
 def SWEExist(swe_id):
     # check if swe_id exists
-    return True
+    res = con.queryALL("SELECT EXISTS(SELECT * FROM DB2019FP.SWE WHERE SWEID={})".format((swe_id)))
+    return res[0][0]
 
 
 def SelectByTalent(Talent):
