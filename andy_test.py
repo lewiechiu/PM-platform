@@ -1,13 +1,13 @@
 from mysql_conf import *
 import json
 connect = MySQL_query()
-'''
-state = " finished"
+
+state = " notstart"
 state_string = "'" + state + "'"
 task_id = "2"
 cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
 connect.query_insertORdelete(cmd)
-'''
+
 cmd = "SELECT * FROM Task WHERE taskID = 2"
 reponse = connect.queryALL(cmd)
 print(reponse)

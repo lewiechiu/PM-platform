@@ -18,6 +18,7 @@ class MySQL_query:
         return self.cur.fetchone()
     def query_insertORdelete(self, cmd):
         self.cur.execute(cmd)
+        self.con.commit()
         return self.cur.fetchone()
     def __del__(self):
         self.cur.close()
