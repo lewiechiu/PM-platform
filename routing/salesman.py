@@ -1,9 +1,6 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
-salesman = Blueprint('salesman', __name__, template_folder='../templates')
-
-
-
-
+salesman = Blueprint('salesman', __Name__, template_folder='../templates')
+from basic_function import * 
 
     # Know what each salesman is accountable for. (sales item)
     # Set KPI for each of the salesmen.
@@ -12,52 +9,64 @@ salesman = Blueprint('salesman', __name__, template_folder='../templates')
 # Promote a salesman to Manager or Senior salesman
 
 # Create salesman
-@salesman.route('/api/salesman/<int:salesman_id>', methods = ['POST'])
-def create_salesman(salesman_id):
+@salesman.route('/api/salesman/<int:SALESMANID>', methods = ['POST'])
+def create_salesman(SALESMANID):
     # TODO
-    # Insert salesman with the the following params.
-    # find the max id
-    # SQL : 
-    cmd = "SELECT MAX(ID) FROM salesman"
-    response = connect.queryALL(a)
-    # SQL :
-    # INSERT INTO salesman(ID,name,ssn,title, salary,age,years_of_experience,address,gender)
-    # VALUES(request.json()["name"],request.json()["ssn"],request.json()["title"],request.json()["salary"],request.json()["age"],request.json()["yoe"],request.json()["address"],request.json()["gender"])
+    exist = SalesmanExist(SALESMANID)
+    if not exist:
+        return abort(400, "PROJECTID not exist")
+
+    params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
+    body = request.get_json()
+    for i in body:
+        if i in fields:
+            fields.remove(i)
+    if len(fields) != 0:
+        abort(400, "missing input field")
+
     print(request.json())
-    # request.json() should have the following property.
-    # ["name", "ssn", "title", "salary", "year", "address", "gender"]
-    createsalesman(salesman_id, name, ssn, title, salary, year, address, gender)
+    SALESMANID = request.json()['SALESMANID']
+    Name = request.json()['Name']
+    Ssn = request.json()['Ssn']
+    Title = request.json()['Title']
+    Salary = request.json()['Salary']
+    YearOfExperience = request.json()['YearOfExperience']
+    Address = request.json()['Address']
+    Gender = request.json()['Gender']
+    State = request.json()['State']
+    
+    (SALESMANID, Name, Ssn, Title, Salary, YearOfExperience, Address, Gender, State)
 
 # show if the salesman can be promoted
-@salesman.route('/api/salesman/<int:salesman_id>', methods = ['GET'])
-def show_order_experience(salesman_id):
+@salesman.route('/api/salesman/<int:SALESMANID>', methods = ['GET'])
+def show_order_experience(SALESMANID):
     # TODO
     # Check if salesman exist in DB.
-    exist = SalesmanExist(salesman_id)
+    exist = SalesmanExist(SALESMANID)
     if not exist:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
-    getSalesOrder(salesman_id)
+        return abort(400, "Salesman id: {} does NOT EXIST".format(SALESMANID))
+    getSalesOrder(SALESMANID)
     return
 
 
 # Select certain Talents of the People
-@salesman.route('/api/salesman/<string:talent>', methods = ['GET'])
-def select_by_talent(talent):
+@salesman.route('/api/salesman/<string:Talent>', methods = ['GET'])
+def select_by_Talent(Talent):
     #
     pass
     # TODO
-    # Select from salesman and salesman where Talent in the variable talent.
+    # Select from salesman and salesman where Talent in the variable Talent.
     # You can use some formatting like
-    getsalesmanByTalent(talent)
+    getsalesmanByTalent(Talent)
     # return the result selected
 
 
 # Show the background, basic info for each person.
 @salesman.route('/api/salesman/background', methods = ['GET'])
-def get_salesman_info(salesman_id):
+def get_salesman_info(SALESMANID):
     pass
     # TODO
-    getsalesmanInfo(salesman_id)
+    getsalesmanInfo(SALESMANID)
     # Select the whole table.
     #SQL:
     #SELECT * FROM salesman
@@ -65,38 +74,38 @@ def get_salesman_info(salesman_id):
 
 # Update
 # Update the time period for the salesman in the company
-@salesman.route('/api/salesman/time_period/<int:salesman_id>', methods = ['PUT'])
-def update_salesman(salesman_id):
+@salesman.route('/api/salesman/time_period/<int:SALESMANID>', methods = ['PUT'])
+def update_salesman(SALESMANID):
     # TODO
     # In request body, there will be a field "period".
     # Update the salesman/salesman having id with "years_of_experience" being "period"
-    exist_salesman = salesmanExist(salesman_id)
+    exist_salesman = salesmanExist(SALESMANID)
     if not exist_salesman:
-        return abort(400, "salesman id: {} does NOT EXIST".format(salesman_id))
-    exist_sales = SalesmanExist(salesman_id)
+        return abort(400, "salesman id: {} does NOT EXIST".format(SALESMANID))
+    exist_sales = SalesmanExist(SALESMANID)
     if not exist_sales:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
+        return abort(400, "Salesman id: {} does NOT EXIST".format(SALESMANID))
     if(exist_salesman):
-        update_salesman(salesman_id,  target_attri, new_value, 'salesman')
+        update_salesman(SALESMANID,  target_attri, new_value, 'salesman')
     else:
-        update_salesman(salesman_id,  target_attri, new_value, 'sales')
+        update_salesman(SALESMANID,  target_attri, new_value, 'sales')
     pass
 
 # Delete
-@salesman.route('/api/salesman/<int:salesman_id>', methods = ['DELETE'])
-def delete_salesman(salesman_id):
+@salesman.route('/api/salesman/<int:SALESMANID>', methods = ['DELETE'])
+def delete_salesman(SALESMANID):
     # TODO
-    exist_salesman = salesmanExist(salesman_id)
+    exist_salesman = salesmanExist(SALESMANID)
     if not exist_salesman:
-        return abort(400, "salesman id: {} does NOT EXIST".format(salesman_id))
-    exist_sales = SalesmanExist(salesman_id)
+        return abort(400, "salesman id: {} does NOT EXIST".format(SALESMANID))
+    exist_sales = SalesmanExist(SALESMANID)
     if not exist_sales:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
+        return abort(400, "Salesman id: {} does NOT EXIST".format(SALESMANID))
     # Delete the record for salesman
     if(exist_salesman):
-        changesalesmanState(salesman_id, 'salesman','retired')
+        changesalesmanState(SALESMANID, 'retired')
     else:
-        changesalesmanState(salesman_id, 'sales', 'retired')
+        changesalesmanState(SALESMANID,  'retired')
     pass
 
 

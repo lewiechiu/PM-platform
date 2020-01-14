@@ -37,7 +37,7 @@ def create_swe(swe_id):
     # ["name", "ssn", "title", "salary", "year", "address", "gender"]
     createswe(swe_id, name, ssn, title, salary, year, address, gender)
 
-'''
+
 # show if the swe can be promoted
 @swe.route('/api/swe/<int:swe_id>', methods = ['GET'])
 def show_project_experience(swe_id):
@@ -48,7 +48,7 @@ def show_project_experience(swe_id):
         return abort(400, "SWE id: {} does NOT EXIST".format(swe_id))
     getsweproject(swe_id)
     return 
-'''
+
 # show if the swe can be promoted
 @swe.route('/api/swe/<int:salesman_id>', methods = ['GET'])
 def show_order_experience(salesman_id):
@@ -156,9 +156,9 @@ def delete_swe(swe_id):
         return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
     # Delete the record for swe
     if(exist_swe):
-        changesweState(swe_id, 'swe','retired')
+        changeSWEState(swe_id, 'retired')
     else:
-        changesweState(swe_id, 'sales', 'retired')
+        changeSWEState(swe_id, 'retired')
     pass
 
 @swe.route('/api/swe/', methods = ['POST'])
@@ -168,8 +168,6 @@ def swe_api():
 
 def createswe(name, ssn, title, salary, year, address, gender):
     return True
-
-
 
 def getsweproject(swe_id):
     return {}
@@ -197,16 +195,10 @@ def update_swe(swe_id,  target_attri, new_value, role)
         # update sales
     return TRUE
 
-def changesweState(swe_id, role, state):
-    # if role == 'swe'
-        # if he doesn't manage active project
-            # update the swe state to 'retire'
-        # else
-            # return false
-    # else 
-        # if he doesn't have active order
-            # update the salesman state to 'retire'
-        # else
-            # return false
+def changeSWEState(swe_id, state):
+    # if swe_id doesn't manage active project
+        # update the swe state to 'retire'
+    # else
+        # return false
     return TRUE
 
