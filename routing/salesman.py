@@ -16,23 +16,26 @@ def create_salesman(SALESMANID):
     if not exist:
         return abort(400, "PROJECTID not exist")
 
-    fields = ["PROJECTID", "RESOURCEID" , "State", "Category" , "Description"]
-    for i in request.get_json():
-        if i not in fields:
-            return abort(400, "Input field error")
-    
-    if len(fields.keys()) != len(fields):
-        return abort(400, "Input field error")
+    params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
+    body = request.get_json()
+    for i in body:
+        if i in fields:
+            fields.remove(i)
+    if len(fields) != 0:
+        abort(400, "missing input field")
 
-    cmd = "SELECT MAX(ID) FROM salesman"
-    response = connect.queryALL(a)
-    # SQL :
-    # INSERT INTO salesman(ID,Name,Ssn,Title, Salary,age,years_of_experience,Address,Gender)
-    # VALUES(request.json()["Name"],request.json()["Ssn"],request.json()["Title"],request.json()["Salary"],request.json()["age"],request.json()["yoe"],request.json()["Address"],request.json()["Gender"])
     print(request.json())
-    # request.json() should have the following property.
-    # ["Name", "Ssn", "Title", "Salary", "year", "Address", "Gender"]
-    createsalesman(SALESMANID, Name, Ssn, Title, Salary, YearOfExperience, Address, Gender)
+    SALESMANID = request.json()['SALESMANID']
+    Name = request.json()['Name']
+    Ssn = request.json()['Ssn']
+    Title = request.json()['Title']
+    Salary = request.json()['Salary']
+    YearOfExperience = request.json()['YearOfExperience']
+    Address = request.json()['Address']
+    Gender = request.json()['Gender']
+    State = request.json()['State']
+    
+    (SALESMANID, Name, Ssn, Title, Salary, YearOfExperience, Address, Gender, State)
 
 # show if the salesman can be promoted
 @salesman.route('/api/salesman/<int:SALESMANID>', methods = ['GET'])
