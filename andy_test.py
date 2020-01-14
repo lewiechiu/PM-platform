@@ -11,8 +11,10 @@ connect = MySQL_query()
 # cmd = "SELECT * FROM Task WHERE taskID = 2"
 # reponse = connect.queryALL(cmd)
 # print(reponse)
-cmd = "DELETE FROM Task WHERE taskID = 1001"
-connect.query_insertORdelete(cmd)
+cmd = "SELECT name FROM SWE WHERE name = 'Alta Radmer'"
+response = connect.queryALL(cmd)
+response = clean_tuple(response,0)
+print(response[0])
 # '''
 # cmd = "SELECT * FROM Task"
 # response = connect.queryALL(cmd)
