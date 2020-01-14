@@ -1,0 +1,1001 @@
+ID,Talent
+1,C
+3,Data Structures
+5,Web API
+7,HTML
+9,Product Enhancement
+11,C++
+13,CSS
+15,PHP
+17,Agile Scrum Team
+19,Product Enhancement
+21,Shell
+23,Strategic Planning
+25,Deductive Reasoning
+27,Agile Scrum Team
+29,Problem Solving Skills
+31,Version Repository
+33,SQL
+35,Process Analysis
+37,Design Reviews
+39,Microsoft ASP.NET MVC
+41,PHP
+43,CSS
+45,Perl
+47,Version Repository
+49,JavaScript
+51,SaaS
+53,Operating Systems
+55,Problem Solving Skills
+57,Source Code
+59,C++
+61,Optimization
+63,Microsoft ASP.NET MVC
+65,Source Code
+67,Process Analysis
+69,SaaS
+71,Microsoft ASP.NET MVC
+73,Strategic Planning
+75,Shell
+77,Python
+79,SQL
+81,Java
+83,Ruby
+85,Web API
+87,Version Repository
+89,HTML
+91,Perl
+93,UI Toolkits and Frameworks
+95,Product Enhancement
+97,Product Enhancement
+99,HTML
+101,Problem Solving Skills
+103,Optimization
+105,Shell
+107,CSS
+109,Node.js
+111,Shell
+113,Web API
+115,Operating Systems
+117,Perl
+119,C#
+121,JavaScript
+123,Python
+125,Optimization
+127,Microsoft ASP.NET MVC
+129,UI Toolkits and Frameworks
+131,UI Toolkits and Frameworks
+133,C#
+135,Microsoft ASP.NET MVC
+137,Ruby
+139,Python
+141,Node.js
+143,C#
+145,Data Structures
+147,Problem Solving Skills
+149,Python
+151,C++
+153,Java
+155,Version Repository
+157,Python
+159,Operating Systems
+161,C++
+163,C++
+165,Inductive Reasoning
+167,Ruby
+169,Microsoft ASP.NET MVC
+171,Project Management
+173,PHP
+175,Database Architecture
+177,Database Architecture
+179,Web Services
+181,Optimization
+183,C
+185,Java
+187,SaaS
+189,Design Reviews
+191,Computer Architecture
+193,SaaS
+195,Java
+197,Linux Unix
+199,Optimization
+201,Perl
+203,Web API
+205,Product Enhancement
+207,Linux Unix
+209,C
+211,Problem Solving Skills
+213,Web API
+215,Shell
+217,Project Management
+219,Deductive Reasoning
+221,Product Enhancement
+223,C++
+225,Design Reviews
+227,Microsoft ASP.NET MVC
+229,C++
+231,C#
+233,Stress Tolerance
+235,Inductive Reasoning
+237,Database Architecture
+239,PHP
+241,CSS
+243,C#
+245,Data Structures
+247,Optimization
+249,Design Reviews
+251,Optimization
+253,HTML
+255,Project Management
+257,Ruby
+259,Deductive Reasoning
+261,Perl
+263,Inductive Reasoning
+265,Ruby
+267,C#
+269,C++
+271,Web API
+273,Perl
+275,PHP
+277,Microsoft ASP.NET MVC
+279,Microsoft ASP.NET MVC
+281,Optimization
+283,Product Enhancement
+285,Design Reviews
+287,Web API
+289,Python
+291,Inductive Reasoning
+293,C#
+295,Operating Systems
+297,Source Code
+299,C
+301,CSS
+303,HTML
+305,Data Structures
+307,Stress Tolerance
+309,C
+311,Deductive Reasoning
+313,Stress Tolerance
+315,SQL
+317,Operating Systems
+319,Shell
+321,Optimization
+323,Web Services
+325,C++
+327,Web API
+329,Optimization
+331,Microsoft ASP.NET MVC
+333,Strategic Planning
+335,Inductive Reasoning
+337,Python
+339,Data Structures
+341,PHP
+343,JavaScript
+345,Inductive Reasoning
+347,Microsoft ASP.NET MVC
+349,Project Management
+351,Strategic Planning
+353,Web API
+355,Ruby
+357,C
+359,Operating Systems
+361,C++
+363,Strategic Planning
+365,Project Management
+367,SQL
+369,Operating Systems
+371,JavaScript
+373,Product Enhancement
+375,C#
+377,CSS
+379,Problem Solving Skills
+381,SaaS
+383,Operating Systems
+385,Microsoft ASP.NET MVC
+387,Deductive Reasoning
+389,SQL
+391,Database Architecture
+393,Microsoft ASP.NET MVC
+395,Deductive Reasoning
+397,Shell
+399,Product Enhancement
+401,JavaScript
+403,Node.js
+405,Version Repository
+407,Web API
+409,Agile Scrum Team
+411,Design Reviews
+413,Data Structures
+415,Source Code
+417,Version Repository
+419,UI Toolkits and Frameworks
+421,Database Architecture
+423,Optimization
+425,Perl
+427,Computer Architecture
+429,HTML
+431,Strategic Planning
+433,C
+435,Web API
+437,C++
+439,C++
+441,C#
+443,Product Enhancement
+445,Web Services
+447,Project Management
+449,Web Services
+451,HTML
+453,Shell
+455,Design Reviews
+457,Computer Architecture
+459,Design Reviews
+461,C++
+463,SQL
+465,Deductive Reasoning
+467,Java
+469,Version Repository
+471,Deductive Reasoning
+473,Shell
+475,C
+477,Linux Unix
+479,SaaS
+481,Optimization
+483,Database Architecture
+485,JavaScript
+487,Optimization
+489,SaaS
+491,Project Management
+493,C#
+495,Operating Systems
+497,Problem Solving Skills
+499,SaaS
+501,SaaS
+503,SaaS
+505,UI Toolkits and Frameworks
+507,Strategic Planning
+509,Version Repository
+511,SQL
+513,Operating Systems
+515,Data Structures
+517,Shell
+519,C
+521,PHP
+523,UI Toolkits and Frameworks
+525,Perl
+527,Linux Unix
+529,Web Services
+531,C
+533,Project Management
+535,Java
+537,Product Enhancement
+539,Python
+541,Strategic Planning
+543,Computer Architecture
+545,Web API
+547,Python
+549,Computer Architecture
+551,Java
+553,Product Enhancement
+555,SQL
+557,Problem Solving Skills
+559,Project Management
+561,C#
+563,Web Services
+565,C
+567,SQL
+569,SQL
+571,Problem Solving Skills
+573,Python
+575,Microsoft ASP.NET MVC
+577,Problem Solving Skills
+579,Optimization
+581,Process Analysis
+583,Computer Architecture
+585,Computer Architecture
+587,JavaScript
+589,Node.js
+591,UI Toolkits and Frameworks
+593,Python
+595,Design Reviews
+597,JavaScript
+599,C
+601,C
+603,Agile Scrum Team
+605,Agile Scrum Team
+607,Linux Unix
+609,PHP
+611,Web Services
+613,Web API
+615,Perl
+617,Shell
+619,Strategic Planning
+621,Operating Systems
+623,Strategic Planning
+625,Node.js
+627,Design Reviews
+629,Product Enhancement
+631,Web API
+633,Shell
+635,Java
+637,SQL
+639,Agile Scrum Team
+641,Agile Scrum Team
+643,Ruby
+645,Stress Tolerance
+647,Perl
+649,SaaS
+651,UI Toolkits and Frameworks
+653,Linux Unix
+655,Strategic Planning
+657,Product Enhancement
+659,Process Analysis
+661,Database Architecture
+663,Process Analysis
+665,Shell
+667,Version Repository
+669,UI Toolkits and Frameworks
+671,HTML
+673,Shell
+675,Deductive Reasoning
+677,Node.js
+679,C
+681,Operating Systems
+683,Strategic Planning
+685,Problem Solving Skills
+687,SQL
+689,Agile Scrum Team
+691,HTML
+693,PHP
+695,Strategic Planning
+697,PHP
+699,Microsoft ASP.NET MVC
+701,Design Reviews
+703,JavaScript
+705,Perl
+707,PHP
+709,Problem Solving Skills
+711,SaaS
+713,Source Code
+715,Shell
+717,SaaS
+719,Process Analysis
+721,Java
+723,Node.js
+725,Product Enhancement
+727,UI Toolkits and Frameworks
+729,C#
+731,Data Structures
+733,PHP
+735,Perl
+737,Process Analysis
+739,Computer Architecture
+741,Strategic Planning
+743,HTML
+745,Inductive Reasoning
+747,Stress Tolerance
+749,Design Reviews
+751,Java
+753,Computer Architecture
+755,Node.js
+757,Perl
+759,Database Architecture
+761,Shell
+763,Strategic Planning
+765,Ruby
+767,Stress Tolerance
+769,Java
+771,Linux Unix
+773,SaaS
+775,HTML
+777,Optimization
+779,Perl
+781,Inductive Reasoning
+783,Operating Systems
+785,C
+787,Version Repository
+789,Process Analysis
+791,C++
+793,Computer Architecture
+795,Design Reviews
+797,Microsoft ASP.NET MVC
+799,Web Services
+801,Optimization
+803,Optimization
+805,Problem Solving Skills
+807,Inductive Reasoning
+809,Stress Tolerance
+811,SaaS
+813,Project Management
+815,Node.js
+817,C
+819,C#
+821,C#
+823,Perl
+825,Web Services
+827,Java
+829,SaaS
+831,Linux Unix
+833,Linux Unix
+835,Shell
+837,Deductive Reasoning
+839,Data Structures
+841,Product Enhancement
+843,Microsoft ASP.NET MVC
+845,JavaScript
+847,Stress Tolerance
+849,C++
+851,CSS
+853,C#
+855,Data Structures
+857,C++
+859,Computer Architecture
+861,Linux Unix
+863,Data Structures
+865,Web API
+867,Process Analysis
+869,JavaScript
+871,Operating Systems
+873,Operating Systems
+875,Strategic Planning
+877,Source Code
+879,Microsoft ASP.NET MVC
+881,Problem Solving Skills
+883,PHP
+885,Design Reviews
+887,Data Structures
+889,Design Reviews
+891,Optimization
+893,Computer Architecture
+895,Optimization
+897,C++
+899,Linux Unix
+901,Database Architecture
+903,Stress Tolerance
+905,C++
+907,Inductive Reasoning
+909,PHP
+911,JavaScript
+913,C
+915,Version Repository
+917,Python
+919,Web API
+921,Linux Unix
+923,Strategic Planning
+925,C#
+927,Source Code
+929,JavaScript
+931,Design Reviews
+933,Node.js
+935,Database Architecture
+937,CSS
+939,Source Code
+941,Problem Solving Skills
+943,Computer Architecture
+945,Deductive Reasoning
+947,Ruby
+949,HTML
+951,Deductive Reasoning
+953,SQL
+955,Problem Solving Skills
+957,Agile Scrum Team
+959,SaaS
+961,CSS
+963,C++
+965,Product Enhancement
+967,Inductive Reasoning
+969,Project Management
+971,Ruby
+973,Computer Architecture
+975,Strategic Planning
+977,Project Management
+979,Operating Systems
+981,Web Services
+983,Version Repository
+985,C
+987,Project Management
+989,SaaS
+991,SQL
+993,SQL
+995,Deductive Reasoning
+997,SaaS
+999,Product Enhancement
+2,Client Engagement
+4,Customer Success
+6,Sales Presentations Demos
+8,Passionate About Selling
+10,Active Listening
+12,Client Engagement
+14,Relationship Building
+16,Self Motivated Ambitious
+18,Social Selling
+20,Passionate About Selling
+22,Empathetic
+24,Customer Success
+26,Contract Negotiation
+28,Policy Knowledge
+30,Product Knowledge
+32,Tech Savvy
+34,Understanding of Common Business Softwares
+36,Coachable
+38,Sales Presentations Demos
+40,Conflict Management & Resolution
+42,Self Motivated Ambitious
+44,Goal-Oriented
+46,Empathetic
+48,Closing Skills
+50,Understanding of Common Business Softwares
+52,Contract Negotiation
+54,Active Listening
+56,Business Communication
+58,Self Motivated Ambitious
+60,Understanding of Common Business Softwares
+62,Closing Skills
+64,Passionate About Selling
+66,Knowing When To Shut Up
+68,Self Motivated Ambitious
+70,Closing Skills
+72,Time Management
+74,Business Communication
+76,Policy Knowledge
+78,Adaptable
+80,Knowing When To Shut Up
+82,Sales Presentations Demos
+84,Responsible
+86,Referral Selling
+88,Customer Success
+90,Sociable
+92,Collaboration
+94,Goal-Oriented
+96,Collaboration
+98,Empathetic
+100,Understanding of Common Business Softwares
+102,Prospecting
+104,Closing Skills
+106,Business Communication
+108,Coachable
+110,Conflict Management & Resolution
+112,Understanding of Common Business Softwares
+114,Empathetic
+116,Relationship Building
+118,Prospecting
+120,Self Motivated Ambitious
+122,Closing Skills
+124,Lead Qualification
+126,Collaboration
+128,Knowing When To Shut Up
+130,Customer Success
+132,Active Listening
+134,Tech Savvy
+136,Knowing When To Shut Up
+138,Coachable
+140,Product Knowledge
+142,Prospecting
+144,Customer Success
+146,Storytelling
+148,Closing Skills
+150,Policy Knowledge
+152,Goal-Oriented
+154,Understanding of Common Business Softwares
+156,Relationship Building
+158,Social Selling
+160,Client Engagement
+162,Storytelling
+164,Research Information Gathering
+166,Storytelling
+168,Goal-Oriented
+170,Social Selling
+172,Relationship Building
+174,Adaptable
+176,Policy Knowledge
+178,Business Communication
+180,Passionate About Selling
+182,Coachable
+184,Responsible
+186,Adaptable
+188,Tech Savvy
+190,Knowing When To Shut Up
+192,Active Listening
+194,Coachable
+196,Conflict Management & Resolution
+198,Collaboration
+200,Prospecting
+202,Relationship Building
+204,Research Information Gathering
+206,Empathetic
+208,Research Information Gathering
+210,Active Listening
+212,Responsible
+214,Active Listening
+216,Adaptable
+218,Empathetic
+220,Time Management
+222,Referral Selling
+224,Contract Negotiation
+226,Sociable
+228,Empathetic
+230,Collaboration
+232,Knowing When To Shut Up
+234,Sociable
+236,Relationship Building
+238,Client Engagement
+240,Goal-Oriented
+242,Conflict Management & Resolution
+244,Closing Skills
+246,Responsible
+248,Policy Knowledge
+250,Adaptable
+252,Client Engagement
+254,Conflict Management & Resolution
+256,Client Engagement
+258,Collaboration
+260,Collaboration
+262,Customer Success
+264,Passionate About Selling
+266,Sales Presentations Demos
+268,Closing Skills
+270,Tech Savvy
+272,Prospecting
+274,Conflict Management & Resolution
+276,Collaboration
+278,Business Communication
+280,Customer Success
+282,Customer Success
+284,Coachable
+286,Lead Qualification
+288,Storytelling
+290,Policy Knowledge
+292,Tech Savvy
+294,Closing Skills
+296,Client Engagement
+298,Prospecting
+300,Business Communication
+302,Tech Savvy
+304,Understanding of Common Business Softwares
+306,Adaptable
+308,Knowing When To Shut Up
+310,Sociable
+312,Critical Thinking Problem Solving
+314,Goal-Oriented
+316,Adaptable
+318,Social Selling
+320,Collaboration
+322,Business Communication
+324,Conflict Management & Resolution
+326,Client Engagement
+328,Time Management
+330,Responsible
+332,Knowing When To Shut Up
+334,Self Motivated Ambitious
+336,Prospecting
+338,Closing Skills
+340,Client Engagement
+342,Critical Thinking Problem Solving
+344,Sales Presentations Demos
+346,Responsible
+348,Relationship Building
+350,Lead Qualification
+352,Passionate About Selling
+354,Sales Presentations Demos
+356,Time Management
+358,Understanding of Common Business Softwares
+360,Contract Negotiation
+362,Sociable
+364,Referral Selling
+366,Social Selling
+368,Knowing When To Shut Up
+370,Time Management
+372,Knowing When To Shut Up
+374,Sociable
+376,Relationship Building
+378,Sales Presentations Demos
+380,Storytelling
+382,Adaptable
+384,Policy Knowledge
+386,Conflict Management & Resolution
+388,Prospecting
+390,Relationship Building
+392,Research Information Gathering
+394,Social Selling
+396,Conflict Management & Resolution
+398,Lead Qualification
+400,Empathetic
+402,Active Listening
+404,Understanding of Common Business Softwares
+406,Knowing When To Shut Up
+408,Prospecting
+410,Responsible
+412,Referral Selling
+414,Sales Presentations Demos
+416,Policy Knowledge
+418,Storytelling
+420,Tech Savvy
+422,Empathetic
+424,Closing Skills
+426,Adaptable
+428,Sociable
+430,Adaptable
+432,Time Management
+434,Social Selling
+436,Referral Selling
+438,Business Communication
+440,Tech Savvy
+442,Referral Selling
+444,Sales Presentations Demos
+446,Product Knowledge
+448,Sales Presentations Demos
+450,Empathetic
+452,Active Listening
+454,Lead Qualification
+456,Self Motivated Ambitious
+458,Adaptable
+460,Knowing When To Shut Up
+462,Critical Thinking Problem Solving
+464,Sales Presentations Demos
+466,Relationship Building
+468,Sales Presentations Demos
+470,Responsible
+472,Research Information Gathering
+474,Coachable
+476,Research Information Gathering
+478,Research Information Gathering
+480,Closing Skills
+482,Referral Selling
+484,Referral Selling
+486,Passionate About Selling
+488,Goal-Oriented
+490,Goal-Oriented
+492,Policy Knowledge
+494,Sales Presentations Demos
+496,Critical Thinking Problem Solving
+498,Self Motivated Ambitious
+500,Coachable
+502,Passionate About Selling
+504,Self Motivated Ambitious
+506,Closing Skills
+508,Business Communication
+510,Contract Negotiation
+512,Customer Success
+514,Client Engagement
+516,Lead Qualification
+518,Relationship Building
+520,Business Communication
+522,Client Engagement
+524,Prospecting
+526,Storytelling
+528,Self Motivated Ambitious
+530,Business Communication
+532,Customer Success
+534,Understanding of Common Business Softwares
+536,Knowing When To Shut Up
+538,Time Management
+540,Responsible
+542,Knowing When To Shut Up
+544,Relationship Building
+546,Understanding of Common Business Softwares
+548,Closing Skills
+550,Passionate About Selling
+552,Conflict Management & Resolution
+554,Passionate About Selling
+556,Contract Negotiation
+558,Closing Skills
+560,Business Communication
+562,Sociable
+564,Social Selling
+566,Lead Qualification
+568,Knowing When To Shut Up
+570,Self Motivated Ambitious
+572,Empathetic
+574,Business Communication
+576,Sales Presentations Demos
+578,Coachable
+580,Time Management
+582,Social Selling
+584,Prospecting
+586,Referral Selling
+588,Closing Skills
+590,Adaptable
+592,Active Listening
+594,Social Selling
+596,Understanding of Common Business Softwares
+598,Social Selling
+600,Passionate About Selling
+602,Self Motivated Ambitious
+604,Customer Success
+606,Customer Success
+608,Goal-Oriented
+610,Lead Qualification
+612,Goal-Oriented
+614,Storytelling
+616,Social Selling
+618,Understanding of Common Business Softwares
+620,Sociable
+622,Business Communication
+624,Adaptable
+626,Research Information Gathering
+628,Self Motivated Ambitious
+630,Coachable
+632,Adaptable
+634,Storytelling
+636,Prospecting
+638,Storytelling
+640,Active Listening
+642,Policy Knowledge
+644,Responsible
+646,Tech Savvy
+648,Research Information Gathering
+650,Sociable
+652,Critical Thinking Problem Solving
+654,Client Engagement
+656,Sales Presentations Demos
+658,Prospecting
+660,Responsible
+662,Tech Savvy
+664,Policy Knowledge
+666,Social Selling
+668,Collaboration
+670,Self Motivated Ambitious
+672,Product Knowledge
+674,Responsible
+676,Customer Success
+678,Contract Negotiation
+680,Empathetic
+682,Understanding of Common Business Softwares
+684,Relationship Building
+686,Contract Negotiation
+688,Responsible
+690,Referral Selling
+692,Relationship Building
+694,Responsible
+696,Contract Negotiation
+698,Critical Thinking Problem Solving
+700,Closing Skills
+702,Passionate About Selling
+704,Passionate About Selling
+706,Social Selling
+708,Relationship Building
+710,Relationship Building
+712,Active Listening
+714,Responsible
+716,Business Communication
+718,Sales Presentations Demos
+720,Passionate About Selling
+722,Sales Presentations Demos
+724,Client Engagement
+726,Social Selling
+728,Responsible
+730,Prospecting
+732,Contract Negotiation
+734,Understanding of Common Business Softwares
+736,Customer Success
+738,Business Communication
+740,Goal-Oriented
+742,Coachable
+744,Goal-Oriented
+746,Research Information Gathering
+748,Sociable
+750,Collaboration
+752,Knowing When To Shut Up
+754,Conflict Management & Resolution
+756,Collaboration
+758,Knowing When To Shut Up
+760,Collaboration
+762,Product Knowledge
+764,Business Communication
+766,Conflict Management & Resolution
+768,Conflict Management & Resolution
+770,Goal-Oriented
+772,Sales Presentations Demos
+774,Referral Selling
+776,Coachable
+778,Contract Negotiation
+780,Passionate About Selling
+782,Critical Thinking Problem Solving
+784,Adaptable
+786,Business Communication
+788,Self Motivated Ambitious
+790,Referral Selling
+792,Lead Qualification
+794,Critical Thinking Problem Solving
+796,Sales Presentations Demos
+798,Policy Knowledge
+800,Storytelling
+802,Contract Negotiation
+804,Referral Selling
+806,Storytelling
+808,Active Listening
+810,Social Selling
+812,Knowing When To Shut Up
+814,Research Information Gathering
+816,Passionate About Selling
+818,Lead Qualification
+820,Product Knowledge
+822,Closing Skills
+824,Product Knowledge
+826,Policy Knowledge
+828,Customer Success
+830,Passionate About Selling
+832,Social Selling
+834,Sales Presentations Demos
+836,Relationship Building
+838,Business Communication
+840,Self Motivated Ambitious
+842,Social Selling
+844,Contract Negotiation
+846,Contract Negotiation
+848,Active Listening
+850,Goal-Oriented
+852,Sociable
+854,Time Management
+856,Time Management
+858,Adaptable
+860,Coachable
+862,Knowing When To Shut Up
+864,Tech Savvy
+866,Closing Skills
+868,Understanding of Common Business Softwares
+870,Collaboration
+872,Active Listening
+874,Coachable
+876,Customer Success
+878,Client Engagement
+880,Collaboration
+882,Understanding of Common Business Softwares
+884,Lead Qualification
+886,Client Engagement
+888,Relationship Building
+890,Storytelling
+892,Product Knowledge
+894,Knowing When To Shut Up
+896,Sales Presentations Demos
+898,Product Knowledge
+900,Conflict Management & Resolution
+902,Tech Savvy
+904,Goal-Oriented
+906,Adaptable
+908,Prospecting
+910,Contract Negotiation
+912,Time Management
+914,Self Motivated Ambitious
+916,Active Listening
+918,Social Selling
+920,Lead Qualification
+922,Collaboration
+924,Adaptable
+926,Sales Presentations Demos
+928,Closing Skills
+930,Goal-Oriented
+932,Passionate About Selling
+934,Product Knowledge
+936,Client Engagement
+938,Collaboration
+940,Research Information Gathering
+942,Knowing When To Shut Up
+944,Lead Qualification
+946,Goal-Oriented
+948,Sales Presentations Demos
+950,Research Information Gathering
+952,Understanding of Common Business Softwares
+954,Storytelling
+956,Self Motivated Ambitious
+958,Relationship Building
+960,Empathetic
+962,Product Knowledge
+964,Research Information Gathering
+966,Sales Presentations Demos
+968,Client Engagement
+970,Research Information Gathering
+972,Responsible
+974,Closing Skills
+976,Client Engagement
+978,Lead Qualification
+980,Lead Qualification
+982,Referral Selling
+984,Self Motivated Ambitious
+986,Knowing When To Shut Up
+988,Empathetic
+990,Social Selling
+992,Social Selling
+994,Self Motivated Ambitious
+996,Passionate About Selling
+998,Coachable
+1000,Contract Negotiation

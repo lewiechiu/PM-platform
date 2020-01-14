@@ -20,6 +20,9 @@ class MySQL_query:
         self.cur.execute(cmd)
         self.con.commit()
         return self.cur.fetchone()
-    def __del__(self):
-        self.cur.close()
-        self.con.close()
+    def get_cur(self):
+        return self.cur
+    
+    # def __del__(self):
+    #     self.cur.close()
+    #     self.con.close()
