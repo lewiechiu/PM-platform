@@ -184,7 +184,7 @@ def SWEProject(state, swe_id=None):
         for i in range(len(SWE_ID)):
             dict_that_go_into_list["SWE_id"] = SWE_ID[i]
             dict_that_go_into_list["Name"] = SWE_Name[i]
-            cmd2 = "SELECT COUNT(P_ID) FROM Project P,Project_SWE WHERE P_ID = P.project_ID and  SWE_ID = "
+            cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECT = P.PROJECTID and  PS.SWEID = "
             cmd2 = cmd2 + str(SWE_ID[i]) +" and P.state = '" + state + "'"
             response2 = connect.queryALL(cmd2)
             response2 = clean_tuple(response2,0)
@@ -194,14 +194,14 @@ def SWEProject(state, swe_id=None):
         #SQL:
         return_list_of_dict = []
         dict_that_go_into_list = {}
-        cmd = "SELECT ID,Name FROM SWE WHERE ID = "
+        cmd = "SELECT SWEID,Name FROM SWE WHERE SWEID = "
         cmd = cmd + str(swe_id)
         response = connect.queryALL(cmd)
         SWE_ID = clean_tuple(reponse,0)
         SWE_Name = clean_tuple(response,1)
         dict_that_go_into_list["SWE_id"] = SWE_ID[0]
         dict_that_go_into_list["Name"] = SWE_Name[0]
-        cmd2 = "SELECT COUNT(P_ID) FROM Project P,Project_SWE WHERE P_ID = P.project_ID and  SWE_ID = "
+        cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECTID = P.PROJECTID and  PS.SWEID = "
         cmd2 = cmd2 + str(SWE_ID[0])+" and P.state = '" + state + "'"
         response2 = connect.queryALL(cmd2)
         response2 = clean_tuple(response2,0)
@@ -214,7 +214,7 @@ def SWEProject(state, swe_id=None):
 def SWEExist(swe_id):
     #SQL:
     #SELECT ID FROM SWE WHEWE ID=swe_id
-    cmd = "SELECT ID FROM SWE WHEWE ID=" + str(swe_id)
+    cmd = "SELECT SWEID FROM SWE WHEWE SWEID=" + str(swe_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
     if len(response) > 0:
@@ -249,7 +249,7 @@ def ProjectExist(project_id):
     # query if the project_ID exists
     # SQL:
     #SELECT project_ID FROM Project WHERE project_ID = 
-    cmd = "SELECT project_ID FROM Project WHERE project_ID = "
+    cmd = "SELECT PROJECTID FROM Project WHERE PROJECTID = "
     cmd = cmd + str(project_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
@@ -284,18 +284,18 @@ def ProgressProject(project_id=None):
     if project_id == None:
     # SQL:
     # SELECT COUNT(P_ID) FROM Task WHERE state = 'in-progess'
-        cmd = "SELECT COUNT(P_ID) FROM Task WHERE state = "
+        cmd = "SELECT COUNT(PROJECTID) FROM Task WHERE State = "
         cmd =cmd + in_progress
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['No_id'] = int(response[0])
-        cmd = "SELECT P_ID FROM Task WHERE state = "
+        cmd = "SELECT PROJECTID FROM Task WHERE State = "
         cmd =cmd + in_progress
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['Projects'] = response
     else:
-        cmd = "SELECT taskID FROM Task WHERE state="
+        cmd = "SELECT TASKID FROM Task WHERE State="
         cmd = cmd + in_progress + " and P_ID =" + str(project_id)
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
@@ -319,16 +319,16 @@ def GetProjectTalent(project_id):
     # SQL:
     # SELECT SWE_ID FROM Project_SWE WHERE P_ID =
     list_to_be_json = []
-    cmd = "SELECT SWE_ID FROM Project_SWE WHERE P_ID =" + str(project_id)
+    cmd = "SELECT SWEID FROM Project_SWE WHERE PROJECTID =" + str(project_id)
     reponse = connect.queryALL(cmd)
     list_of_swe_id = clean_tuple(response,0)
     for i in list_of_swe_id:
         dict_itr = {}
-        cmd2 = "SELECT Name,title FROM SWE WHERE ID=" + str(i)
+        cmd2 = "SELECT Name,Title FROM SWE WHERE SWEID=" + str(i)
         reponse2 = connect.queryALL(cmd2)
         swe_Name = clean_tuple(reponse2,0)
         swe_title = clean_tuple(reponse2,1)
-        cmd3 = "SELECT talent FROM Talent WHERE ID = " + str(i)
+        cmd3 = "SELECT Talent FROM Talent WHERE ID = " + str(i)
         reponse3 = connect.queryALL(cmd3)
         swe_talents = clean_tuple(reponse3,0)
         dict_itr['Name'] = swe_Name[0]
@@ -341,7 +341,7 @@ def GetProjectTalent(project_id):
 def ResourceExist(resource_id):
     # SQL:
     # SELECT resourceID FROM resource WHERE resourceID = 
-    cmd = "SELECT resourceID FROM resource WHERE resourceID = "
+    cmd = "SELECT RESOURCEID FROM Resources WHERE RESOURCEID = "
     cmd = cmd + str(resource_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
@@ -360,12 +360,12 @@ def AllocateNewResource(resource_id, task_id):
     # return False
     # SQL:
     # SELECT capacity FROM resource WHERE resourceID = 
-    cmd = "SELECT capacity FROM resource WHERE resourceID = "
+    cmd = "SELECT Capacity FROM Resources WHERE RESOURCEID = "
     cmd = cmd + str(resource_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
     max_amount = int(response[0])
-    cmd2 = "SELECT SUM(amount) FROM Task_Resource WHERE R_ID = "
+    cmd2 = "SELECT SUM(Amount) FROM Task_Resources WHERE RESOURCEID = "
     cmd2 = cmd2 + str(resource_id)
     response2 = connect.queryALL(cmd2)
     response2 = clean_tuple(response2,0)
@@ -382,7 +382,7 @@ def TaskExist(task_id):
      # Check if the task of task id is present (task)
      # SQL:
      # SELECT taskID FROM Task WHERE taskID =
-     cmd = "SELECT taskID FROM Task WHERE taskID = " + str(task_id)
+     cmd = "SELECT TASKID FROM Task WHERE TASKID = " + str(task_id)
      response = connect.queryALL(cmd)
      response = clean_tuple(response,0)
      if len(response) > 0:
