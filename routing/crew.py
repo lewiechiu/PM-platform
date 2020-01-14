@@ -3,7 +3,9 @@ from mysql_conf import *
 crew = Blueprint('crew', __name__, template_folder='../templates')
 
 connect = MySQL_query()
-
+resp = connect.queryALL("SELECT ....")
+resp = [(), (), ...]
+[()]
 
 
 # Create
