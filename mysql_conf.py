@@ -19,7 +19,7 @@ class MySQL_query:
     def query_insertORdelete(self, cmd):
         self.cur.execute(cmd)
         self.con.commit()
-        return self.cur.fetchone()
+    #    return self.cur.fetchone()
     def get_cur(self):
         return self.cur
     

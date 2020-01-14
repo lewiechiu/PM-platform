@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
-salesman = Blueprint('salesman', __Name__, template_folder='../templates')
-from basic_function import * 
+salesman = Blueprint('salesman', __name__, template_folder='../templates')
+#from basic_function import * 
 
     # Know what each salesman is accountable for. (sales item)
     # Set KPI for each of the salesmen.
