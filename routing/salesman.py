@@ -5,7 +5,6 @@ from routing.basic_function import *
 import json
 con = MySQL_query()
 
-    
 
 # Create salesman
 @salesman.route('/api/salesman/', methods = ['POST'])
@@ -53,6 +52,20 @@ def show_order_experience(SALESMANID):
     return jsonify(resp)
 
 
+
+# Select certain Talents of the People
+@salesman.route('/api/salesman/get_all_salesman_Talent', methods = ['GET'])
+def get_all_salesman_Talent():
+    TABLE = "DB2019FP.Talent"
+    SQL_command = "SELECT DISTINCT Talent FROM {} WHERE ID%2 = 0;".format(TABLE)
+    print(SQL_command)
+    cursor = con.get_cur()
+    cursor.execute(SQL_command)
+    talentLis = cursor.fetchall()
+    res = [talent[0] for talent in talentLis]
+
+    return jsonify(res)
+
 # Select certain Talents of the People
 @salesman.route('/api/salesman/select_by_Talent/<string:Talent>', methods = ['GET'])
 def select_by_Talent(Talent):
@@ -60,32 +73,7 @@ def select_by_Talent(Talent):
     if not exist:
         return abort(400, "Talent: {} does NOT EXIST".format(Talent))
     
-    #SWE
-    TABLE = "DB2019FP.Talent"
-    SQL_command = "SELECT ID FROM {} WHERE Talent={};".format(TABLE, Talent)
-    cursor = con.get_cur()
-    cursor.execute(SQL_command)
-    IDLis = [i[0] for i in cursor.fetchall()]
-    resp = []
-    print(SQL_command)
-    print(IDLis)
-    for _id in IDLis:
-        if(int(_id)%2==0):
-            #salesman
-            TABLE = "DB2019FP.Salesman"
-            SQL_command = "SELECT Name, Title FROM {} WHERE SALESMANID={};".format(TABLE, _id)
-        else:
-            #swe
-            TABLE = "DB2019FP.SWE"
-            SQL_command = "SELECT Name, Title FROM {} WHERE SWEID={};".format(TABLE, _id)
-        
-        cursor.execute(SQL_command)
-        Name, Title = cursor.fetchall()[0]
-        header = ['ID','Name','Title']
-        values = [_id, Name,Title]
-        resp.append(dict(zip(header,values)))
-
-    return jsonify(resp)
+    return jsonify(SelectByTalent(Talent))
 
 
 # Show the background, basic info for each person.
