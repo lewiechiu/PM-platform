@@ -3,13 +3,13 @@ from mysql_conf import *
 order = Blueprint('order', __name__, template_folder='../templates')
 
 con = MySQL_query()
-params = ["Established_Date", "End_Date", "Deadline", "Salesman_ID", "Price", "state"]
+params = ["EstablishTime", "EndTime", "Deadline", "SALESMANID", "Price", "State"]
 
 # dummy_state = jsonify({"status": 200})
 # Create
 @order.route('/api/order/', methods = ['POST'])
 def create_order():
-    params = ["Established_Date", "End_Date", "Deadline", "Salesman_ID", "Price", "state"]
+    params = ["EstablishTime", "EndTime", "Deadline", "SALESMANID", "Price", "State"]
     fillin = [None] * 6
     body = request.get_json()
     print(body)
@@ -18,9 +18,9 @@ def create_order():
             continue
         else:
             return "missing params"
-    next_id = con.query1("SELECT MAX(OrderID) FROM db2019FP.Order;")
+    next_id = con.query1("SELECT MAX(ORDERID) FROM DB2019FP.Order;")
     print("Next available id: {}".format(next_id))
-    SQL_command = "INSERT INTO db2019FP.Order VALUES( {}, '{}', '{}' ,'{}' , {} , {});".format(next_id[0]+1, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]])
+    SQL_command = "INSERT INTO DB2019FP.Order VALUES( {}, '{}', '{}' ,'{}' , {} , {}, '{}');".format(next_id[0]+1, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]])
     print("## SQL command to execute: ", SQL_command)
     con.query_insertORdelete(SQL_command)
     return jsonify({"status": 200})
@@ -38,13 +38,13 @@ def create_order():
 
 @order.route('/api/order/priority', methods = ['GET'])
 def get_order_priority():
-    SQL_command = "SELECT * FROM db2019FP.Order ORDER BY Price DESC;"
+    SQL_command = "SELECT * FROM DB2019FP.Order ORDER BY Price DESC;"
     query_result = con.queryALL(SQL_command)
     resp = []
     
     cur = con.get_cur()
     print(query_result)
-    cur.execute("SELECT * FROM db2019FP.Order WHERE OrderID=1;")
+    cur.execute("SELECT * FROM DB2019FP.Order WHERE OrderID=1;")
     row_headers=[x[0] for x in cur.description] #this will extract row headers
     rv = cur.fetchall()
     
@@ -56,13 +56,13 @@ def get_order_priority():
 
 @order.route('/api/order/project_state/<orderID>', methods = ['GET'])
 def get_ProjectState_of_Order(orderID):
-    SQL_command = "SELECT * FROM db2019FP.Project WHERE Order_ID={}".format(orderID)
+    SQL_command = "SELECT * FROM DB2019FP.Project WHERE ORDERID={}".format(orderID)
     print(SQL_command)
     query_result = con.queryALL(SQL_command)
 
     cur = con.get_cur()
     print(query_result)
-    cur.execute("SELECT * FROM db2019FP.Project WHERE project_ID=1;")
+    cur.execute("SELECT * FROM DB2019FP.Project WHERE PROJECTID=1;")
     row_headers=[x[0] for x in cur.description] #this will extract row headers
     rv = cur.fetchall()
     resp = []
@@ -72,15 +72,15 @@ def get_ProjectState_of_Order(orderID):
     return jsonify(resp)
     
 
-@order.route('/api/order/salesman/<salesID>', methods = ['GET'])
-def get_sales_of_Order(salesID):
-    SQL_command = "SELECT * FROM db2019FP.Project WHERE Order_ID={}".format(orderID)
+@order.route('/api/order/salesman/<orderID>', methods = ['GET'])
+def get_sales_of_Order(orderID):
+    SQL_command = "SELECT * FROM DB2019FP.Salesman WHERE SALESMANID = (SELECT SALESMANID FROM DB2019FP.Order WHERE ORDERID={})".format(orderID)
     print(SQL_command)
     query_result = con.queryALL(SQL_command)
 
     cur = con.get_cur()
     print(query_result)
-    cur.execute("SELECT * FROM db2019FP.Project WHERE project_ID=1;")
+    cur.execute("SELECT * FROM DB2019FP.Salesman WHERE SALESMANID=2;")
     row_headers=[x[0] for x in cur.description] #this will extract row headers
     rv = cur.fetchall()
     resp = []
@@ -89,19 +89,27 @@ def get_sales_of_Order(salesID):
 
     return jsonify(resp)
     
+@order.route('/api/order/<orderID>', methods = ['PUT'])
+def update_order_state(orderID):
+    body = request.get_json()
+    print(body)
+    for i in body.keys():
+        if i in params:
+            continue
+        else:
+            return "illegal param: {}".format(i)
+    for i in body.keys():
+        SQL_command = "UPDATE DB2019FP.Order SET {}='{}' WHERE ORDERID={};".format(i, body[i], orderID)
+        print(SQL_command)
+        con.query_insertORdelete(SQL_command)
+    return jsonify({"status" : 200})
 
 
 # Read
-# View order priority 
-# Formula: consider time and price
 # Know the current progress of each child project
 # Contain a set of projects.  
 # Each project itself can link to its own project management page.
-# show responsible salesman
 
-# Update
-# Update an order.
-# Modify an order’s project, ending date.
 
 # Delete
 # An order can be marked as due when the day of 交付 has arrived.

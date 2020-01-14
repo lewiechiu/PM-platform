@@ -3,7 +3,7 @@
 .main {
     margin-left: 100px;
     padding: 1em 10px;
-    z-index: 0;
+    z-index: -2;
 }
 
 .inline {
@@ -44,7 +44,7 @@ body {
     left: 0;
     top: 0;
     height: 100%;
-    z-index: 1;
+    z-index: 0;
     overflow-x: hidden;
     padding-top: 1em;
     padding-right: 0;
@@ -88,7 +88,7 @@ body {
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 0;
+    z-index: 1;
 }
 
 .slide-content a{
@@ -96,13 +96,10 @@ body {
 }
 
 .button{
-    z-index: 0;
+    z-index: -1;
 }
 
-.expandable:hover .slide-content{
-    display: block;
-    z-index: 1;
-}
+.expandable:hover .slide-content {display: block;}
 
 .backbtn {
     position: absolute;
@@ -120,11 +117,9 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-
 table.fulltable{
-    z-index: 0;
+    z-index: -1;
 }
-
 table.fulltable thead th {
 	vertical-align: top;
 }
