@@ -1,0 +1,1001 @@
+TASKID,State,Category,PROJECTID
+1,in-progress, dataanalysis,403
+2, finished, PCsofware,103
+3,in-progress, MobileApp,582
+4, finished, WebApp,952
+5,in-progress, WebApp,833
+6, finished, dataanalysis,242
+7,in-progress, MobileApp,186
+8, finished, MobileApp,543
+9,in-progress, MobileApp,948
+10, finished, MobileApp,364
+11,in-progress, PCsofware,179
+12, finished, WebApp,671
+13,in-progress, MobileApp,1
+14, finished, dataanalysis,62
+15,in-progress, MobileApp,422
+16, finished, MobileApp,674
+17,in-progress, dataanalysis,866
+18, finished, WebApp,128
+19,in-progress,bug,693
+20, finished, PCsofware,24
+21,in-progress,bug,422
+22, finished, PCsofware,23
+23,in-progress, dataanalysis,733
+24, finished, dataanalysis,248
+25,in-progress, WebApp,388
+26, finished,bug,369
+27,in-progress, WebApp,731
+28, finished, dataanalysis,178
+29,in-progress, MobileApp,214
+30, finished, WebApp,9
+31,in-progress, MobileApp,591
+32, finished, WebApp,162
+33,in-progress,bug,334
+34, finished,bug,563
+35,in-progress, dataanalysis,442
+36, finished,bug,737
+37,in-progress, dataanalysis,85
+38, finished,bug,763
+39,in-progress, MobileApp,347
+40, finished, WebApp,968
+41,in-progress, dataanalysis,747
+42, finished, dataanalysis,199
+43,in-progress, WebApp,631
+44, finished, dataanalysis,498
+45,in-progress,bug,40
+46, finished, dataanalysis,174
+47,in-progress, dataanalysis,230
+48, finished, PCsofware,465
+49,in-progress,bug,197
+50, finished, dataanalysis,61
+51,in-progress, PCsofware,377
+52, finished,bug,743
+53,in-progress, PCsofware,503
+54, finished, WebApp,215
+55,in-progress, WebApp,437
+56, finished, WebApp,96
+57,in-progress, MobileApp,701
+58, finished, dataanalysis,938
+59,in-progress, dataanalysis,410
+60, finished, MobileApp,217
+61,in-progress, MobileApp,104
+62, finished, WebApp,85
+63,in-progress, dataanalysis,172
+64, finished, WebApp,287
+65,in-progress, dataanalysis,123
+66, finished, WebApp,514
+67,in-progress, dataanalysis,808
+68, finished, dataanalysis,421
+69,in-progress, MobileApp,210
+70, finished,bug,657
+71,in-progress, WebApp,960
+72, finished, dataanalysis,82
+73,in-progress,bug,568
+74, finished, PCsofware,251
+75,in-progress, dataanalysis,561
+76, finished, PCsofware,126
+77,in-progress, PCsofware,505
+78, finished, dataanalysis,997
+79,in-progress, MobileApp,321
+80, finished, WebApp,832
+81,in-progress, PCsofware,916
+82, finished, WebApp,721
+83,in-progress, dataanalysis,561
+84, finished, dataanalysis,844
+85,in-progress, MobileApp,39
+86, finished, dataanalysis,338
+87,in-progress,bug,76
+88, finished, WebApp,415
+89,in-progress, MobileApp,413
+90, finished,bug,962
+91,in-progress, PCsofware,380
+92, finished, MobileApp,764
+93,in-progress, MobileApp,396
+94, finished, dataanalysis,126
+95,in-progress,bug,154
+96, finished, MobileApp,496
+97,in-progress, WebApp,342
+98, finished, dataanalysis,383
+99,in-progress, MobileApp,412
+100, finished,bug,181
+101,in-progress, WebApp,724
+102, finished, PCsofware,770
+103,in-progress, WebApp,366
+104, finished, WebApp,219
+105,in-progress, PCsofware,321
+106, finished, MobileApp,803
+107,in-progress,bug,645
+108, finished,bug,364
+109,in-progress,bug,549
+110, finished, WebApp,850
+111,in-progress,bug,830
+112, finished, MobileApp,349
+113,in-progress,bug,197
+114, finished, WebApp,404
+115,in-progress, PCsofware,682
+116, finished, MobileApp,288
+117,in-progress, WebApp,277
+118, finished, dataanalysis,547
+119,in-progress,bug,857
+120, finished, MobileApp,206
+121,in-progress, dataanalysis,830
+122, finished, WebApp,377
+123,in-progress, WebApp,522
+124, finished, WebApp,577
+125,in-progress, MobileApp,205
+126, finished, dataanalysis,414
+127,in-progress, dataanalysis,960
+128, finished, dataanalysis,629
+129,in-progress, MobileApp,190
+130, finished, MobileApp,878
+131,in-progress, PCsofware,837
+132, finished, WebApp,793
+133,in-progress, MobileApp,276
+134, finished, WebApp,7
+135,in-progress, dataanalysis,74
+136, finished, MobileApp,585
+137,in-progress, MobileApp,684
+138, finished, MobileApp,19
+139,in-progress, MobileApp,306
+140, finished, dataanalysis,500
+141,in-progress, PCsofware,284
+142, finished,bug,24
+143,in-progress, PCsofware,234
+144, finished, dataanalysis,278
+145,in-progress,bug,560
+146, finished, dataanalysis,876
+147,in-progress,bug,655
+148, finished, PCsofware,615
+149,in-progress, MobileApp,450
+150, finished,bug,724
+151,in-progress, WebApp,61
+152, finished, PCsofware,349
+153,in-progress, PCsofware,502
+154, finished, MobileApp,96
+155,in-progress, MobileApp,281
+156, finished, WebApp,953
+157,in-progress, PCsofware,444
+158, finished, dataanalysis,233
+159,in-progress, dataanalysis,319
+160, finished, MobileApp,429
+161,in-progress, PCsofware,598
+162, finished, PCsofware,993
+163,in-progress, WebApp,455
+164, finished, PCsofware,451
+165,in-progress,bug,562
+166, finished, dataanalysis,280
+167,in-progress,bug,981
+168, finished, PCsofware,539
+169,in-progress,bug,38
+170, finished, WebApp,893
+171,in-progress, WebApp,474
+172, finished, MobileApp,444
+173,in-progress, WebApp,89
+174, finished, dataanalysis,216
+175,in-progress, dataanalysis,942
+176, finished, PCsofware,964
+177,in-progress,bug,908
+178, finished, dataanalysis,914
+179,in-progress, PCsofware,149
+180, finished,bug,957
+181,in-progress, MobileApp,766
+182, finished, PCsofware,201
+183,in-progress, dataanalysis,562
+184, finished, MobileApp,526
+185,in-progress, PCsofware,13
+186, finished,bug,756
+187,in-progress,bug,884
+188, finished, PCsofware,923
+189,in-progress, PCsofware,195
+190, finished, WebApp,19
+191,in-progress, MobileApp,302
+192, finished, MobileApp,154
+193,in-progress, dataanalysis,610
+194, finished, PCsofware,955
+195,in-progress, WebApp,94
+196, finished, PCsofware,415
+197,in-progress, dataanalysis,285
+198, finished, MobileApp,71
+199,in-progress, MobileApp,520
+200, finished, MobileApp,53
+201,in-progress,bug,310
+202, finished, PCsofware,171
+203,in-progress, dataanalysis,501
+204, finished, MobileApp,364
+205,in-progress, PCsofware,796
+206, finished, dataanalysis,455
+207,in-progress, dataanalysis,556
+208, finished,bug,305
+209,in-progress, WebApp,256
+210, finished, PCsofware,425
+211,in-progress, MobileApp,255
+212, finished, PCsofware,218
+213,in-progress, MobileApp,682
+214, finished, WebApp,904
+215,in-progress, dataanalysis,618
+216, finished, PCsofware,64
+217,in-progress, WebApp,509
+218, finished, dataanalysis,953
+219,in-progress, WebApp,467
+220, finished, PCsofware,539
+221,in-progress, PCsofware,229
+222, finished, WebApp,574
+223,in-progress, MobileApp,452
+224, finished, MobileApp,435
+225,in-progress, dataanalysis,677
+226, finished, dataanalysis,863
+227,in-progress, WebApp,67
+228, finished,bug,677
+229,in-progress, MobileApp,336
+230, finished, WebApp,464
+231,in-progress,bug,743
+232, finished, WebApp,95
+233,in-progress, PCsofware,198
+234, finished,bug,280
+235,in-progress,bug,316
+236, finished, PCsofware,436
+237,in-progress, dataanalysis,58
+238, finished, dataanalysis,165
+239,in-progress, WebApp,884
+240, finished, MobileApp,537
+241,in-progress, MobileApp,742
+242, finished,bug,625
+243,in-progress, MobileApp,949
+244, finished, MobileApp,533
+245,in-progress, PCsofware,91
+246, finished, dataanalysis,768
+247,in-progress, dataanalysis,712
+248, finished, MobileApp,564
+249,in-progress, WebApp,313
+250, finished, MobileApp,188
+251,in-progress, WebApp,347
+252, finished,bug,780
+253,in-progress, MobileApp,397
+254, finished,bug,76
+255,in-progress, dataanalysis,197
+256, finished, dataanalysis,630
+257,in-progress, MobileApp,910
+258, finished, PCsofware,24
+259,in-progress, MobileApp,397
+260, finished, dataanalysis,565
+261,in-progress, MobileApp,485
+262, finished, dataanalysis,571
+263,in-progress, MobileApp,923
+264, finished,bug,157
+265,in-progress,bug,345
+266, finished, WebApp,580
+267,in-progress, PCsofware,201
+268, finished,bug,792
+269,in-progress, PCsofware,791
+270, finished, MobileApp,272
+271,in-progress,bug,718
+272, finished,bug,158
+273,in-progress, PCsofware,314
+274, finished, WebApp,482
+275,in-progress,bug,839
+276, finished,bug,112
+277,in-progress, MobileApp,296
+278, finished, dataanalysis,478
+279,in-progress, MobileApp,271
+280, finished, MobileApp,564
+281,in-progress, WebApp,745
+282, finished, dataanalysis,554
+283,in-progress, WebApp,287
+284, finished, MobileApp,798
+285,in-progress, PCsofware,358
+286, finished, MobileApp,897
+287,in-progress,bug,337
+288, finished, WebApp,910
+289,in-progress, MobileApp,91
+290, finished, PCsofware,965
+291,in-progress,bug,289
+292, finished, dataanalysis,563
+293,in-progress, dataanalysis,596
+294, finished, WebApp,732
+295,in-progress,bug,585
+296, finished, PCsofware,143
+297,in-progress, PCsofware,434
+298, finished, MobileApp,761
+299,in-progress, PCsofware,409
+300, finished, PCsofware,739
+301,in-progress, WebApp,435
+302, finished, dataanalysis,341
+303,in-progress, PCsofware,543
+304, finished, MobileApp,61
+305,in-progress,bug,701
+306, finished, WebApp,802
+307,in-progress,bug,69
+308, finished, MobileApp,106
+309,in-progress, MobileApp,382
+310, finished,bug,175
+311,in-progress, PCsofware,634
+312, finished, WebApp,189
+313,in-progress, dataanalysis,18
+314, finished, MobileApp,599
+315,in-progress, PCsofware,91
+316, finished, PCsofware,959
+317,in-progress, PCsofware,861
+318, finished, dataanalysis,913
+319,in-progress, dataanalysis,755
+320, finished, MobileApp,741
+321,in-progress, MobileApp,332
+322, finished, MobileApp,531
+323,in-progress, dataanalysis,274
+324, finished, dataanalysis,39
+325,in-progress,bug,801
+326, finished, PCsofware,683
+327,in-progress, MobileApp,439
+328, finished,bug,867
+329,in-progress, dataanalysis,239
+330, finished,bug,16
+331,in-progress, dataanalysis,731
+332, finished,bug,550
+333,in-progress,bug,666
+334, finished,bug,223
+335,in-progress,bug,44
+336, finished, MobileApp,292
+337,in-progress,bug,570
+338, finished,bug,549
+339,in-progress, dataanalysis,319
+340, finished, PCsofware,948
+341,in-progress, WebApp,106
+342, finished, MobileApp,547
+343,in-progress, PCsofware,955
+344, finished, WebApp,822
+345,in-progress, dataanalysis,392
+346, finished, WebApp,784
+347,in-progress, MobileApp,326
+348, finished, MobileApp,71
+349,in-progress, PCsofware,540
+350, finished,bug,915
+351,in-progress, MobileApp,576
+352, finished, WebApp,339
+353,in-progress, MobileApp,157
+354, finished, MobileApp,638
+355,in-progress,bug,71
+356, finished, MobileApp,153
+357,in-progress, dataanalysis,101
+358, finished, WebApp,371
+359,in-progress,bug,19
+360, finished, dataanalysis,919
+361,in-progress, dataanalysis,266
+362, finished,bug,201
+363,in-progress, WebApp,645
+364, finished, WebApp,202
+365,in-progress,bug,164
+366, finished, MobileApp,620
+367,in-progress,bug,128
+368, finished, PCsofware,533
+369,in-progress,bug,103
+370, finished, MobileApp,788
+371,in-progress, dataanalysis,868
+372, finished,bug,623
+373,in-progress, dataanalysis,653
+374, finished, WebApp,29
+375,in-progress, dataanalysis,940
+376, finished, WebApp,289
+377,in-progress, MobileApp,304
+378, finished,bug,387
+379,in-progress, PCsofware,907
+380, finished, dataanalysis,408
+381,in-progress,bug,874
+382, finished, dataanalysis,388
+383,in-progress, PCsofware,336
+384, finished, dataanalysis,871
+385,in-progress, MobileApp,793
+386, finished, PCsofware,333
+387,in-progress, WebApp,44
+388, finished,bug,885
+389,in-progress, dataanalysis,680
+390, finished, PCsofware,450
+391,in-progress, dataanalysis,66
+392, finished, PCsofware,933
+393,in-progress, PCsofware,340
+394, finished, WebApp,11
+395,in-progress, dataanalysis,337
+396, finished, dataanalysis,55
+397,in-progress, dataanalysis,865
+398, finished,bug,661
+399,in-progress,bug,641
+400, finished, dataanalysis,184
+401,in-progress, dataanalysis,517
+402, finished, WebApp,990
+403,in-progress, WebApp,194
+404, finished, dataanalysis,417
+405,in-progress, dataanalysis,762
+406, finished, dataanalysis,36
+407,in-progress, dataanalysis,710
+408, finished, PCsofware,231
+409,in-progress, dataanalysis,980
+410, finished, MobileApp,414
+411,in-progress, MobileApp,217
+412, finished, MobileApp,17
+413,in-progress,bug,11
+414, finished, WebApp,467
+415,in-progress, MobileApp,209
+416, finished,bug,90
+417,in-progress, PCsofware,128
+418, finished, dataanalysis,650
+419,in-progress, MobileApp,146
+420, finished, WebApp,683
+421,in-progress, PCsofware,103
+422, finished, MobileApp,371
+423,in-progress, dataanalysis,1
+424, finished,bug,397
+425,in-progress, WebApp,736
+426, finished, WebApp,430
+427,in-progress, WebApp,425
+428, finished, MobileApp,188
+429,in-progress, MobileApp,107
+430, finished, MobileApp,507
+431,in-progress, WebApp,878
+432, finished, dataanalysis,958
+433,in-progress,bug,519
+434, finished, PCsofware,223
+435,in-progress, MobileApp,986
+436, finished, WebApp,87
+437,in-progress, WebApp,389
+438, finished,bug,189
+439,in-progress,bug,331
+440, finished, PCsofware,373
+441,in-progress, MobileApp,245
+442, finished,bug,720
+443,in-progress, PCsofware,177
+444, finished,bug,195
+445,in-progress, dataanalysis,618
+446, finished,bug,627
+447,in-progress, MobileApp,355
+448, finished, dataanalysis,934
+449,in-progress, WebApp,510
+450, finished, WebApp,899
+451,in-progress, PCsofware,775
+452, finished, dataanalysis,468
+453,in-progress, dataanalysis,658
+454, finished, dataanalysis,246
+455,in-progress, MobileApp,984
+456, finished, MobileApp,710
+457,in-progress, PCsofware,169
+458, finished, WebApp,155
+459,in-progress, dataanalysis,902
+460, finished,bug,631
+461,in-progress, PCsofware,540
+462, finished, MobileApp,253
+463,in-progress, dataanalysis,552
+464, finished, PCsofware,518
+465,in-progress,bug,913
+466, finished, WebApp,508
+467,in-progress, PCsofware,886
+468, finished,bug,736
+469,in-progress, MobileApp,891
+470, finished, MobileApp,831
+471,in-progress, WebApp,682
+472, finished, dataanalysis,499
+473,in-progress, MobileApp,752
+474, finished, WebApp,452
+475,in-progress, dataanalysis,462
+476, finished, WebApp,524
+477,in-progress,bug,269
+478, finished,bug,269
+479,in-progress,bug,844
+480, finished, PCsofware,399
+481,in-progress, dataanalysis,723
+482, finished, WebApp,238
+483,in-progress, WebApp,940
+484, finished, dataanalysis,309
+485,in-progress, MobileApp,490
+486, finished, MobileApp,455
+487,in-progress, WebApp,578
+488, finished, PCsofware,122
+489,in-progress,bug,420
+490, finished,bug,334
+491,in-progress, PCsofware,730
+492, finished, MobileApp,81
+493,in-progress, PCsofware,823
+494, finished, MobileApp,109
+495,in-progress, WebApp,258
+496, finished, dataanalysis,594
+497,in-progress, PCsofware,658
+498, finished,bug,85
+499,in-progress, MobileApp,409
+500, finished, dataanalysis,823
+501,in-progress,bug,691
+502, finished, PCsofware,132
+503,in-progress, MobileApp,186
+504, finished, PCsofware,492
+505,in-progress,bug,286
+506, finished, WebApp,294
+507,in-progress, MobileApp,793
+508, finished, MobileApp,574
+509,in-progress, dataanalysis,950
+510, finished, PCsofware,39
+511,in-progress, PCsofware,147
+512, finished, dataanalysis,799
+513,in-progress, PCsofware,911
+514, finished,bug,701
+515,in-progress,bug,932
+516, finished,bug,628
+517,in-progress, MobileApp,174
+518, finished, dataanalysis,780
+519,in-progress, PCsofware,115
+520, finished, MobileApp,884
+521,in-progress, MobileApp,630
+522, finished, PCsofware,236
+523,in-progress,bug,945
+524, finished, WebApp,325
+525,in-progress, dataanalysis,229
+526, finished, WebApp,735
+527,in-progress, dataanalysis,857
+528, finished, WebApp,89
+529,in-progress, dataanalysis,287
+530, finished, PCsofware,574
+531,in-progress, dataanalysis,442
+532, finished, MobileApp,338
+533,in-progress, WebApp,467
+534, finished, WebApp,794
+535,in-progress, MobileApp,26
+536, finished, WebApp,656
+537,in-progress,bug,378
+538, finished, dataanalysis,217
+539,in-progress, PCsofware,456
+540, finished, PCsofware,851
+541,in-progress, MobileApp,326
+542, finished, MobileApp,858
+543,in-progress, PCsofware,943
+544, finished, dataanalysis,305
+545,in-progress,bug,49
+546, finished, WebApp,849
+547,in-progress, dataanalysis,562
+548, finished, PCsofware,390
+549,in-progress, WebApp,858
+550, finished, PCsofware,940
+551,in-progress, MobileApp,986
+552, finished,bug,698
+553,in-progress, MobileApp,637
+554, finished,bug,798
+555,in-progress, WebApp,529
+556, finished, WebApp,281
+557,in-progress,bug,646
+558, finished,bug,708
+559,in-progress, WebApp,775
+560, finished, PCsofware,507
+561,in-progress, dataanalysis,544
+562, finished, MobileApp,582
+563,in-progress, WebApp,247
+564, finished, MobileApp,204
+565,in-progress, dataanalysis,589
+566, finished,bug,965
+567,in-progress, MobileApp,338
+568, finished,bug,453
+569,in-progress,bug,945
+570, finished, WebApp,197
+571,in-progress, dataanalysis,123
+572, finished, PCsofware,904
+573,in-progress, PCsofware,469
+574, finished, PCsofware,737
+575,in-progress, MobileApp,961
+576, finished, WebApp,496
+577,in-progress,bug,671
+578, finished, MobileApp,153
+579,in-progress, WebApp,603
+580, finished, MobileApp,247
+581,in-progress, WebApp,335
+582, finished, WebApp,415
+583,in-progress, MobileApp,832
+584, finished, PCsofware,868
+585,in-progress, PCsofware,508
+586, finished, dataanalysis,641
+587,in-progress, dataanalysis,801
+588, finished, PCsofware,609
+589,in-progress,bug,598
+590, finished, WebApp,468
+591,in-progress, MobileApp,132
+592, finished, WebApp,270
+593,in-progress, MobileApp,159
+594, finished, MobileApp,47
+595,in-progress, dataanalysis,832
+596, finished, dataanalysis,490
+597,in-progress,bug,428
+598, finished, WebApp,97
+599,in-progress, dataanalysis,935
+600, finished, WebApp,330
+601,in-progress, WebApp,383
+602, finished, WebApp,854
+603,in-progress, MobileApp,651
+604, finished, PCsofware,461
+605,in-progress,bug,836
+606, finished, MobileApp,714
+607,in-progress,bug,145
+608, finished, MobileApp,506
+609,in-progress, MobileApp,710
+610, finished, MobileApp,220
+611,in-progress,bug,491
+612, finished, WebApp,162
+613,in-progress, WebApp,787
+614, finished, dataanalysis,388
+615,in-progress, MobileApp,186
+616, finished, PCsofware,6
+617,in-progress, dataanalysis,37
+618, finished, PCsofware,343
+619,in-progress,bug,502
+620, finished, dataanalysis,194
+621,in-progress,bug,706
+622, finished, MobileApp,308
+623,in-progress, PCsofware,130
+624, finished,bug,863
+625,in-progress, dataanalysis,36
+626, finished, dataanalysis,234
+627,in-progress, PCsofware,220
+628, finished,bug,669
+629,in-progress, PCsofware,405
+630, finished, PCsofware,508
+631,in-progress,bug,608
+632, finished, dataanalysis,743
+633,in-progress, PCsofware,1
+634, finished,bug,687
+635,in-progress, MobileApp,708
+636, finished, WebApp,854
+637,in-progress, dataanalysis,433
+638, finished,bug,670
+639,in-progress, dataanalysis,788
+640, finished, dataanalysis,989
+641,in-progress, dataanalysis,221
+642, finished, PCsofware,345
+643,in-progress, PCsofware,252
+644, finished, MobileApp,88
+645,in-progress,bug,130
+646, finished, dataanalysis,826
+647,in-progress, MobileApp,426
+648, finished,bug,952
+649,in-progress, dataanalysis,828
+650, finished, WebApp,309
+651,in-progress, dataanalysis,831
+652, finished, WebApp,293
+653,in-progress, PCsofware,768
+654, finished,bug,500
+655,in-progress, dataanalysis,38
+656, finished, PCsofware,601
+657,in-progress, PCsofware,910
+658, finished, PCsofware,273
+659,in-progress, MobileApp,373
+660, finished, WebApp,717
+661,in-progress,bug,842
+662, finished, WebApp,265
+663,in-progress, PCsofware,138
+664, finished, dataanalysis,513
+665,in-progress, PCsofware,491
+666, finished, dataanalysis,841
+667,in-progress, PCsofware,687
+668, finished,bug,940
+669,in-progress,bug,768
+670, finished, MobileApp,263
+671,in-progress, dataanalysis,316
+672, finished, MobileApp,458
+673,in-progress, MobileApp,739
+674, finished,bug,477
+675,in-progress, PCsofware,991
+676, finished,bug,377
+677,in-progress, MobileApp,678
+678, finished, PCsofware,517
+679,in-progress, dataanalysis,533
+680, finished,bug,322
+681,in-progress,bug,740
+682, finished, WebApp,226
+683,in-progress, PCsofware,119
+684, finished, dataanalysis,717
+685,in-progress, PCsofware,106
+686, finished, dataanalysis,839
+687,in-progress, WebApp,273
+688, finished,bug,927
+689,in-progress, MobileApp,486
+690, finished,bug,441
+691,in-progress,bug,28
+692, finished, PCsofware,403
+693,in-progress,bug,555
+694, finished, MobileApp,172
+695,in-progress, dataanalysis,665
+696, finished,bug,711
+697,in-progress, WebApp,119
+698, finished, MobileApp,438
+699,in-progress, WebApp,279
+700, finished,bug,374
+701,in-progress, PCsofware,549
+702, finished, dataanalysis,124
+703,in-progress, PCsofware,259
+704, finished, WebApp,312
+705,in-progress, dataanalysis,740
+706, finished,bug,273
+707,in-progress, dataanalysis,849
+708, finished, WebApp,230
+709,in-progress, MobileApp,603
+710, finished,bug,809
+711,in-progress, dataanalysis,471
+712, finished, WebApp,382
+713,in-progress,bug,11
+714, finished, WebApp,196
+715,in-progress, MobileApp,295
+716, finished, WebApp,522
+717,in-progress,bug,569
+718, finished, MobileApp,988
+719,in-progress,bug,55
+720, finished, MobileApp,719
+721,in-progress,bug,728
+722, finished, dataanalysis,415
+723,in-progress,bug,951
+724, finished,bug,460
+725,in-progress, WebApp,874
+726, finished, PCsofware,756
+727,in-progress, WebApp,699
+728, finished, WebApp,131
+729,in-progress, WebApp,143
+730, finished, WebApp,866
+731,in-progress, dataanalysis,659
+732, finished, MobileApp,816
+733,in-progress, WebApp,126
+734, finished, dataanalysis,970
+735,in-progress, MobileApp,827
+736, finished, PCsofware,927
+737,in-progress, dataanalysis,834
+738, finished, MobileApp,377
+739,in-progress, WebApp,136
+740, finished, dataanalysis,662
+741,in-progress, dataanalysis,267
+742, finished,bug,472
+743,in-progress, WebApp,986
+744, finished, MobileApp,523
+745,in-progress, WebApp,210
+746, finished, MobileApp,146
+747,in-progress,bug,672
+748, finished, WebApp,637
+749,in-progress, WebApp,462
+750, finished, WebApp,27
+751,in-progress, dataanalysis,262
+752, finished, MobileApp,59
+753,in-progress, WebApp,594
+754, finished,bug,137
+755,in-progress,bug,892
+756, finished, dataanalysis,555
+757,in-progress, dataanalysis,131
+758, finished, PCsofware,171
+759,in-progress, WebApp,530
+760, finished, WebApp,850
+761,in-progress,bug,493
+762, finished, dataanalysis,884
+763,in-progress, MobileApp,278
+764, finished, MobileApp,817
+765,in-progress, MobileApp,602
+766, finished, dataanalysis,783
+767,in-progress, MobileApp,438
+768, finished, PCsofware,571
+769,in-progress, WebApp,331
+770, finished, WebApp,741
+771,in-progress, WebApp,113
+772, finished, dataanalysis,968
+773,in-progress, dataanalysis,884
+774, finished, PCsofware,964
+775,in-progress,bug,453
+776, finished,bug,223
+777,in-progress,bug,427
+778, finished, dataanalysis,187
+779,in-progress,bug,227
+780, finished, dataanalysis,271
+781,in-progress, WebApp,689
+782, finished, MobileApp,256
+783,in-progress,bug,887
+784, finished,bug,975
+785,in-progress, PCsofware,935
+786, finished, PCsofware,744
+787,in-progress,bug,254
+788, finished, WebApp,246
+789,in-progress, PCsofware,176
+790, finished, WebApp,520
+791,in-progress,bug,375
+792, finished, MobileApp,440
+793,in-progress, WebApp,198
+794, finished, WebApp,339
+795,in-progress, WebApp,338
+796, finished, dataanalysis,591
+797,in-progress, WebApp,943
+798, finished, WebApp,955
+799,in-progress, dataanalysis,166
+800, finished, MobileApp,835
+801,in-progress, MobileApp,230
+802, finished, dataanalysis,529
+803,in-progress, WebApp,644
+804, finished, WebApp,655
+805,in-progress, WebApp,78
+806, finished, WebApp,67
+807,in-progress,bug,996
+808, finished, WebApp,680
+809,in-progress, PCsofware,806
+810, finished, WebApp,168
+811,in-progress, dataanalysis,779
+812, finished, WebApp,748
+813,in-progress, dataanalysis,240
+814, finished, MobileApp,681
+815,in-progress, dataanalysis,497
+816, finished, MobileApp,86
+817,in-progress, MobileApp,966
+818, finished, MobileApp,171
+819,in-progress,bug,634
+820, finished, dataanalysis,383
+821,in-progress, PCsofware,989
+822, finished, dataanalysis,567
+823,in-progress,bug,979
+824, finished, dataanalysis,675
+825,in-progress, MobileApp,959
+826, finished, PCsofware,719
+827,in-progress, MobileApp,900
+828, finished, dataanalysis,192
+829,in-progress, MobileApp,368
+830, finished, MobileApp,390
+831,in-progress, PCsofware,182
+832, finished, dataanalysis,301
+833,in-progress, dataanalysis,887
+834, finished, PCsofware,307
+835,in-progress, PCsofware,550
+836, finished, WebApp,476
+837,in-progress, dataanalysis,90
+838, finished, WebApp,918
+839,in-progress, WebApp,735
+840, finished,bug,817
+841,in-progress, MobileApp,908
+842, finished,bug,152
+843,in-progress, dataanalysis,789
+844, finished,bug,597
+845,in-progress, WebApp,610
+846, finished, dataanalysis,637
+847,in-progress, MobileApp,148
+848, finished,bug,384
+849,in-progress, MobileApp,691
+850, finished, PCsofware,555
+851,in-progress, WebApp,681
+852, finished, dataanalysis,473
+853,in-progress, dataanalysis,596
+854, finished, dataanalysis,824
+855,in-progress, dataanalysis,923
+856, finished, MobileApp,390
+857,in-progress, dataanalysis,231
+858, finished, PCsofware,932
+859,in-progress, dataanalysis,932
+860, finished, PCsofware,672
+861,in-progress, WebApp,322
+862, finished, dataanalysis,351
+863,in-progress, PCsofware,272
+864, finished,bug,283
+865,in-progress, WebApp,304
+866, finished, PCsofware,729
+867,in-progress, dataanalysis,561
+868, finished, MobileApp,319
+869,in-progress, PCsofware,508
+870, finished, WebApp,346
+871,in-progress, WebApp,278
+872, finished, MobileApp,519
+873,in-progress, dataanalysis,563
+874, finished, WebApp,171
+875,in-progress,bug,620
+876, finished, dataanalysis,549
+877,in-progress, WebApp,696
+878, finished, PCsofware,81
+879,in-progress, dataanalysis,534
+880, finished, PCsofware,312
+881,in-progress, WebApp,912
+882, finished, dataanalysis,612
+883,in-progress, MobileApp,82
+884, finished, WebApp,631
+885,in-progress,bug,415
+886, finished, WebApp,294
+887,in-progress,bug,72
+888, finished, dataanalysis,351
+889,in-progress, MobileApp,938
+890, finished,bug,436
+891,in-progress,bug,892
+892, finished, dataanalysis,727
+893,in-progress, PCsofware,668
+894, finished, dataanalysis,478
+895,in-progress, WebApp,994
+896, finished, MobileApp,141
+897,in-progress, MobileApp,313
+898, finished, MobileApp,172
+899,in-progress, MobileApp,985
+900, finished, WebApp,990
+901,in-progress, dataanalysis,496
+902, finished, dataanalysis,919
+903,in-progress, WebApp,829
+904, finished, MobileApp,974
+905,in-progress, MobileApp,709
+906, finished, MobileApp,960
+907,in-progress,bug,20
+908, finished, dataanalysis,766
+909,in-progress, WebApp,252
+910, finished, PCsofware,750
+911,in-progress,bug,579
+912, finished, dataanalysis,269
+913,in-progress, dataanalysis,972
+914, finished, WebApp,834
+915,in-progress, PCsofware,437
+916, finished, WebApp,813
+917,in-progress, dataanalysis,620
+918, finished, MobileApp,383
+919,in-progress, MobileApp,312
+920, finished,bug,395
+921,in-progress, WebApp,766
+922, finished, MobileApp,647
+923,in-progress, WebApp,242
+924, finished, WebApp,801
+925,in-progress, PCsofware,239
+926, finished, MobileApp,221
+927,in-progress,bug,465
+928, finished, MobileApp,825
+929,in-progress, MobileApp,872
+930, finished,bug,237
+931,in-progress,bug,872
+932, finished,bug,929
+933,in-progress, PCsofware,518
+934, finished, MobileApp,840
+935,in-progress, MobileApp,994
+936, finished, WebApp,364
+937,in-progress, WebApp,571
+938, finished, PCsofware,236
+939,in-progress,bug,166
+940, finished, dataanalysis,135
+941,in-progress, dataanalysis,732
+942, finished, dataanalysis,878
+943,in-progress,bug,770
+944, finished,bug,168
+945,in-progress, WebApp,578
+946, finished, dataanalysis,592
+947,in-progress,bug,125
+948, finished,bug,671
+949,in-progress, PCsofware,244
+950, finished, WebApp,998
+951,in-progress, dataanalysis,928
+952, finished, MobileApp,775
+953,in-progress, dataanalysis,110
+954, finished, PCsofware,525
+955,in-progress, dataanalysis,638
+956, finished, WebApp,90
+957,in-progress, WebApp,30
+958, finished, PCsofware,73
+959,in-progress, WebApp,468
+960, finished, dataanalysis,26
+961,in-progress, dataanalysis,395
+962, finished, MobileApp,245
+963,in-progress, MobileApp,202
+964, finished,bug,715
+965,in-progress, WebApp,543
+966, finished, dataanalysis,311
+967,in-progress, dataanalysis,902
+968, finished,bug,613
+969,in-progress, WebApp,880
+970, finished,bug,257
+971,in-progress, WebApp,596
+972, finished, MobileApp,850
+973,in-progress, WebApp,918
+974, finished, PCsofware,213
+975,in-progress, PCsofware,516
+976, finished, PCsofware,880
+977,in-progress, MobileApp,964
+978, finished, PCsofware,509
+979,in-progress, PCsofware,737
+980, finished, WebApp,464
+981,in-progress, MobileApp,577
+982, finished,bug,166
+983,in-progress, WebApp,404
+984, finished, PCsofware,698
+985,in-progress,bug,725
+986, finished, dataanalysis,406
+987,in-progress, WebApp,471
+988, finished, PCsofware,846
+989,in-progress, MobileApp,503
+990, finished,bug,463
+991,in-progress, MobileApp,982
+992, finished, MobileApp,47
+993,in-progress, PCsofware,542
+994, finished, WebApp,753
+995,in-progress, MobileApp,818
+996, finished, PCsofware,194
+997,in-progress,bug,296
+998, finished, MobileApp,207
+999,in-progress, PCsofware,532
+1000, finished,bug,376
