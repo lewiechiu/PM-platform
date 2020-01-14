@@ -1,6 +1,11 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
-salesman = Blueprint('salesman', __Name__, template_folder='../templates')
-from basic_function import * 
+salesman = Blueprint('salesman', __name__, template_folder='../templates')
+from mysql_conf import *
+from routing.basic_function import *
+import json
+con = MySQL_query()
+
+#basic_function: SalesmanExist(SALESMANID)
 
     # Know what each salesman is accountable for. (sales item)
     # Set KPI for each of the salesmen.
@@ -9,7 +14,7 @@ from basic_function import *
 # Promote a salesman to Manager or Senior salesman
 
 # Create salesman
-@salesman.route('/api/salesman/>', methods = ['POST'])
+@salesman.route('/api/salesman/', methods = ['POST'])
 def create_salesman():
     params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
     body = request.get_json()
@@ -18,23 +23,25 @@ def create_salesman():
             continue
         else:
             return "missing params"
-    TABLE = db2019FP.Salesman
-    now_id = con.query1("SELECT MAX(SALESMANID) FROM {};".formate(TABLE))
-    print("current id: {}".format(now_id))
-    SQL_command = "INSERT INTO {} VALUES( {}, '{}', '{}' ,'{}' , {} , {});".format(TABLE, next_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]])
+    TABLE = "DB2019FP.Salesman"
+    now_id = con.query1("SELECT MAX(SALESMANID) FROM {};".format(TABLE))
+
+    SQL_command = "INSERT INTO {} VALUES( {}, {}, {} ,'{}' , {} , {}, {}, {}, {}, {});".format(TABLE, now_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]],body[params[6]],body[params[7]],body[params[8]])
     print("## SQL command to execute: ", SQL_command)
     con.query_insertORdelete(SQL_command)
+    #TBD: how to return insert results
     return jsonify({"status": 200})
 
-# show if the salesman can be promoted
-@salesman.route('/api/salesman/<int:SALESMANID>', methods = ['GET'])
-def show_order_experience(SALESMANID):
-    # TODO
-    # Check if salesman exist in DB.
+@salesman.route('/api/salesman/order_experience/<int:SALESMANID>', methods = ['GET'])
+def show_order_experience(SALESMANID):    
     exist = SalesmanExist(SALESMANID)
     if not exist:
         return abort(400, "Salesman id: {} does NOT EXIST".format(SALESMANID))
-    getSalesOrder(SALESMANID)
+    TABLE = "DB2019FP.Salesman"
+    SQL_command = "SELECT SALESMANID FROM {} WHERE SALESMANID={});".format(TABLE, SALESMANID)
+    print("## SQL command to execute: ", SQL_command)
+    con.query1(SQL_command)
+    
     return
 
 
