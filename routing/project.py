@@ -166,7 +166,7 @@ def SWEProject(swe_id=None, state):
         #SQL:
         cmd = "SELECT P.project_ID FROM Project P,Project_SWE P_S WHERE P.project_ID=P_S.P_ID and P.state="
         cmd2 = " and P_S.SWE_ID = "
-        final_cmd = cmd + state + cmd2 + swe_id
+        final_cmd = cmd + state + cmd2 + str(swe_id)
         response = connect.queryAlL(final_cmd)
     response = clean_tuple(response,0)
     return response
@@ -175,7 +175,7 @@ def SWEProject(swe_id=None, state):
 def SWEExist(swe_id):
     #SQL:
     #SELECT ID FROM SWE WHEWE ID=swe_id
-    cmd = "SELECT ID FROM SWE WHEWE ID=" + swe_id
+    cmd = "SELECT ID FROM SWE WHEWE ID=" + str(swe_id)
     response = connect.queryAlL(cmd)
     response = clean_tuple(response,0)
     if len(response) > 0:
@@ -190,7 +190,7 @@ def InsertSWEintoProject(swe_id, project_id):
     # SQL:
     # INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES(project_id,swe_id) 
     cmd = "INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES("
-    cmd = cmd + project_id + "," + swe_id +")"
+    cmd = cmd + str(project_id) + "," + str(swe_id) +")"
     connect.query_insertORdelete(cmd)
     return True
 
@@ -200,7 +200,7 @@ def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
     # SQL:
     # INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES(
     cmd = "INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES("
-    cmd = cmd + project_ID + "," + Oder_ID + "," + manager_id　+ "," + "'"　+ state + "')"
+    cmd = cmd + str(project_ID) + "," + str(Oder_ID) + "," + str(manager_id)　+ "," + "'"　+ str(state) + "')"
     connect.query_insertORdelete(cmd)
     for i in swe_list:
         InsertSWEintoProject(i, project_ID)
@@ -211,7 +211,7 @@ def ProjectExist(project_id):
     # SQL:
     #SELECT project_ID FROM Project WHERE project_ID = 
     cmd = "SELECT project_ID FROM Project WHERE project_ID = "
-    cmd = cmd + project_id
+    cmd = cmd + str(project_id)
     response = connect.queryAlL(cmd)
     response = clean_tuple(response,0)
     if len(response) > 0:
@@ -226,12 +226,12 @@ def InsertTask(taskID, state, category, project_id, resource_amount):
     # SQL1:
     # INSERT INTO Task(taskID, state, category) VALUES(
     cmd = "INSERT INTO Task(taskID, state, category) VALUES("
-    cmd = cmd + taskID + "," + "'" + state + "'" +"," + "'" + category+ "'" +","+project_id+")"
+    cmd = cmd + str(taskID) + "," + "'" + str(state) + "'" +"," + "'" + str(category) + "'" +","+str(project_id)+")"
     connect.query_insertORdelete(cmd)
     # SQL2:
     # INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES(
     cmd = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
-    cmd = cmd + R_ID +","+taskID+","+resource_amount
+    cmd = cmd + str(R_ID) +","+str(taskID)+","+str(resource_amount)
     connect.query_insertORdelete(cmd)
     return True
 
@@ -257,7 +257,7 @@ def ProgressProject(project_id=None):
         dict_to_become_jason['Projects'] = response
     else:
         cmd = "SELECT taskID FROM Task WHERE state="
-        cmd = cmd + in_progress + " and P_ID =" + project_id
+        cmd = cmd + in_progress + " and P_ID =" + str(project_id)
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['project_id'] = project_id
@@ -296,16 +296,20 @@ def TaskExist(task_id):
      # Check if the task of task id is present (task)
      # SQL:
      # SELECT taskID FROM Task WHERE taskID =
-     cmd = "SELECT taskID FROM Task WHERE taskID = " + task_id
-     response = 
-     return True
+     cmd = "SELECT taskID FROM Task WHERE taskID = " + str(task_id)
+     response = connect.queryALL(cmd)
+     response = clean_tuple(response,0)
+     if len(response) > 0:
+         return True
+     else:
+         return False
 
 def UpdateTask(task_id, state):
     # update task's state
     # SQL:
     # UPDATE Task SET state = 
     state_string = "'" + state + "'"
-    cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + task_id
+    cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + str(task_id)
     connect.query_insertORdelete(cmd)
     return True
 
