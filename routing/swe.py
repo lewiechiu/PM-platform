@@ -1,204 +1,170 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
+swe = Blueprint('swe', __name__, template_folder='../templates')
 from mysql_conf import *
 from basic_function import *
+import json
+con = MySQL_query()
 
-swe = Blueprint('swe', __name__, template_folder='../templates')
-
-connect = MySQL_query()
-resp = connect.queryALL("SELECT ....")
-resp = [(), (), ...]
-[()]
 
 # Create swe
-@swe.route('/api/swe/<int:swe_id>', methods = ['POST'])
-def create_swe(swe_id):
-    # TODO
-    # Insert SWE with the the following params.
-    # find the max id
-    # SQL : 
-    cmd = "SELECT MAX(ID) FROM SWE"
-    response = connect.queryALL(cmd)
-    response = clean_tuple(response,0)
-    jname = str(request.json()["name"])
-    jssn = str(request.json()["ssn"])
-    jtitle = str(request.json()["title"])
-    jsalary = str(request.json()["salary"])
-    jage = str(request.json()["age"])
-    jyoe = str(request.json()["yoe"])
-    jaddress = str(request.json()["address"])
-    jgender = str(request.json()["gender"])
-    # SQL :
-    # INSERT INTO SWE(ID,name,ssn,title, salary,age,years_of_experience,address,gender)
-    # VALUES(request.json()["name"],request.json()["ssn"],request.json()["title"],request.json()["salary"],request.json()["age"],request.json()["yoe"],request.json()["address"],request.json()["gender"])
+@swe.route('/api/swe/', methods = ['POST'])
+def create_swe():
+    params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
+    body = request.get_json()
+    for i in body:
+        if i in params:
+            continue
+        else:
+            return "missing params"
+    TABLE = "DB2019FP.SWE"
+    now_id = con.query1("SELECT MAX(SWEID) FROM {};".format(TABLE))
+
+    SQL_command = "INSERT INTO {} VALUES( {}, {}, {} ,'{}' , {} , {}, {}, {}, {}, {});".format(TABLE, now_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]],body[params[6]],body[params[7]],body[params[8]])
+    print("## SQL command to execute: ", SQL_command)
+    con.query_insertORdelete(SQL_command)
+    #TBD: how to return insert results
+    return jsonify({"status": 200})
+
+@swe.route('/api/swe/project_experience/<int:SWEID>', methods = ['GET'])
+def show_project_experience(SWEID):    
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
-    cmd2 = "INSERT INTO SWE(ID,name,ssn,title, salary,age,years_of_experience,address,gender)"
-    print(request.json())
-    # request.json() should have the following property.
-    # ["name", "ssn", "title", "salary", "year", "address", "gender"]
-    createswe(swe_id, name, ssn, title, salary, year, address, gender)
+    #order expirence
+    TABLE = "DB2019FP.Project_SWE"
+    SQL_command = "SELECT PROJECTID, COUNT(*) FROM {} WHERE SWEID={} GROUP BY PROJECTID;".format(TABLE, SWEID)
+    cursor = con.get_cur()
+    cursor.execute(SQL_command)
+    projectLis = [i[0] for i in cursor.fetchall()]
+    
+    #name 
+    TABLE = "DB2019FP.SWE"
+    SQL_command = "SELECT SWEID, Name FROM {} WHERE SWEID={};".format(TABLE, SWEID)
+    cursor.execute(SQL_command)
+    ID, Name = cursor.fetchall()[0]
+
+    header = ['SWEID','Name', 'PastProjectsExperience']
+    values = [ID, Name, projectLis]
+    resp = []
+    resp.append(dict(zip(header,values)))
+
+    return jsonify(resp)
 
 
-# show if the swe can be promoted
-@swe.route('/api/swe/<int:swe_id>', methods = ['GET'])
-def show_project_experience(swe_id):
-    # TODO
-    # Check if swe exist in DB.
-    exist = SWEExist(swe_id)
-    if not exist:
-        return abort(400, "SWE id: {} does NOT EXIST".format(swe_id))
-    getsweproject(swe_id)
-    return 
-
-# show if the swe can be promoted
-@swe.route('/api/swe/<int:salesman_id>', methods = ['GET'])
-def show_order_experience(salesman_id):
-    # TODO
-    # Check if swe exist in DB.
-    exist = SalesmanExist(salesman_id)
-    if not exist:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
-    getSalesOrder(salesman_id)
-    return
 
 # Select certain Talents of the People
-@swe.route('/api/swe/<string:talent>', methods = ['GET'])
-def select_by_talent(talent):
-    #
-    pass
-    # TODO
-    # Select from swe and swe where Talent in the variable talent.
-    # You can use some formatting like
-    getsweByTalent(talent)
-    # return the result selected
+@swe.route('/api/swe/get_all_swe_Talent', methods = ['GET'])
+def get_all_swe_Talent():
+    TABLE = "DB2019FP.Talent"
+    SQL_command = "SELECT DISTINCT Talent FROM {} WHERE ID%2 = 1;".format(TABLE)
+    print(SQL_command)
+    cursor = con.get_cur()
+    cursor.execute(SQL_command)
+    talentLis = cursor.fetchall()
+    res = [talent[0] for talent in talentLis]
+
+    return jsonify(res)
+
+# Select certain Talents of the People
+@swe.route('/api/swe/select_by_Talent/<string:Talent>', methods = ['GET'])
+def select_by_Talent(Talent):
+    exist = TalentExist(Talent)
+    if not exist:
+        return abort(400, "Talent: {} does NOT EXIST".format(Talent))
+    
+    return jsonify(SelectByTalent(Talent))
 
 
 # Show the background, basic info for each person.
-@swe.route('/api/swe/background', methods = ['GET'])
-def get_swe_info(swe_id):
-    pass
-    # TODO
-    getsweInfo(swe_id)
-    # Select the whole table.
-    #SQL:
-    #SELECT * FROM SWE
-    response = connect.queryAll('SELECT * FROM SWE')
-
-# Show what they are accountable for(Manage) or assigned to do(has a manager).
-@swe.route('/api/swe/<int:id>', methods = ['GET'])
-def get_swe_manager(swe_id):
-    pass
-    # TODO
-    # Do it in 2 pass.
-    # First, we look for what ID is managing.
-    # SQL:
-    # SELECT project_ID FROM Project WhERE manager_id = ID
-    cmd = "SELECT project_ID FROM Project WhERE manager_id = " + str(ID)
-    he_manages = connect.queryAll(cmd)
-    # Second, We look for what ID is assigned to do.
-    # SQL:
-    # SELECT P_ID FROM Project_SWE WHERE SWE_ID = ID
-    cmd = "SELECT P_ID FROM Project_SWE WHERE SWE_ID = " + str(ID)
-    he_involved_in = connect.queryAll(cmd)
-    # TOFIX:
-    # There is a problem that some swe has "many many" project while some are salary thrief!!
-    # Merge those two into a list
-
-    # Return them
-'''
-# Select swe by Dev Team
-@swe.route('/api/swe/inTeam/<int:ID>', methods = ['GET'])
-def get_swe_manages(ID):
-    pass
-    # TODO
-    # Select the SWE ID having Dev Team being ID.
-# Read
-'''
-
-    # First, we look for what id is managing.
-    # Second, We look for what id is assigned to do.
-    # Merge those two into a list
-    if(swe_id != None):
-        exist = SWEExist(swe_id)
-        if not exist:
-            return abort(400, "SWE id: {} does NOT EXIST".format(swe_id))
+@swe.route('/api/swe/background/<int:SWEID>', methods = ['GET'])
+def get_swe_info(SWEID):
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
-    getManageProject(swe_id)
-    # Return them
+    #SWE
+    TABLE = "DB2019FP.SWE"
+    SQL_command = "SELECT * FROM {} WHERE SWEID={};".format(TABLE, SWEID)
+    cursor = con.get_cur()
+    cursor.execute(SQL_command)
+    header = [i[0] for i in cursor.description]
+    values = [i for i in cursor.fetchall()[0]]
+    
+    resp = []    
+    resp.append(dict(zip(header,values)))
+
+    return jsonify(resp)
 
 # Update
 # Update the time period for the swe in the company
-@swe.route('/api/swe/time_period/<int:swe_id>', methods = ['PUT'])
-def update_swe(swe_id):
-    # TODO
-    # In request body, there will be a field "period".
-    # Update the swe/swe having id with "years_of_experience" being "period"
-    exist_swe = SWEExist(swe_id)
-    if not exist_swe:
-        return abort(400, "SWE id: {} does NOT EXIST".format(swe_id))
-    exist_sales = SalesmanExist(salesman_id)
-    if not exist_sales:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
-    if(exist_swe):
-        update_swe(swe_id,  target_attri, new_value, 'swe')
-    else:
-        update_swe(swe_id,  target_attri, new_value, 'sales')
-    pass
+@swe.route('/api/swe/update/<int:SWEID>', methods = ['PUT'])
+def update_swe(SWEID):
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
+
+    params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
+    body = request.get_json()
+    for i in body.keys():
+        if i in params:
+            continue
+        else:
+            return "Illeagal params!"
+    for i in body.keys():
+        TABLE = "DB2019FP.SWE"
+        SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s"%(TABLE, i, body[i], SWEID)
+        print(SQL_command)
+        con.query_insertORdelete(SQL_command)
+    return jsonify({"status": 200})
 
 # Delete
-@swe.route('/api/swe/<int:swe_id>', methods = ['DELETE'])
-def delete_swe(swe_id):
-    # TODO
-    exist_swe = SWEExist(swe_id)
-    if not exist_swe:
-        return abort(400, "SWE id: {} does NOT EXIST".format(swe_id))
-    exist_sales = SalesmanExist(salesman_id)
-    if not exist_sales:
-        return abort(400, "Salesman id: {} does NOT EXIST".format(salesman_id))
-    # Delete the record for swe
-    if(exist_swe):
-        changeSWEState(swe_id, 'retired')
-    else:
-        changeSWEState(swe_id, 'retired')
-    pass
+@swe.route('/api/swe/retired/<int:SWEID>', methods = ['PUT'])
+def delete_swe(SWEID):
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
 
-@swe.route('/api/swe/', methods = ['POST'])
-def swe_api():
+    TABLE = "DB2019FP.swe"
+    SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s;"%(TABLE, 'State', 'retired', SWEID)
+    print(SQL_command)
+    con.query_insertORdelete(SQL_command)
+    print(con.get_cur().rowcount, "record(s) affected")
     return jsonify({"status": 200})
 
 
-def createswe(name, ssn, title, salary, year, address, gender):
-    return True
+@swe.route('/api/swe/promote/<int:SWEID>', methods = ['PUT'])
+def promote_swe(SWEID):
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
+    
+    TABLE = "DB2019FP.swe"
+    SQL_command = "SELECT Salary FROM {} WHERE SWEID={};".format(TABLE, SWEID)
+    print(SQL_command)
+    salary = int(con.queryALL(SQL_command)[0][0])
+    salary *= 1.1
 
-def getsweproject(swe_id):
-    return {}
+    SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s;"%(TABLE, 'Salary', salary, SWEID)
+    con.query_insertORdelete(SQL_command)
+    print(con.get_cur().rowcount, "record(s) affected")
+    return jsonify({"status": 200})
 
-def getSalesOrder(salesman_id):
-    return {}
 
-def getsweByTalent(talent):
-    # check swe and salesman table and see if they have the talent
-    return {}
-
-def getsweInfo(swe_id):
-    # return the swe info
-    return {}
-
-def getManageProject(swe_id=None):
-    # if None get all the SWEs who are project managers
-    # else only get the specified one
-    return{}
-
-def update_swe(swe_id,  target_attri, new_value, role)
-    # if role == 'swe'
-        # update swe
-    # else 
-        # update sales
-    return TRUE
-
-def changeSWEState(swe_id, state):
-    # if swe_id doesn't manage active project
-        # update the swe state to 'retire'
-    # else
-        # return false
-    return TRUE
-
+@swe.route('/api/swe/get_customer/<int:SWEID>', methods = ['GET'])
+def get_customer_by_swe(SWEID):
+    exist = SWEExist(SWEID)
+    if not exist:
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
+    
+    TABLE = "DB2019FP.Customer"
+    SQL_command = "SELECT CustomerName, CompanyName FROM {} WHERE SWEID={};".format(TABLE, SWEID)
+    print(SQL_command)
+    CustomerLis = con.queryALL(SQL_command)
+    res = []
+    header = ['CustomerName', 'CompanyName']
+    for c in CustomerLis:
+        CustomerName, CompanyName = c
+        values = [CustomerName, CompanyName]
+        res.append(dict(zip(header,values)))
+    return jsonify(res)
