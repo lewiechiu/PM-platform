@@ -8,7 +8,7 @@ con = MySQL_query()
 
 # Create swe
 @swe.route('/api/swe/', methods = ['POST'])
-def create_salesman():
+def create_swe():
     params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
     body = request.get_json()
     for i in body:
@@ -27,25 +27,25 @@ def create_salesman():
 
 @swe.route('/api/swe/project_experience/<int:SWEID>', methods = ['GET'])
 def show_project_experience(SWEID):    
-    exist = SWEExist(SALESMANID)
+    exist = SWEExist(SWEID)
     if not exist:
         return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
     #order expirence
     TABLE = "DB2019FP.Project_SWE"
-    SQL_command = "SELECT PROJECTID, COUNT(*) FROM {} WHERE SALESMANID={} GROUP BY ORDERID;".format(TABLE, SALESMANID)
+    SQL_command = "SELECT PROJECTID, COUNT(*) FROM {} WHERE SWEID={} GROUP BY PROJECTID;".format(TABLE, SWEID)
     cursor = con.get_cur()
     cursor.execute(SQL_command)
-    orderLis = [i[0] for i in cursor.fetchall()]
+    projectLis = [i[0] for i in cursor.fetchall()]
     
     #name 
-    TABLE = "DB2019FP.swe"
-    SQL_command = "SELECT SALESMANID, Name FROM {} WHERE SALESMANID={};".format(TABLE, SALESMANID)
+    TABLE = "DB2019FP.SWE"
+    SQL_command = "SELECT SWEID, Name FROM {} WHERE SWEID={};".format(TABLE, SWEID)
     cursor.execute(SQL_command)
     ID, Name = cursor.fetchall()[0]
 
-    header = ['SALESMANID','Name', 'PastOrdersExperience']
-    values = [ID, Name, orderLis]
+    header = ['SWEID','Name', 'PastProjectsExperience']
+    values = [ID, Name, projectLis]
     resp = []
     resp.append(dict(zip(header,values)))
 
@@ -54,10 +54,10 @@ def show_project_experience(SWEID):
 
 
 # Select certain Talents of the People
-@swe.route('/api/swe/get_all_salesman_Talent', methods = ['GET'])
-def get_all_salesman_Talent():
+@swe.route('/api/swe/get_all_swe_Talent', methods = ['GET'])
+def get_all_swe_Talent():
     TABLE = "DB2019FP.Talent"
-    SQL_command = "SELECT DISTINCT Talent FROM {} WHERE ID%2 = 0;".format(TABLE)
+    SQL_command = "SELECT DISTINCT Talent FROM {} WHERE ID%2 = 1;".format(TABLE)
     print(SQL_command)
     cursor = con.get_cur()
     cursor.execute(SQL_command)
@@ -77,15 +77,15 @@ def select_by_Talent(Talent):
 
 
 # Show the background, basic info for each person.
-@swe.route('/api/swe/background/<int:SALESMANID>', methods = ['GET'])
-def get_salesman_info(SALESMANID):
-    exist = SalesmanExist(SALESMANID)
+@swe.route('/api/swe/background/<int:SWEID>', methods = ['GET'])
+def get_swe_info(SWEID):
+    exist = SWEExist(SWEID)
     if not exist:
-        return abort(400, "swe id: {} does NOT EXIST".format(SALESMANID))
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
     #SWE
-    TABLE = "DB2019FP.swe"
-    SQL_command = "SELECT * FROM {} WHERE SALESMANID={};".format(TABLE, SALESMANID)
+    TABLE = "DB2019FP.SWE"
+    SQL_command = "SELECT * FROM {} WHERE SWEID={};".format(TABLE, SWEID)
     cursor = con.get_cur()
     cursor.execute(SQL_command)
     header = [i[0] for i in cursor.description]
@@ -98,11 +98,11 @@ def get_salesman_info(SALESMANID):
 
 # Update
 # Update the time period for the swe in the company
-@swe.route('/api/swe/update/<int:SALESMANID>', methods = ['PUT'])
-def update_salesman(SALESMANID):
-    exist = SalesmanExist(SALESMANID)
+@swe.route('/api/swe/update/<int:SWEID>', methods = ['PUT'])
+def update_swe(SWEID):
+    exist = SWEExist(SWEID)
     if not exist:
-        return abort(400, "swe id: {} does NOT EXIST".format(SALESMANID))
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
 
     params = ["Name", "Ssn" , "Title", "Salary" , "Age", "YearsOfExperience", "Address","Gender", "State"]
     body = request.get_json()
@@ -112,53 +112,53 @@ def update_salesman(SALESMANID):
         else:
             return "Illeagal params!"
     for i in body.keys():
-        TABLE = "DB2019FP.swe"
-        SQL_command = "UPDATE %s SET %s = '%s' WHERE SALESMANID = %s"%(TABLE, i, body[i], SALESMANID)
+        TABLE = "DB2019FP.SWE"
+        SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s"%(TABLE, i, body[i], SWEID)
         print(SQL_command)
         con.query_insertORdelete(SQL_command)
     return jsonify({"status": 200})
 
 # Delete
-@swe.route('/api/swe/retired/<int:SALESMANID>', methods = ['PUT'])
-def delete_salesman(SALESMANID):
-    exist = SalesmanExist(SALESMANID)
+@swe.route('/api/swe/retired/<int:SWEID>', methods = ['PUT'])
+def delete_swe(SWEID):
+    exist = SWEExist(SWEID)
     if not exist:
-        return abort(400, "swe id: {} does NOT EXIST".format(SALESMANID))
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
 
     TABLE = "DB2019FP.swe"
-    SQL_command = "UPDATE %s SET %s = '%s' WHERE SALESMANID = %s;"%(TABLE, 'State', 'retired', SALESMANID)
+    SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s;"%(TABLE, 'State', 'retired', SWEID)
     print(SQL_command)
     con.query_insertORdelete(SQL_command)
     print(con.get_cur().rowcount, "record(s) affected")
     return jsonify({"status": 200})
 
 
-@swe.route('/api/swe/promote/<int:SALESMANID>', methods = ['PUT'])
-def promote_salesman(SALESMANID):
-    exist = SalesmanExist(SALESMANID)
+@swe.route('/api/swe/promote/<int:SWEID>', methods = ['PUT'])
+def promote_swe(SWEID):
+    exist = SWEExist(SWEID)
     if not exist:
-        return abort(400, "swe id: {} does NOT EXIST".format(SALESMANID))
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
     TABLE = "DB2019FP.swe"
-    SQL_command = "SELECT Salary FROM {} WHERE SALESMANID={};".format(TABLE, SALESMANID)
+    SQL_command = "SELECT Salary FROM {} WHERE SWEID={};".format(TABLE, SWEID)
     print(SQL_command)
     salary = int(con.queryALL(SQL_command)[0][0])
     salary *= 1.1
 
-    SQL_command = "UPDATE %s SET %s = '%s' WHERE SALESMANID = %s;"%(TABLE, 'Salary', salary, SALESMANID)
+    SQL_command = "UPDATE %s SET %s = '%s' WHERE SWEID = %s;"%(TABLE, 'Salary', salary, SWEID)
     con.query_insertORdelete(SQL_command)
     print(con.get_cur().rowcount, "record(s) affected")
     return jsonify({"status": 200})
 
 
-@swe.route('/api/swe/get_customer/<int:SALESMANID>', methods = ['GET'])
-def get_customer_by_salesman(SALESMANID):
-    exist = SalesmanExist(SALESMANID)
+@swe.route('/api/swe/get_customer/<int:SWEID>', methods = ['GET'])
+def get_customer_by_swe(SWEID):
+    exist = SWEExist(SWEID)
     if not exist:
-        return abort(400, "swe id: {} does NOT EXIST".format(SALESMANID))
+        return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
     
     TABLE = "DB2019FP.Customer"
-    SQL_command = "SELECT CustomerName, CompanyName FROM {} WHERE SALESMANID={};".format(TABLE, SALESMANID)
+    SQL_command = "SELECT CustomerName, CompanyName FROM {} WHERE SWEID={};".format(TABLE, SWEID)
     print(SQL_command)
     CustomerLis = con.queryALL(SQL_command)
     res = []
