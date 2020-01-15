@@ -135,7 +135,25 @@ def project():
                         print_dataList.append(tempt)
                     print(tabulate(print_dataList,headers = ["SWE ID","Name","Avaliable Capacity"]))       
                 
-        # elif option = "u":
+        elif option == "u":
+            print('''
+            Update mode....
+            tr : Update the Resources and Amount about one task
+            ts : Update the task's state
+            ps : Update SWE to the project
+            ''')
+            U_option = input()
+            if U_option == "ts":
+                print("Please enter Task ID : ")
+                task_id = input()
+                print("Please enter State : ")
+                state = input()
+                URL = "http://127.0.0.1:5000/api/project/task/" + task_id
+                data_send = {"State":state}
+                r = requests.put(URL,json = data_send)
+                if r.status_code == 200:
+                    print("successfully updated!")
+
 
 
 

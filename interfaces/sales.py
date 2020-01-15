@@ -35,3 +35,4 @@ def sales():
                 response = r.json()
                 print("CompanyName : ",response[0]["CompanyName"])
                 print("CustomerName : ",response[0]["CustomerName"])
+            
