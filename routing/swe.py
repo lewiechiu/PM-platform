@@ -25,8 +25,8 @@ def create_salesman():
     #TBD: how to return insert results
     return jsonify({"status": 200})
 
-@swe.route('/api/swe/project_experience/<int:SALESMANID>', methods = ['GET'])
-def show_order_experience(SWEID):    
+@swe.route('/api/swe/project_experience/<int:SWEID>', methods = ['GET'])
+def show_project_experience(SWEID):    
     exist = SWEExist(SALESMANID)
     if not exist:
         return abort(400, "swe id: {} does NOT EXIST".format(SWEID))
