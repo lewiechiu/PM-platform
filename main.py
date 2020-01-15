@@ -3,6 +3,7 @@ import routing
 from routing.project import project
 from routing.order import order
 from routing.salesman import salesman
+from routing.swe import swe
 # from routing.crew import crew
 from mysql_conf import *
 
@@ -14,7 +15,7 @@ tmp = MySQL_query()
 app.register_blueprint(project)
 app.register_blueprint(order)
 app.register_blueprint(salesman)
-
+app.register_blueprint(swe)
 
 @app.errorhandler(404)
 def NOT_FOUND():
@@ -27,20 +28,6 @@ def starting():
 @app.route('/<pageName>', methods=['GET'])
 def page(pageName):
     return render_template(pageName)
-
-
-@app.route('/api/sale/', methods = ['POST'])
-def sale_api():
-    return jsonify({"status": 200})
-
-@app.route('/api/swe/', methods = ['POST'])
-def swe_api():
-    return jsonify({"status": 200})
-
-
-@app.route('/api/crew/', methods = ['POST'])
-def crew_api():
-    return jsonify({"status": 200})
   
 
 if __name__ == '__main__':
