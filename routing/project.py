@@ -17,6 +17,7 @@ def new_project_api():
         if i in fields:
             fields.remove(i)
     if len(fields) != 0:
+        print(len(fields))
         abort(400, "missing input field")
     print(request.get_json())
 
@@ -39,7 +40,7 @@ def new_project_api():
     # Insert such record into database.
     # TODO
     InsertProject(project_ID, Order_ID, manager_id, state, swe_list)
-    return jsonify({"status": 200})
+    return json.dumps({"status": 200})
     
 
 @project.route('/api/project/task/<project_ID>', methods=['POST'])
@@ -98,14 +99,15 @@ def get_project_talent(project_id):
     response = GetProjectTalent(project_id)
     return response
 
-
+@project.route('/api/project/availability', defaults = {'swe_id': None}, methods = ['GET'])
 @project.route('/api/project/availability/<swe_id>', methods = ['GET'])
 def get_swe_availablitiy(swe_id):
     #return jsonify({"status": 200})
     # TODO
-    project_lis = []
-    project_lis_dict = SWEProject("' in-progress'",swe_id)
-    return_json = json.dumps(project_lis_dict[0])
+    project_lis_dict = []
+    project_lis_dict = SWEProject("'in-progress'",swe_id)
+    print(project_lis_dict)
+    return_json = json.dumps(project_lis_dict)
     return return_json
 
 
@@ -194,12 +196,14 @@ def SWEProject(state ,swe_id=None):
         for i in range(len(SWE_ID)):
             dict_that_go_into_list["SWE_id"] = SWE_ID[i]
             dict_that_go_into_list["Name"] = SWE_Name[i]
-            cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECT = P.PROJECTID and PS.SWEID = "
+            cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECTID = P.PROJECTID and PS.SWEID = "
             cmd2 = cmd2 + str(SWE_ID[i]) + " and P.State = " + state
             response2 = connect.queryALL(cmd2)
             response2 = clean_tuple(response2,0)
             dict_that_go_into_list["Available capacity"] = 5-response2[0]
+            print(dict_that_go_into_list)
             return_list_of_dict.append(dict_that_go_into_list)
+        return return_list_of_dict
     else:
         #SQL:
         return_list_of_dict = []
