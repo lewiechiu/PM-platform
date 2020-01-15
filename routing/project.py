@@ -105,8 +105,8 @@ def get_swe_availablitiy(swe_id):
     #return jsonify({"status": 200})
     # TODO
     project_lis_dict = []
-    project_lis_dict = SWEProject("'in-progress'",swe_id)
-    print(project_lis_dict)
+    project_lis_dict = SWEProject("' in-progress'",swe_id)
+    #print(project_lis_dict)
     return_json = json.dumps(project_lis_dict)
     return return_json
 
@@ -194,6 +194,7 @@ def SWEProject(state ,swe_id=None):
         SWE_ID = clean_tuple(response,0)
         SWE_Name = clean_tuple(response,1)
         for i in range(len(SWE_ID)):
+            dict_that_go_into_list = {}
             dict_that_go_into_list["SWE_id"] = SWE_ID[i]
             dict_that_go_into_list["Name"] = SWE_Name[i]
             cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECTID = P.PROJECTID and PS.SWEID = "

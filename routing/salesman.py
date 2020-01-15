@@ -151,7 +151,7 @@ def promote_salesman(SALESMANID):
     return jsonify({"status": 200})
 
 
-@salesman.route('/api/salesman/get_customer/<int:SALESMANID>', methods = ['GET'])
+@salesman.route('/api/salesman/get_customer/<SALESMANID>', methods = ['GET'])
 def get_customer_by_salesman(SALESMANID):
     exist = SalesmanExist(SALESMANID)
     if not exist:

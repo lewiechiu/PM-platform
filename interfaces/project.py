@@ -3,6 +3,7 @@ import requests
 from tabulate import tabulate
 
 def project():
+    
     print('''
     Project view....
     c : Create
@@ -117,8 +118,20 @@ def project():
                     print_dataList.append(tempt)
                 print(tabulate(print_dataList,headers = ["SWE ID","Name","Avaliable Capacity"]))   
             elif:
-        
-        return True
+                URL = "http://127.0.0.1:5000/api/project/availability/" + swe_id
+                r = requests.get(URL)
+                response = r.json()
+                print_dataList = []
+                for i in range(len(response)):
+                    tempt = []
+                    tempt.append(response[i]["SWE_id"])
+                    tempt.append(response[i]["Name"])
+                    tempt.append(response[i]["Avaliable capacity"])
+                    print_dataList.append(tempt)
+                print(tabulate(print_dataList,headers = ["SWE ID","Name","Avaliable Capacity"]))       
+            return True
+    elif option = "u":
+
 
 
 
