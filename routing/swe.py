@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request, Blueprint, abort
 swe = Blueprint('swe', __name__, template_folder='../templates')
 from mysql_conf import *
-from basic_function import *
+from routing.basic_function import *
 import json
 con = MySQL_query()
 
@@ -19,7 +19,7 @@ def create_swe():
     TABLE = "DB2019FP.SWE"
     now_id = con.query1("SELECT MAX(SWEID) FROM {};".format(TABLE))
 
-    SQL_command = "INSERT INTO {} VALUES( {}, {}, {} ,'{}' , {} , {}, {}, {}, {}, {});".format(TABLE, now_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]],body[params[6]],body[params[7]],body[params[8]])
+    SQL_command = "INSERT INTO {} VALUES( {}, '{}', {} ,'{}' , {} , {}, {}, '{}', '{}', '{}');".format(TABLE, now_id[0]+2, body[params[0]], body[params[1]], body[params[2]], body[params[3]], body[params[4]], body[params[5]],body[params[6]],body[params[7]],body[params[8]])
     print("## SQL command to execute: ", SQL_command)
     con.query_insertORdelete(SQL_command)
     #TBD: how to return insert results
