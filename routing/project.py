@@ -25,7 +25,9 @@ def new_project_api():
     for swe in request.get_json()['SWE ID']:
         # Some query and checking
         # TODO
-        projectLisDict = SWEProject(' in-progress',swe)
+        state_andy = "'"+ "in-progress" + "'"
+        print(swe)
+        projectLisDict = SWEProject("'in-progress'",swe)
         if projectLisDict[0]["Available capacity"] <= 0:
             abort(400, "Engineer ID:{} unavailable for more task".format(swe))
     
@@ -38,6 +40,7 @@ def new_project_api():
     # TODO
     InsertProject(project_ID, Order_ID, manager_id, state, swe_list)
     return jsonify({"status": 200})
+    
 
 @project.route('/api/project/task/<project_ID>', methods=['POST'])
 def new_task(project_ID):
@@ -69,7 +72,7 @@ def new_task(project_ID):
     # TBD: specify resource_amount when insert task?
     InsertTask(taskID, state, category, project_id, resource_amount,resource_ID)
     record = request.get_json()
-
+     
     return jsonify({"status": 200})
 
 # ***** READ
@@ -101,35 +104,42 @@ def get_swe_availablitiy(swe_id):
     #return jsonify({"status": 200})
     # TODO
     project_lis = []
-    project_lis_dict = SWEProject(' in-progress',swe_id)
+    project_lis_dict = SWEProject("' in-progress'",swe_id)
     return_json = json.dumps(project_lis_dict[0])
     return return_json
 
 
 # ***** UPDATE
 @project.route('/api/project/resources/<task_id>', methods = ['PUT'])
-def update_task_resource(task_id, resource_id, resource_amount):
-    if not request.json():
-        return abort(400, "input not json")
-    if "Resources" not in request.json():
+def update_task_resource(task_id):
+    # if not request.json():
+    #     return abort(400, "input not json")
+    if "Resources" not in request.get_json():
         return abort(400, "Input field error")
+    resource_id = request.get_json()["Resources"]
+    resource_amount = request.get_json()["Amount"]
+    # print(resource_id)
+    # print(resource_amount)
+    # print(task_id)
     #TBD
     #why is here a for loop?
-    for res in request.json()["Resources"]:
+    #for res in request.get_json()["Resources"]:
         # TODO
         #check if the resource exists
-        exist = ResourceExist(resource_id)
-        if not exist:
-            return abort(400, "resource id: {} does NOT EXIST".format(resource_id))
-        enough = AllocateNewResource(resource_id, resource_amount)
-        if( not enough):
-            return abort(400, "resource id: {} does have ENOUGH resource".format(resource_id))
+    exist = ResourceExist(resource_id)
+    if not exist:
+        return abort(400, "resource id: {} does NOT EXIST".format(resource_id))
+    enough = AllocateNewResource(resource_id, resource_amount,task_id)
+    if( not enough):
+        return abort(400, "resource id: {} does have ENOUGH resource".format(resource_id))
+    else:
+        return jsonify({"status": enough})
 
 @project.route('/api/project/task/<task_id>', methods= ['PUT'])
 def update_task_state(task_id):
-    if not request.args.get('status') :
+    if "State" not in request.get_json() :
         return abort(400, "Input field error")
-    
+    state = request.get_json()["State"]
     # TODO
     Exist = TaskExist(task_id)
     if not Exist:
@@ -152,7 +162,7 @@ def update_project_swe(project_id, swe_id):
     
     # TODO
     # Return True if SWE ID has capacity taking this role. count (task or project ) > 3
-    projectLisDict = SWEProject(' in-progress',swe_id)
+    projectLisDict = SWEProject("'in-progress'",swe_id)
     if projectLisDict[0]["Available capacity"] <= 0:
         Exist = False
     else:
@@ -165,7 +175,7 @@ def update_project_swe(project_id, swe_id):
 
     return jsonify({"status": 200})
     
-def SWEProject(state, swe_id=None):
+def SWEProject(state ,swe_id=None):
     # if swe_id == None -> find all swe_id
     # else only search for the specified swe_id
     # check Project_SWE table: find the same swe_id. summarize all the project_id that the swe has worked on
@@ -179,33 +189,37 @@ def SWEProject(state, swe_id=None):
         dict_that_go_into_list = {}
         cmd = "SELECT SWEID,Name FROM SWE"
         response = connect.queryALL(cmd)
-        SWE_ID = clean_tuple(reponse,0)
+        SWE_ID = clean_tuple(response,0)
         SWE_Name = clean_tuple(response,1)
         for i in range(len(SWE_ID)):
             dict_that_go_into_list["SWE_id"] = SWE_ID[i]
             dict_that_go_into_list["Name"] = SWE_Name[i]
-            cmd2 = "SELECT COUNT(P_ID) FROM Project P,Project_SWE WHERE P_ID = P.project_ID and  SWE_ID = "
-            cmd2 = cmd2 + str(SWE_ID[i]) +" and P.state = '" + state + "'"
+            cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECT = P.PROJECTID and PS.SWEID = "
+            cmd2 = cmd2 + str(SWE_ID[i]) + " and P.State = " + state
             response2 = connect.queryALL(cmd2)
             response2 = clean_tuple(response2,0)
-            dict_that_go_into_list["Available capacity"] = 5-response2
+            dict_that_go_into_list["Available capacity"] = 5-response2[0]
             return_list_of_dict.append(dict_that_go_into_list)
     else:
         #SQL:
         return_list_of_dict = []
         dict_that_go_into_list = {}
-        cmd = "SELECT ID,Name FROM SWE WHERE ID = "
+        cmd = "SELECT SWEID,Name FROM SWE WHERE SWEID = "
         cmd = cmd + str(swe_id)
         response = connect.queryALL(cmd)
-        SWE_ID = clean_tuple(reponse,0)
+        print(response)
+        SWE_ID = clean_tuple(response,0)
         SWE_Name = clean_tuple(response,1)
         dict_that_go_into_list["SWE_id"] = SWE_ID[0]
         dict_that_go_into_list["Name"] = SWE_Name[0]
-        cmd2 = "SELECT COUNT(P_ID) FROM Project P,Project_SWE WHERE P_ID = P.project_ID and  SWE_ID = "
-        cmd2 = cmd2 + str(SWE_ID[0])+" and P.state = '" + state + "'"
+        cmd2 = "SELECT COUNT(PS.PROJECTID) FROM Project P,Project_SWE PS WHERE PS.PROJECTID = P.PROJECTID and PS.SWEID = " 
+        cmd2 = cmd2 + str(SWE_ID[0]) + " and P.State = " + state
+        print(cmd2)
         response2 = connect.queryALL(cmd2)
+        print(response2)
         response2 = clean_tuple(response2,0)
-        dict_that_go_into_list["Available capacity"] = 5-response2
+        
+        dict_that_go_into_list["Available capacity"] = 5-response2[0]
         return_list_of_dict.append(dict_that_go_into_list)
 
     return return_list_of_dict
@@ -214,7 +228,7 @@ def SWEProject(state, swe_id=None):
 def SWEExist(swe_id):
     #SQL:
     #SELECT ID FROM SWE WHEWE ID=swe_id
-    cmd = "SELECT ID FROM SWE WHEWE ID=" + str(swe_id)
+    cmd = "SELECT SWEID FROM SWE WHERE SWEID = " + str(swe_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
     if len(response) > 0:
@@ -228,7 +242,7 @@ def InsertSWEintoProject(swe_id, project_id):
     # Insert the SWE ID into project_SWE table
     # SQL:
     # INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES(project_id,swe_id) 
-    cmd = "INSERT INTO Project_SWE(P_ID,SWE_ID) VALUES("
+    cmd = "INSERT INTO Project_SWE(PROJECTID,SWEID) VALUES("
     cmd = cmd + str(project_id) + "," + str(swe_id) +")"
     connect.query_insertORdelete(cmd)
     return True
@@ -238,8 +252,8 @@ def InsertProject(project_ID, Oder_ID, manager_id, state, swe_list):
     # insert Project_SWE: project_ID, swe_list
     # SQL:
     # INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES(
-    cmd = "INSERT INTO Project(project_ID, Oder_ID, manager_id, state) VALUES("
-    cmd = cmd + str(project_ID) + "," + str(Oder_ID) + "," + str(manager_id) + "," + "'" + str(state) + "')"
+    cmd = "INSERT INTO Project(PROJECTID, ORDERID, MANAGERID, State) VALUES("
+    cmd = cmd + str(project_ID) + "," + str(Oder_ID) + "," + str(manager_id) + "," + "'" + str(state) +"'"+ ")"
     connect.query_insertORdelete(cmd)
     for i in swe_list:
         InsertSWEintoProject(i, project_ID)
@@ -249,7 +263,7 @@ def ProjectExist(project_id):
     # query if the project_ID exists
     # SQL:
     #SELECT project_ID FROM Project WHERE project_ID = 
-    cmd = "SELECT project_ID FROM Project WHERE project_ID = "
+    cmd = "SELECT PROJECTID FROM Project WHERE PROJECTID = "
     cmd = cmd + str(project_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
@@ -264,12 +278,12 @@ def InsertTask(taskID, state, category, project_id, resource_amount,resource_ID)
     # Insert ["resource_amount"] into (task_resource)
     # SQL1:
     # INSERT INTO Task(taskID, state, category) VALUES(
-    cmd = "INSERT INTO Task(taskID, state, category, P_ID) VALUES("
+    cmd = "INSERT INTO Task(TASKID, State, Category, PROJECTID) VALUES("
     cmd = cmd + str(taskID) + "," + "'" + str(state) + "'" +"," + "'" + str(category) + "'" +","+str(project_id)+")"
     connect.query_insertORdelete(cmd)
     # SQL2:
     # INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES(
-    cmd = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
+    cmd = "INSERT INTO Task_Resources(RESOURCEID,TASKID,Amount) VALUES("
     cmd = cmd + str(resource_ID) +","+str(taskID)+","+str(resource_amount)+ ")"
     connect.query_insertORdelete(cmd)
     return True
@@ -280,23 +294,23 @@ def ProgressProject(project_id=None):
     # else if project_id is specified 
     # query all the in-progress task' ID and return a list
     dict_to_become_jason = {}
-    in_progress = "'" + " in-progress" + "'"
+    in_progress = "'" + "in-progress" + "'"
     if project_id == None:
     # SQL:
     # SELECT COUNT(P_ID) FROM Task WHERE state = 'in-progess'
-        cmd = "SELECT COUNT(P_ID) FROM Task WHERE state = "
+        cmd = "SELECT COUNT(PROJECTID) FROM Task WHERE State = "
         cmd =cmd + in_progress
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['No_id'] = int(response[0])
-        cmd = "SELECT P_ID FROM Task WHERE state = "
+        cmd = "SELECT PROJECTID FROM Task WHERE State = "
         cmd =cmd + in_progress
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['Projects'] = response
     else:
-        cmd = "SELECT taskID FROM Task WHERE state="
-        cmd = cmd + in_progress + " and P_ID =" + str(project_id)
+        cmd = "SELECT TASKID FROM Task WHERE State="
+        cmd = cmd + in_progress + " and PROJECTID =" + str(project_id)
         response = connect.queryALL(cmd)
         response = clean_tuple(response,0)
         dict_to_become_jason['project_id'] = project_id
@@ -319,16 +333,16 @@ def GetProjectTalent(project_id):
     # SQL:
     # SELECT SWE_ID FROM Project_SWE WHERE P_ID =
     list_to_be_json = []
-    cmd = "SELECT SWE_ID FROM Project_SWE WHERE P_ID =" + str(project_id)
-    reponse = connect.queryALL(cmd)
+    cmd = "SELECT SWEID FROM Project_SWE WHERE PROJECTID =" + str(project_id)
+    response = connect.queryALL(cmd)
     list_of_swe_id = clean_tuple(response,0)
     for i in list_of_swe_id:
         dict_itr = {}
-        cmd2 = "SELECT Name,title FROM SWE WHERE ID=" + str(i)
+        cmd2 = "SELECT Name,Title FROM SWE WHERE SWEID=" + str(i)
         reponse2 = connect.queryALL(cmd2)
         swe_Name = clean_tuple(reponse2,0)
         swe_title = clean_tuple(reponse2,1)
-        cmd3 = "SELECT talent FROM Talent WHERE ID = " + str(i)
+        cmd3 = "SELECT Talent FROM Talent WHERE ID = " + str(i)
         reponse3 = connect.queryALL(cmd3)
         swe_talents = clean_tuple(reponse3,0)
         dict_itr['Name'] = swe_Name[0]
@@ -341,7 +355,7 @@ def GetProjectTalent(project_id):
 def ResourceExist(resource_id):
     # SQL:
     # SELECT resourceID FROM resource WHERE resourceID = 
-    cmd = "SELECT resourceID FROM resource WHERE resourceID = "
+    cmd = "SELECT RESOURCEID FROM Resources WHERE RESOURCEID = "
     cmd = cmd + str(resource_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
@@ -351,7 +365,7 @@ def ResourceExist(resource_id):
         return False
 
 
-def AllocateNewResource(resource_id, task_id):
+def AllocateNewResource(resource_id,resource_amount, task_id):
     # query the capacity from resource table
     # summarize resource comsumption from task resource table
     # if (total comsumption < capacity)
@@ -360,19 +374,19 @@ def AllocateNewResource(resource_id, task_id):
     # return False
     # SQL:
     # SELECT capacity FROM resource WHERE resourceID = 
-    cmd = "SELECT capacity FROM resource WHERE resourceID = "
+    cmd = "SELECT Capacity FROM Resources WHERE RESOURCEID = "
     cmd = cmd + str(resource_id)
     response = connect.queryALL(cmd)
     response = clean_tuple(response,0)
     max_amount = int(response[0])
-    cmd2 = "SELECT SUM(amount) FROM Task_Resource WHERE R_ID = "
+    cmd2 = "SELECT SUM(Amount) FROM Task_Resources WHERE RESOURCEID = "
     cmd2 = cmd2 + str(resource_id)
     response2 = connect.queryALL(cmd2)
     response2 = clean_tuple(response2,0)
     current_amount = int(response2[0])
     if current_amount + resource_amount <= max_amount:
-        cmd3 = "INSERT INTO Task_Resource(R_ID,T_ID,resource_amount) VALUES("
-        cmd3 = cmd + str(resource_id) +","+str(task_id)+","+str(resource_amount)+")"
+        cmd3 = "INSERT INTO Task_Resources(RESOURCEID,TASKID,Amount) VALUES("
+        cmd3 = cmd3 + str(resource_id)+","+str(task_id)+","+str(resource_amount)+")"
         connect.query_insertORdelete(cmd3)
         return True
     else:
@@ -382,7 +396,7 @@ def TaskExist(task_id):
      # Check if the task of task id is present (task)
      # SQL:
      # SELECT taskID FROM Task WHERE taskID =
-     cmd = "SELECT taskID FROM Task WHERE taskID = " + str(task_id)
+     cmd = "SELECT TASKID FROM Task WHERE TASKID = " + str(task_id)
      response = connect.queryALL(cmd)
      response = clean_tuple(response,0)
      if len(response) > 0:
@@ -395,7 +409,7 @@ def UpdateTask(task_id, state):
     # SQL:
     # UPDATE Task SET state = 
     state_string = "'" + state + "'"
-    cmd = "UPDATE Task SET state = " + state_string +" WHERE taskID = " + str(task_id)
+    cmd = "UPDATE Task SET State = " + state_string +" WHERE TASKID = " + str(task_id)
     connect.query_insertORdelete(cmd)
     return True
 
