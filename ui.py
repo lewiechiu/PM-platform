@@ -2,6 +2,8 @@ import requests
 from interfaces import *
 from interfaces.order import *
 from interfaces.swe import *
+from interfaces.project import *
+from interfaces.sales import *
 
 if __name__ == '__main__':
     while 1:
