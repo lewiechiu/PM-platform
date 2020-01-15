@@ -1,5 +1,6 @@
 from mysql_conf import *
 import json
+import requests
 connect = MySQL_query()
 
 # # state = " notstart"
@@ -137,7 +138,36 @@ connect = MySQL_query()
 # SWE_Name = clean_tuple(response,1)
 # print(SWE_ID[0])
 # print(SWE_Name[0])
-cmd = "SELECT SWEID FROM SWE WHERE SWEID = 5"
-response = connect.queryALL(cmd)
-response = clean_tuple(response,0)
-print(response)
+# cmd = "SELECT SWEID FROM SWE WHERE SWEID = 5"
+# response = connect.queryALL(cmd)
+# response = clean_tuple(response,0)
+# print(response)
+
+# URL = "http://127.0.0.1:5000/api/project/active/833"
+  
+# # location given here 
+# location = "delhi technological university"
+  
+# # defining a params dict for the parameters to be sent to the API 
+# PARAMS = {'address':location} 
+  
+# # sending get request and saving the response as response object 
+# r = requests.get(URL) 
+  
+# # extracting data in json format 
+# data = r.json() 
+  
+  
+# # extracting latitude, longitude and formatted address  
+# # of the first matching location 
+# id = data["project_id"] 
+# task = data["task"]
+# # printing the output 
+# print(int(id))
+# print(task)
+
+
+
+
+
+
