@@ -4,11 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width", initial-scale=1.0>
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Customer View</title>
+        <title>Order View</title>
         <link rel="stylesheet" href="source/main.css">
+        <link rel="stylesheet" href ="order.css">
         <script type="text/javascript" src="source/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="source/jquery.fulltable.js"></script>
-        <script src="customer.js"></script>
+        <script src="order.js"></script>
         <style type="text/css">
             table {
                 position:relative;
@@ -54,6 +55,11 @@
     </head>
     
     <body>
+        <div class="sectionHeader">
+            <h2 id="customer">Customer section</h2>
+        </div>
+        
+        <hr width="40%" color="lightgray">
         <div class="sidebar">
             <div class="expandable">
                 <button class="slide">A</button>
@@ -132,6 +138,89 @@
             </form>
 
             <a href="#" class="button" id="test-table-add-row">+ Add row</a>
+            <table class="fulltable fulltable-editable" id="test-table">
+                <thead>
+                    <tr>
+                        <th fulltable-field-name="name">Name</th>
+                        <th fulltable-field-name="comp">Company</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><span>John S.</span></td><td><span>A Certain Inc</span></td></tr>
+                </tbody>
+            </table>
+            <a href="#" class="button" id="test-table-get-value">> Get value</a>
+        </div>
+        <div class="sectionHeader">
+            <h2 id="customer">Order Section</h2>
+        </div>
+        <hr width="40%" color="lightgray">
+        <div class="sectionSubheader">
+            <h4 id="customer">Create</h4>
+            <hr width="10%" color="lightgray" align="left">
+        </div>
+        'ORDERID', 'int(11)', 'YES', '', NULL, ''
+        'EstablishTime', 'text', 'YES', '', NULL, ''
+        'EndTime', 'text', 'YES', '', NULL, ''
+        'Deadline', 'text', 'YES', '', NULL, ''
+        'SALESMANID', 'int(11)', 'YES', '', NULL, ''
+        'Price', 'int(11)', 'YES', '', NULL, ''
+        'State', 'text', 'YES', '', NULL, ''
+
+        <div class="main">
+            <!-- ORDERI, End_Date, Deadline, Salesman_ID, Price, state -->
+            <form class="form-horizontal" id="CreateOrder">
+                <!-- <div class="control-group inline">
+                    <label class="control-label" for="first">ORDERID</label>
+                    <div class="controls">
+                        <input type="text" id="first" placeholder="Name">
+                    </div>
+                </div> -->
+                <div class="control-group inline">
+                    <label class="control-label" for="EstablishTime">EstablishTime</label>
+                    <div class="controls">
+                        <input type="text" id="EstablishTime" placeholder="2020-01-15">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="EndTime">EndTime</label>
+                    <div class="controls">
+                        <input type="text" id="EndTime" placeholder="2020-01-15">
+                    </div>
+                </div>
+                
+                <div class="control-group inline">
+                    <label class="control-label" for="Deadline">Deadline</label>
+                    <div class="controls">
+                        <input type="text" id="Deadline" placeholder="2020-01-15">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="Salesmanid">Salesmanid</label>
+                    <div class="controls">
+                        <input type="integer" id="Salesmanid" placeholder="2">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="Price">Price</label>
+                    <div class="controls">
+                        <input type="integer" id="Price" placeholder="123456">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <label class="control-label" for="State">State</label>
+                    <div class="controls">
+                        <input type="integer" id="State" placeholder="Starting">
+                    </div>
+                </div>
+                <div class="control-group inline">
+                    <div class="controls">              
+                        <a class="button" id="ADDentry">ADD</a>
+                    </div>
+                </div>
+            </form>
+
+            <!-- <a href="#" class="button" id="test-table-add-row">+ Add row</a> -->
             <table class="fulltable fulltable-editable" id="test-table">
                 <thead>
                     <tr>

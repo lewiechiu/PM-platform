@@ -33,3 +33,16 @@ $(
         $("#test-table").FullTable("draw");
     }
 );
+
+let params = ["EstablishTime", "EndTime", "Deadline", "Salesmanid", "Price", "State"]
+$(function(){
+    $("#ADDentry").click(function(){
+        let queryBody = {}
+        $("#CreateOrder :input").each(function(){
+            console.log($(this).attr('id'));
+            console.log($(this).val());
+            queryBody[$(this).attr('id')] = $(this).val();
+        });
+        console.log(queryBody);
+    });
+})
