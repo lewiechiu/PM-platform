@@ -8,7 +8,7 @@ def clean_tuple(response,position):
 
 class MySQL_query:
     def __init__(self):
-        self.con = mysql.connector.connect(host = "114.32.23.161", user = "DBMS2019", passwd = "fu. wu/6vu;6",database = "DB2019FP")
+        self.con = mysql.connector.connect(host = "", user = "", passwd = "",database = "")
         self.cur = self.con.cursor()
     def queryALL(self, cmd):
         self.cur.execute(cmd)
