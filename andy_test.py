@@ -239,7 +239,7 @@ connect = MySQL_query()
 #     tempt.append(response[i]["Talent"])
 #     print_dataList.append(tempt)
 # print(tabulate(print_dataList,headers = ["Name","Job Title","Talent"]))
-# URL = "http://127.0.0.1:5000/api/project/availability/1001"
+# URL = "http://127.0.0.1:5000/api/project/availability"
 # r = requests.get(URL)
 # print(r)
 # response = r.json()
@@ -252,16 +252,16 @@ connect = MySQL_query()
 #     tempt.append(response[i]["Available capacity"])
 #     print_dataList.append(tempt)
 # print(tabulate(print_dataList,headers = ["SWE ID","Name","Avaliable Capacity"]))   
-
-
-
-cmd = "SELECT SWEID,Name FROM SWE"
-response = connect.queryALL(cmd)
-SWE_ID = clean_tuple(response,0)
-SWE_Name = clean_tuple(response,1)
-print(response)
-print(SWE_ID)
-print(SWE_Name)
+print("Please enter Salesman ID : ")
+salesman_id = input()
+URL = "http://127.0.0.1:5000/api/salesman/get_customer/" + salesman_id
+r = requests.get(URL)
+response = r.json()
+print("CompanyName : ",response[0]["CompanyName"])
+print("CustomerName : ",response[0]["CustomerName"])
+# print_list.append(response[0]["CompanyName"])
+# print_list.append(response[0]["CustomerName"])
+# print(tabulate(print_list,headers = ["CompanyName","CustomerName"]))
 
 
 
